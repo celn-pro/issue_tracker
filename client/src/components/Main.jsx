@@ -15,7 +15,7 @@ const Main = () => {
         <div className='flex justify-center items-center'>
             <div className='w-[70%] relative md:h-full'>
                 {showParagraph?(
-                    <p className='transition-all duration-300 border-[1px] rounded px-6 py-4'
+                    <p className='transition-all duration-300 font-system border-[1px] rounded px-6 py-4'
                     >
                         Welcome to DIT report program, your one-stop solution for submitting and tracking the
                         progress of your issues. With our user-friendly interface you can effortlessly report
@@ -29,7 +29,7 @@ const Main = () => {
                       > read less</span>
                     </p>
                 ):( 
-                    <p className='cursor-pointer border-[1px] rounded px-6 py-4'
+                    <p className='cursor-pointer font-verdan border-[1px] rounded px-6 py-4'
                 >
                     Welcome to DIT report program, your one-stop solution for submitting and tracking the
                     progress of your issues. With our user-friendly interface you.... <span className='hover:text-gray-400 text-gray-300'

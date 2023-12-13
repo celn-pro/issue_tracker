@@ -44,21 +44,21 @@ const NavBar = () => {
 
          <div className={`absolute border-[1px] w-[100px] bg-white rounded shodow origin-top-right md:hidden top-[50px] transition-all duration-300 ${isOpen?'right-[20px]':'-right-full'} z-10`}>
           <ul className='py-[10px] px-[10px]'>
-              <li className='mb-[10px] border-b border-[#333333] cursor-pointer'
+              <li className={`${selectedNav == 'Home'?'text-green-600':''} mb-[10px] border-b border-[#333333] cursor-pointer`}
                 onClick={()=>{
                   toggleSelectedNav('Home')
                   setChangeMenu(!changeMenu)
                   setIsOpen(!isOpen)
                 }}
               >Home</li>
-              <li className='mb-[10px] border-b border-[#333333] cursor-pointer'
+              <li className={`${selectedNav == 'Submit'?'text-green-600':''} mb-[10px] border-b border-[#333333] cursor-pointer`}
                 onClick={()=>{
                   toggleSelectedNav('Submit')
                   setChangeMenu(!changeMenu)
                   setIsOpen(!isOpen)
                 }}
               >Submit</li>
-              <li className='mb-[10px] border-b border-[#333333] cursor-pointer'
+              <li className={`${selectedNav == 'Track'?'text-green-600':''} mb-[10px] border-b border-[#333333] cursor-pointer`}
                 onClick={()=>{
                   toggleSelectedNav('Track')
                   setChangeMenu(!changeMenu)
