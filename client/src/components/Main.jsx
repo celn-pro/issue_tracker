@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useSelectedNav } from '../hooks/useSelectedNav'
+import { usePrevSelectedNav } from '../hooks/usePrevSelectedNav'
 
 const Main = () => {
     const [showParagraph, setShowParagraph] =useState(false)
     const [selectedNav, toggleSelectedNav] = useSelectedNav();
+    const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav()
   return (
     <div>
         <div className=' mt-[30px] relative px-[20px] flex justify-center items-center mb-[30px]'>
@@ -44,11 +46,13 @@ const Main = () => {
             <div className='flex justify-center items-center gap-5 mt-[20px]'>
                <button className='rounded bg-green-700 text-white w-[70px] md:w-[100px] hover:bg-green-600 font-medium px-[5px] py-[5px]'
                  onClick={()=>{
+                    togglePrevSelectedNav(selectedNav)
                     toggleSelectedNav('Submit')
                  }}
                >Submit</button>
                <button className='rounded bg-green-700 text-white w-[70px] md:w-[100px] hover:bg-green-600 font-medium px-[5px] py-[5px]'
                  onClick={()=>{
+                    togglePrevSelectedNav(selectedNav)
                     toggleSelectedNav('Track')
                  }}
                >Track</button>
@@ -61,21 +65,25 @@ const Main = () => {
                 <ul>
                     <li className='underline font-bold font-cursive hover:text-gray-500 cursor-pointer'
                       onClick={()=>{
+                        togglePrevSelectedNav(selectedNav)
                         toggleSelectedNav('WelcomeHod')
                       }}
                     >Head of Department (HOD)</li>
                     <li className='underline font-bold font-cursive hover:text-gray-500 cursor-pointer'
                       onClick={()=>{
+                        togglePrevSelectedNav(selectedNav)
                         toggleSelectedNav('WelcomeStaff')
                       }}
                     >Staff</li>
                     <li className='underline font-bold font-cursive hover:text-gray-500 cursor-pointer'
                       onClick={()=>{
+                        togglePrevSelectedNav(selectedNav)
                         toggleSelectedNav('FAQs')
                       }}
                     >FAQ's</li>
                     <li className='underline font-bold font-cursive hover:text-gray-500 cursor-pointer'
                       onClick={()=>{
+                        togglePrevSelectedNav(selectedNav)
                         toggleSelectedNav('Feedback')
                       }}
                     >Feedback</li>

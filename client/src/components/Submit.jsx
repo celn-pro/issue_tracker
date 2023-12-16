@@ -55,7 +55,7 @@ const Submit = () => {
             <input type="file" name="" id="" 
               className='w-full italic h-[40px] px-[10px] py-[10px] mb-[10px] bg-sky-100 hover:bg-green-200 rounded focus:outline-none'
             />
-            <div className='flex justify-end items-center py-6'>
+            <div className='flex justify-end items-center'>
               <button className='rounded bg-green-700 text-white w-[70px] md:w-[100px] hover:bg-green-600 font-medium px-[5px] py-[5px]'>Send</button>
             </div>
           </div>
