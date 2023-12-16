@@ -5,7 +5,7 @@ const SignupHod = () => {
   return (
     <div>
       <div className='flex justify-center items-center'>
-        <h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>SIGNUP HOD</h2>
+        <h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>SIGNUP (HOD)</h2>
       </div>
       <div className='flex justify-center items-center'>
       <div className='md:w-[20%] w-[50%]'>
