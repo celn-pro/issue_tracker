@@ -5,12 +5,12 @@ const LoginStaff = () => {
   return (
     <div>
       <div className='flex justify-center mt-[5%] items-center'>
-        <h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>LOGIN (HOD)</h2>
+        <h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>LOGIN (STAFF)</h2>
       </div>
       <div className='flex justify-center items-center'>
       <div className='md:w-[20%] w-[50%]'>
         
-        <p className='px-[10px] italic text-red-500'>password do not match!</p>
+        <p className='px-[10px] italic text-red-500'>password invalid length!</p>
         <input type="text" name="" id="" placeholder='Password' 
             className='w-full italic h-[40px] px-[10px] py-[10px] mb-[5px] bg-sky-100 hover:bg-green-200 rounded focus:outline-none'
         />
