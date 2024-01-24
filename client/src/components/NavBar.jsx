@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useSelectedNav } from '../hooks/useSelectedNav';
 import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
-import { sectionInfo, NAVINFO, SELECTED_PAGES } from '../constants';
+import { sectionInfo, ICONS_INFO, SELECTED_PAGES } from '../constants';
 
 
 const NavBar = () => {
@@ -13,22 +13,22 @@ const NavBar = () => {
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
   return (
-    <nav className={`${!showNews?'pt-[15px]':''} px-[20px] mx-[15px] border-[1px] border-b-transparent max-w-full transition-all duration-300`} >
+    <nav className={`${selectedNav=='SignupHod'?'':''} hidden md:mx-[200px] sticky top-0 z-10 bg-white border-[1px] border-b-transparent max-w-full transition-all duration-300`} >
 
       <div className={` ${!showNews?'hidden':'block'} max-w-full bored-[3px] py-[5px] flex justify-start gap-[10px]`}>
-         <div className='border-[1px] cursor-pointer hover:bg-red-200 relative w-[20px] flex justify-center items-center rounded'
+			  <div className='border-[1px] cursor-pointer bg-[#04314C] text-white relative w-[20px] flex justify-center items-center rounded'
           onClick={()=>setShowNews(!showNews)}
-			  > x</div><span><i>news</i></span> 
+			  > x</div><span><i>Take care of Red eyes infections!</i></span> 
       </div>
 
-		<div className='flex justify-between items-center px-[20px] border-[1px]  h-[50px] rounded'>
-        <div className='cursor-pointer font-medium'><i>od22</i></div>
+		<div className='flex justify-between items-center bg-[#04314C] px-[20px] py-[5px] border-[1px]'>
+        <div className='cursor-pointer font-medium text-white'><i>od22</i></div>
 
          {/* Mobile menu button */}
          <div className="flex md:hidden">
-            {NAVINFO.map(i => {
+            {ICONS_INFO.map(i => {
 				return <div
-						className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] hover:bg-gray-200 rounded-[50%] mr-[10px]'
+					className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] bg-[#FFFFFF] hover:bg-white rounded-[50%] mr-[10px]'
 						onClick={() => {
 						var holder = prevSelectedNav
 							{ if (i.togglePrevSelectedNav && i.toggleSelectedNav){
@@ -43,7 +43,7 @@ const NavBar = () => {
 			})}
             <button 
               type="button"
-              className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+              className="text-gray-500 dark:text-gray-200 w-[30px] focus:outline-none"
               aria-label="toggle menu"
               onClick={() => {
                 setIsOpen(!isOpen)
@@ -52,7 +52,7 @@ const NavBar = () => {
             >
               {changeMenu?(
                 <span
-                  className='relative w-[40px] border-[1px] hover:bg-red-200'
+                  className='relative w-[40px] border-[1px] px-[5px] rounded hover:bg-red-200'
                 >X</span>
               ):(
                 <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
@@ -62,28 +62,38 @@ const NavBar = () => {
             </button>
           </div>
 
-         <div className={`absolute border-[1px] w-[100px] bg-white rounded shodow origin-top-right md:hidden top-[56px] transition-all duration-300 ${isOpen?'right-[20px]':'-right-full'} z-10`}>
+			  <div className={`absolute border-[1px] w-[120px] bg-white rounded shodow origin-top-right md:hidden ${showNews ?'top-[70px]':'top-[36px]'} transition-all duration-300 ${isOpen?'right-[20px]':'-right-full hidden'} z-10`}>
           <ul className='py-[10px] px-[10px]'>
               {SELECTED_PAGES.map(p => {
-				  return <li className={`${selectedNav == p.name ? 'text-green-600' : ''} mb-[10px] border-b border-[#333333] cursor-pointer`}
-					  		onClick={() => {
-							if(p.togglePrevSelectedNav&&p.toggleSelectedNav&&p.setChangeMenu&&p.setIsOpen){
-								togglePrevSelectedNav(selectedNav)
-								toggleSelectedNav(p.name)
-								setChangeMenu(!changeMenu)
-								setIsOpen(!isOpen)
-							}
-					  }}
-				  >{p?.label??p.name}</li>
+				 if(p.name=='Home'){
+					 return <li className={`${selectedNav == p.name ? 'text-green-600' : ''} mb-[10px] border-b border-[#333333] cursor-pointer`}
+						 onClick={() => {
+							 if (p.togglePrevSelectedNav && p.toggleSelectedNav && p.setChangeMenu && p.setIsOpen) {
+								 togglePrevSelectedNav(selectedNav)
+								 toggleSelectedNav(p.name)
+								 setChangeMenu(!changeMenu)
+								 setIsOpen(!isOpen)
+							 }
+						 }}
+					 >{p?.label ?? p.name}</li>
+				 }
+				 return null
 			  })}
           </ul>
          </div>
-
+			  <button className={`absolute ${showNews ? 'top-[70px]' : 'top-[36px]'} transition-all duration-300 ${isOpen ? 'right-[20px] vissible w-full h-[100vh] bg-black opacity-50' : 'hidden -right-full hidden'} z-9 `}
+			  	onClick={()=>{
+						setChangeMenu(!changeMenu)
+						setIsOpen(!isOpen)
+				}}
+			  ></button>
+		
+		{/* destop navbar */}
          <div className={` flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 hidden`}>
           <ul className='items-center justify-end space-y-8 md:flex md:space-x-6 md:space-y-0 '>
-				{NAVINFO.map(i => {
+				{ICONS_INFO.map(i => {
 					return <div
-						className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] hover:bg-gray-200 rounded-[50%] mr-[10px]'
+						className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] bg-[#FFFFFF] hover:bg-white rounded-[50%] mr-[10px]'
 						onClick={() => {
 							var holder = prevSelectedNav
 							{
@@ -99,12 +109,15 @@ const NavBar = () => {
 						}}><img src={i?.source} className='h-[10px] ' /></div>
 				})}
 				{SELECTED_PAGES.map(p=>{
-					return <li className={`${selectedNav == p.name ? 'text-green-600' : ''} cursor-pointer font-medium hover:text-green-500`}
+					if(p.name=='Home'){
+						return <li className={`${selectedNav == p.name ? 'bg-[#F6A316] rounded-xl px-[20px] text-white' : ' bg-white text-[#04314C] rounded-xl px-[20px]'} cursor-pointer font-medium`}
 							onClick={() => {
-							togglePrevSelectedNav(selectedNav)
-							toggleSelectedNav(p.name)
-						}}
-					><button>{p?.label??p.name}</button></li>
+								togglePrevSelectedNav(selectedNav)
+								toggleSelectedNav(p.name)
+							}}
+						><button>{p?.label ?? p.name}</button></li>
+					}
+					return null
 				})}
               
           </ul>

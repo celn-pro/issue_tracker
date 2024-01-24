@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelectedNav } from '../hooks/useSelectedNav'
 import { usePrevSelectedNav } from '../hooks/usePrevSelectedNav'
+import Footer from './Footer'
 
 import { sectionInfo } from '../constants'
 
@@ -10,14 +11,21 @@ const Main = () => {
     const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav()
 
   return (
-	  <div className='mx-[15px] border-[1px] border-b-transparent border-t-transparent'>
-        <div className=' mt-[30px] relative px-[20px] flex justify-center items-center mb-[30px]'>
-            <div>
-            <h1 className='mb-[10px] text-[15px] font-system font-bold'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1>
-            <p className='pl-[20%] font-mono font-bold'>SUBMIT/TRACK CHALLENGES</p>
+	  <div className='md:mx-[200px] border-[1px] border-b-transparent mb-[0px] border-t-transparent'>
+        <div className=' mt-[10px] relative px-[20px] flex justify-center items-center mb-[30px]'>
+            <div className=''>
+				<div className='mb-[10px]'>
+					  <input type="search" name="" id="" placeholder='Track Here...' className='w-full h-[40px] font-medium px-[5px] py-[5px] rounded border-[1px] border-[#04314C] focus:outline-none' />
+				</div>
+				<div className='flex justify-center items-center'>
+					  <h1 className='mb-[10px] text-[28px] font-system font-bold px-[20px] text-center'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1>
+				</div>
+				<div className='flex justify-center items-center'>
+					  <p className='font-bold'>SUBMIT/TRACK CHALLENGES</p>
+				</div>
             </div>
         </div>
-        <div className='flex justify-start items-center px-[20px]'>
+        <div className='flex justify-start items-center px-[20px] mb-[15px]'>
 			  <div className='relative border-[1px] rounded px-[20px] py-4'>
                 {showParagraph?(
                     <p className='transition-all duration-300 font-verdan'
@@ -52,11 +60,11 @@ const Main = () => {
             </div>
         </div>
 
-        <div className='px-[20px]'>
-            <div className='flex flex-col justify-between gap-5 mt-[20px] px-[20px]'>
-             {sectionInfo.map(s => {
+        <div className='px-[20px] mb-[10px]'>
+            <div className='flex flex-col justify-center items-center gap-5 mt-[20px] px-[20px]'>
+             {sectionInfo.map((s,i) => {
 				if(s.name == 'Track' || s.name=='Submit'){
-					return <button className='rounded bg-green-700 text-white w-full h-[50px] md:w-[400px] hover:bg-green-600 font-medium px-[5px] py-[5px]'
+					return <button className={` ${s.name == 'Submit' ? 'bg-white text-[#04314C] border-2 border-[#04314C]' :'bg-[#04314C] text-white'} hover:scale-95 rounded w-full h-[50px] max-[1000px]:w-full w-[400px] font-medium px-[5px] py-[5px] `}
 						onClick={() => {
 						togglePrevSelectedNav(selectedNav)
 						toggleSelectedNav(s.name)
@@ -66,22 +74,7 @@ const Main = () => {
 			 })}
             </div>
         </div>
-
-        <div className='px-[20px]'>
-			  <div className='px-[20px] mt-[50px] flex justify-start rounded py-4 items-center border-[1px]'>
-				  <div><h2 className='mb-[10px] font-cursive font-bold'>QUICK LINKS:</h2>
-					  <ul>
-						  {sectionInfo.map(s => (
-							  <li className='underline font-bold font-cursive hover:text-gray-500 cursor-pointer'
-								  onClick={() => {
-									  togglePrevSelectedNav(selectedNav)
-									  toggleSelectedNav(s.name)
-								  }}
-							  >{s.message}</li>
-						  ))}
-					  </ul></div>
-            </div>
-        </div>
+		<Footer />
     </div>
   )
 }

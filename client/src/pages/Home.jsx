@@ -14,7 +14,7 @@ const Home = () => {
 
 
   return (
-    <div>
+    <>
       <NavBar />
       {selectedNav == 'Home'&&<Main />}
       {selectedNav == 'Submit'&&<Submit />}
@@ -27,7 +27,7 @@ const Home = () => {
       {selectedNav == 'SignupStaff'&&<SignupStaff />}
       {selectedNav == 'WelcomeHod'&&<WelcomeHod />}
       {selectedNav == 'WelcomeStaff'&&<WelcomeStaff />}
-    </div>
+    </>
   )
 }
 

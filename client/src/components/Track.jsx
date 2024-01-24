@@ -2,22 +2,25 @@ import React from 'react'
 
 const Track = () => {
   return (
-    <div className='h-screen'>
-      <div className='flex justify-center items-center mt-[10%]'>
+	  <div className='md:px-[200px] mx-[15px] px-[20px]'>
+      <div className='flex justify-center items-center mt-[20px]'>
         <div>
-          <h1 className='mb-[10px] font-system font-bold'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1>
-          <p className='pl-[20%] font-mono font-bold'>TRACK CHALLENGES</p>
+          <h1 className=' font-system font-bold text-[28px] text-center'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1>
+		  <div className='flex justify-center items-center'>
+				<p className=' font-system font-bold'>TRACK CHALLENGES</p>
+		  </div>
         </div>
       </div>
-      <div className='flex justify-center ml-[30%] items-center relative h-[25%]'>
-          <div className='relative flex-1 justify-center items-center '>
-            <input type="text" name="" id="" placeholder='Enter your tracking key'
-                className='md:w-[50%] w-[65%] relative italic h-[40px] px-[10px] py-[10px] mb-[10px] bg-green-200 hover:bg-green-100 rounded focus:outline-none'
-            /><br />
-            <button
-              className='rounded bg-green-700 text-white w-[70px] md:w-[100px] hover:bg-green-600 font-medium px-[5px] py-[5px]'
-            >Track</button>
-          </div>
+      <div className='flex justify-center items-center'>
+          <div className='w-full'>
+				  <div className=''>
+					  <input type="text" name="" id="" placeholder='Enter your tracking key'
+						  className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
+					  />
+				  </div>
+				  <button className=' text-white w-full md:w-[200px] font-medium rounded w-full h-[50px] font-medium px-[5px] py-[5px] bg-[#04314C]'>Track</button>
+
+		  </div>
       </div>
     </div>
   )
