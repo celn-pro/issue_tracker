@@ -39,7 +39,7 @@ const options = {
 }
 
 export function DoughnutChart() {
-	return <div className='h-[200px]'>
+	return <div className='h-[300px] border-[1px] rounded flex justify-center items-center'>
 		<Doughnut data={data} />
 	</div>;
 }

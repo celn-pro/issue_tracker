@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AdminDashboard from './HodAccount'
+import AdminDashboard from '../admin_components/HodAccount'
 
 export const LoginHod = () => {
   const department = ['COMPUTER', 'CIVIL', 'GS']
