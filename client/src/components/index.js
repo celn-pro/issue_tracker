@@ -10,8 +10,9 @@ import WelcomeHod from "./WelcomeHod";
 import WelcomeStaff from "./WelcomeStaff"
 import Faqs from "./Faqs";
 import Feedback from "./Feedback";
+import SideBar from "./SideBar";
 
 export {
     NavBar, Main, LoginHod, LoginStaff, SignupHod, SignupStaff, 
-    Submit, Track, WelcomeHod, WelcomeStaff, Faqs, Feedback
+    Submit, Track, WelcomeHod, WelcomeStaff, Faqs, Feedback, SideBar
 }

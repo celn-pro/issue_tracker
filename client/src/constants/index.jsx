@@ -1,13 +1,14 @@
-import {User, BarChart, Lock, Share, Layout, LogOut, Settings, Moon} from 'lucide-react'
+import {User, BarChart, Lock, Share, Layout, LogOut, Settings, Moon,
+	 Crown, Badge, Speech, Megaphone, ArrowUpWideNarrow, PinIcon, ShieldQuestion,BarChart2} from 'lucide-react'
 
 export const sectionInfo = [
-		{ name: 'WelcomeHod', message: 'Head of Department (HOD)'},
-		{ name: 'WelcomeStaff', message: 'Staff' },
-		{ name: 'FAQs', message: 'Faqs' },
-		{ name: 'Feedback', message: 'feedback' },
-		{ name: 'Submit', message: 'Submit' },
-		{nam: 'Analytics', message:'Analytics'},
-		{ name: 'Track', message: 'Track' },
+	{ name: 'WelcomeHod', message: 'Hod', icon: <Crown className='w-[15px]' /> },
+	{ name: 'WelcomeStaff', message: 'Staff', icon: <Badge className='w-[15px]' /> },
+	{ name: 'FAQs', message: 'Faqs', icon: <Speech className='w-[15px]' /> },
+	{ name: 'Feedback', message: 'feedback', icon: <Megaphone className='w-[15px]' /> },
+	{ name: 'Submit', message: 'Submit', icon: <ArrowUpWideNarrow className='w-[15px]' /> },
+	{ nam: 'Analytics', message: 'Analytics', icon: <BarChart2 className='w-[15px]' /> },
+	{ name: 'Track', message: 'Track', icon: <PinIcon className='w-[15px]' /> },
 		
 	]
 
@@ -30,7 +31,7 @@ export const sectionInfo = [
 
   export const ADMIN_SIDEBAR = [
 	{name: 'Profile', icon: <User className='w-[15px]' />},
-	{name: 'Stats', icon: <BarChart clas='w-[15px]sName'/>},
+	{name: 'Stats', icon: <BarChart className='w-[15px]'/>},
 	{name:'Aunthenticate', icon: <Lock className='w-[15px]' />},
 	{name:'Delegate', icon: <Share className='w-[15px]' />},
 	{name:'WorkBoard', icon: <Layout className='w-[15px]' /> },
@@ -88,4 +89,20 @@ export const sectionInfo = [
 		title: 'No way i got no id card', desc: 'i just cant login to my account the main problem is that the system is just annoying all the time',
 		name: 'Kattie chow', status: 'open', date: '2024-01-24 11:12', frame: '1m', category: 'beng', scope: 'others'
 	},
+]
+
+export const statsDatas = [{
+	w: { name: '7 days', change: 8, on_progress: 30, closed: 10, never_attended: 50},
+	m: { name: 'last month', change: 11, on_progress: 40, closed: 80, never_attended: 90 },
+	y: { name: 'last year', change: 5, on_progress: 100, closed: 150, never_attended: 300 },
+	all: { name: 'all', change: 2, on_progress: 500, closed: 250, never_attended: 900 },
+
+}]
+
+export const textList = ['dit-J0jK-RUvF-kU4m', 'dit-EWPT-OMRs-VHXZ', 'dit-GtvN-87HU-HjsA']
+
+export const PERSON = [
+	{name: 'Name', text:'Maganga SN'},
+	{name: 'Email', text:'magangasn@gmail.com'},
+	{name: 'password', text: '********'}
 ]

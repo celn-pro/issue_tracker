@@ -13,15 +13,15 @@ const NavBar = () => {
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
   return (
-    <nav className={`${selectedNav=='SignupHod'?'':''} hidden md:mx-[200px] sticky top-0 z-10 bg-white border-[1px] border-b-transparent max-w-full transition-all duration-300`} >
+    <div className={`${selectedNav=='SignupHod'?'':''} ml-[300px] mt-[50px] bg-white mr-[50px] text-black`} >
 
-      <div className={` ${!showNews?'hidden':'block'} max-w-full bored-[3px] py-[5px] flex justify-start gap-[10px]`}>
-			  <div className='border-[1px] cursor-pointer bg-[#04314C] text-white relative w-[20px] flex justify-center items-center rounded'
+      <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
+			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
           onClick={()=>setShowNews(!showNews)}
 			  > x</div><span><i>Take care of Red eyes infections!</i></span> 
       </div>
 
-		<div className='flex justify-between items-center bg-[#04314C] px-[20px] py-[5px] border-[1px]'>
+		<div className='flex justify-between items-center bg-black rounded px-[20px] py-[5px]'>
         <div className='cursor-pointer font-medium text-white'><i>od22</i></div>
 
          {/* Mobile menu button */}
@@ -123,7 +123,7 @@ const NavBar = () => {
           </ul>
          </div>
       </div>
-    </nav>
+    </div>
   )
 }
 

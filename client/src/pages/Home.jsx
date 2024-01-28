@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {NavBar, Main, Submit, Track, LoginHod,
-        LoginStaff, SignupHod, SignupStaff, WelcomeHod, WelcomeStaff, Faqs, Feedback
+        LoginStaff, SignupHod, SignupStaff, WelcomeHod, WelcomeStaff, Faqs, Feedback,SideBar
 } from '../components'
 import { useSelectedNav } from '../hooks/useSelectedNav';
 
@@ -16,6 +16,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
+	  <SideBar />
       {selectedNav == 'Home'&&<Main />}
       {selectedNav == 'Submit'&&<Submit />}
       {selectedNav == 'Track'&&<Track />}

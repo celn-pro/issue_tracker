@@ -11,11 +11,12 @@ const Main = () => {
     const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav()
 
   return (
-	  <div className='md:mx-[200px] border-[1px] border-b-transparent mb-[0px] border-t-transparent'>
-        <div className=' mt-[10px] relative px-[20px] flex justify-center items-center mb-[30px]'>
+	<div className='h-[100vh] ml-[300px]'>
+	  <div className='border-[1px] border-black mr-[50px] top-[130px] bottom-[50px] absolute rounded overflow-auto px-[20px]'>
+        <div className=' mt-[10px] relative flex justify-center items-center mb-[30px]'>
             <div className=''>
 				<div className='mb-[10px]'>
-					  <input type="search" name="" id="" placeholder='Track Here...' className='w-full h-[40px] font-medium px-[5px] py-[5px] rounded border-[1px] border-[#04314C] focus:outline-none' />
+					  <input type="search" name="" id="" placeholder='Track...' className='w-full h-[40px] mt-[10px] font-medium px-[5px] py-[5px] rounded border-[1px] border-black focus:outline-none' />
 				</div>
 				<div className='flex justify-center items-center'>
 					  <h1 className='mb-[10px] text-[28px] font-system font-bold px-[20px] text-center'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1>
@@ -25,10 +26,10 @@ const Main = () => {
 				</div>
             </div>
         </div>
-        <div className='flex justify-start items-center px-[20px] mb-[15px]'>
-			  <div className='relative border-[1px] rounded px-[20px] py-4'>
+        <div className='flex justify-start items-centermb-[15px] font-bold'>
+			  <div className='relative border-[1px] border-black rounded px-[20px] py-4'>
                 {showParagraph?(
-                    <p className='transition-all duration-300 font-verdan'
+                    <p className='transition-all duration-300'
                     >
                         Welcome to DIT report program, your one-stop solution for submitting and tracking the
                         progress of your issues. With our user-friendly interface you can effortlessly report
@@ -48,7 +49,7 @@ const Main = () => {
                       > read less</span>
                     </p>
                 ):( 
-                    <p className='cursor-pointer font-verdan'
+                    <p className='cursor-pointer'
                 >
                     Welcome to DIT report program, your one-stop solution for submitting and tracking the
 					progress of your issues. With our user-friendly interface you can effortlessly report
@@ -60,11 +61,11 @@ const Main = () => {
             </div>
         </div>
 
-        <div className='px-[20px] mb-[10px]'>
-            <div className='flex flex-col justify-center items-center gap-5 mt-[20px] px-[20px]'>
+        <div className='mb-[10px]'>
+            <div className='flex flex-col justify-center items-center gap-5 mt-[20px]'>
              {sectionInfo.map((s,i) => {
 				if(s.name == 'Track' || s.name=='Submit'){
-					return <button className={` ${s.name == 'Submit' ? 'bg-white text-[#04314C] border-2 border-[#04314C]' :'bg-[#04314C] text-white'} hover:scale-95 rounded w-full h-[50px] max-[1000px]:w-full w-[400px] font-medium px-[5px] py-[5px] `}
+					return <button className={` ${s.name == 'Submit' ? 'bg-white text-black border-black border-[1px]' :'bg-black text-white'} rounded w-full h-[50px] max-[1000px]:w-full w-[400px] font-medium px-[5px] py-[5px] `}
 						onClick={() => {
 						togglePrevSelectedNav(selectedNav)
 						toggleSelectedNav(s.name)
@@ -74,8 +75,15 @@ const Main = () => {
 			 })}
             </div>
         </div>
-		<Footer />
+		<div className='italic h-[80px] text-black font-bold mt-[30px] rounded'>
+			 <div>
+				<div>Concieved by: Msigwa G</div>
+			 	<div>Developed by: odd22</div>
+			 </div>
+		</div>
+		{/* <Footer /> */}
     </div>
+	  </div>
   )
 }
 
