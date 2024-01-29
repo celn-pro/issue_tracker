@@ -71,7 +71,7 @@ const Stats = () => {
 			  </div>
 
 		  </div>
-		  <div className='border-[2px] border-black w-[300px] mt-[20px] bg-black'>
+		  <div className='border-[1px] border-black w-[300px] mt-[20px] bg-black'>
 			  <table className='w-full text-center'>
 				  <tr className='cursor-pointer bg-white'>
 					  <td onClickCapture={handleWeekChange} className={`${selectedTd == '1W' ? 'text-white bg-black' : ''} px-[5px] py-[5px] border-[1px] border-r-black border-t-transparent border-l-black border-b-transparent`} onClick={() => setSelectedTd('1W')}>1W</td>

@@ -1,46 +1,51 @@
 import React from 'react'
+import { inputSignup } from '../constants'
 
 const SignupStaff = () => {
 	const department = ['COMPUTER', 'CIVIL', 'GS']
 	return (
-		<div className='md:mx-[200px] px-[20px]'>
-			<div className='flex justify-center items-center'>
-				<h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>SIGNUP (staff)</h2>
-			</div>
-			<div className='flex justify-center items-center'>
-				<div className='max-[600px]:w-full w-[500px]'>
-					<input type="text" name="" id="" placeholder='Your Name'
-						className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
+		 <div className='ml-[300px] h-[100vh]'>
+		<div className='absolute top-[130px] right-[50px] left-[300px] bottom-[50px] border-[1px] border-black rounded flex justify-center items-center'>
+		<div className='px-[20px] py-[20px] w-[400px] h-[350px] rounded border-[1px] shadow-xl text-[12px]'>
+      <div className='flex justify-center items-center'>
+        <h2 className='font-bold font-verydan mb-[10px]'>SIGNUP</h2>
+      </div>
+      <div className='flex justify-center items-center'>
+      <div className='max-[600px]:w-full w-[500px]'>
+        {inputSignup.map((s,i)=>{
+			return (i!=4)?<>
+				<input type="text" name="" id="" placeholder={s.placeholder}
+					className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
+				/> <br />
+			</>:null
+		})}
+    
+        <div className='flex justify-start items-center'>
+          <span className='w-[50%] relative'>Department:</span>
+          <select name="" id=""
+			className='outline-none relative w-[50%] rounded  bg-white border-2 border-black px-[5px] py-[5px]'
+
+          >
+              {department.map((department)=>(
+                <option value={department}>{department}</option>
+              ))}
+          </select>
+        </div> <br />
+			{inputSignup.map((s, i) => {
+				return (i == 4) ? <>
+					<input type="text" name="" id="" placeholder={s.placeholder}
+						className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 					/> <br />
-					<input type="text" name="" id="" placeholder='Password'
-						className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
-					/> <br />
-					<p className='px-[10px] italic text-red-500'>!password do not match</p>
-					<input type="text" name="" id="" placeholder='Verify password'
-						className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
-					/> <br />
-					<input type="text" name="" min="2017" id="" placeholder='Email'
-						className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
-					/> <br />
-					<div className='flex justify-start items-center'>
-						<span className='w-[50%] relative italic'>Department:</span>
-						<select name="" id=""
-							className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
-						>
-							{department.map((department) => (
-								<option value={department}>{department}</option>
-							))}
-						</select>
-					</div> <br />
-					<input type="text" name="" min="2017" id="" placeholder='Authentication key #'
-						className='w-full italic px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-[#04314C] border-2 border-[#04314C]  h-[50px] font-medium'
-					/> <br />
-					<div className='flex justify-end items-center'>
-						<button className=' text-white w-full font-medium rounded w-full h-[50px] font-medium px-[5px] py-[5px] bg-[#04314C]'>Sign up</button>
-					</div>
-				</div>
-			</div>
-		</div>
+				</> : null
+			})}
+        <div className='flex justify-end items-center'>
+			<button className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'>Sign up</button>
+        </div>
+      </div>
+      </div>
+	  </div>
+	  </div>
+    </div>
 	)
 }
 

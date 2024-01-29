@@ -1,7 +1,8 @@
 import {User, BarChart, Lock, Share, Layout, LogOut, Settings, Moon,
-	 Crown, Badge, Speech, Megaphone, ArrowUpWideNarrow, PinIcon, ShieldQuestion,BarChart2} from 'lucide-react'
+	 Crown, Badge, Speech, Megaphone, ArrowUpWideNarrow, PinIcon, ShieldQuestion,BarChart2, Home} from 'lucide-react'
 
 export const sectionInfo = [
+	{ name: 'Home', message: 'Home', icon: <Home className='w-[15px]' /> },
 	{ name: 'Analytics', message: 'Analytics', icon: <BarChart2 className='w-[15px]' /> },
 	{ name: 'WelcomeHod', message: 'Hod', icon: <Crown className='w-[15px]' /> },
 	{ name: 'WelcomeStaff', message: 'Staff', icon: <Badge className='w-[15px]' /> },
@@ -9,7 +10,6 @@ export const sectionInfo = [
 	{ name: 'Submit', message: 'Submit', icon: <ArrowUpWideNarrow className='w-[15px]' /> },
 	{ name: 'FAQs', message: 'Faqs', icon: <Speech className='w-[15px]' /> },
 	{ name: 'Feedback', message: 'feedback', icon: <Megaphone className='w-[15px]' /> },
-		
 	]
 
 
@@ -107,13 +107,32 @@ export const PERSON = [
 	{name: 'password', text: '********'}
 ]
 
-export const faq = [{
-	title: 'what is odd22?',
-	answer: 'odd22 is a simple yet powerfull system for submitting and tracking challenges that student meet at our campas'
-}, {
-	title: 'who is behind odd22?',
-	answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
-}]
+export const faq = [
+	{
+		title: 'what is odd22?',
+		answer: 'odd22 is a simple yet powerfull system for submitting and tracking challenges that student meet at our campas'
+	}, 
+	{
+		title: 'who is behind odd22?',
+		answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
+	},
+	{
+		title: 'who is behind odd22?',
+		answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
+	},
+	{
+		title: 'who is behind odd22?',
+		answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
+	},
+	{
+		title: 'who is behind odd22?',
+		answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
+	},
+	{
+		title: 'who is behind odd22?',
+		answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
+	},
+]
 
 export const inputText = [
 	{placeholder: 'Enter Your Name'},
@@ -122,3 +141,13 @@ export const inputText = [
 	{placeholder: 'Title of your problem' },
 	{placeholder: 'Problematic module if any(Optional)'},
 ]
+
+export const inputSignup = [
+	{ placeholder: 'Your Name' },
+	{ placeholder: 'Password' },
+	{ placeholder: 'Verify password' },
+	{ placeholder: 'Email' },
+	{ placeholder: 'Aunthentication key #' },
+]
+
+export const department = ['COMPUTER', 'CIVIL', 'GS']

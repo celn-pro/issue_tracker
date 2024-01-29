@@ -38,21 +38,21 @@ const Aunthenticate = () => {
 	
 
   return (
-	<div className='h-[100vh] ml-[300px]'>
+	<div className='h-[100vh] ml-[300px] text-black text-[13px] font-bold'>
 		<h2>You can always generate keys to let the staff members signup</h2>
-		<button className='border-[1px] rounded bg-[#04314C] text-white font-bold px-6 py-2' onClick={()=> setGeneratedKey(generateRandomKey(12))}>generate</button>
+		<button className='border-[1px] rounded bg-black text-white font-bold px-[10px] py-[5px]' onClick={()=> setGeneratedKey(generateRandomKey(12))}>Generate</button>
 		<div>
 			<ul>
 				<li>{generatedKey}</li>
 			</ul>
 		</div>
-		<div className='rounded border-[1px] absolute bottom-[50px] top-[150px] right-[50px] left-[350px] '> 
-			<div className='w-full h-full flex justify-center items-center relative overflow-auto'>
-				<div className=' rounded border-[1px] '>
+		<div className='rounded border-[1px] border-black absolute bottom-[50px] top-[150px] right-[50px] left-[350px] '> 
+			<div className='w-full h-full flex justify-center items-center'>
+				<div className=' rounded border-[1px] px-[20px] py-[20px] shadow-xl w-[400px] h-[250px] flex justify-center items-center overflow-auto '>
 					<table className=''>
 						{texts.map((t, i) => {
 							return <tr>
-								<td className='border-[1px] w-[50px]'>{i + 1}</td>
+								<td className='border-[1px] w-[50px] px-[10px]'>{i + 1}</td>
 								<td className='border-[1px] px-[10px] py-[10px]'>{t}
 									<span className='cursor-pointer h-[20px] pt-[5px] w-[20px] bg-gray-200 rounded-[15px] inline-block'
 									

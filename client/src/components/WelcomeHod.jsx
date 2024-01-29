@@ -27,7 +27,7 @@ const WelcomeHod = () => {
             <div className='md:flex justify-center items-center md:gap-5 mt-[20px] w-full '>
 				{SELECTED_PAGES.map((s)=>{
 					if(s.name == 'SignupHod'|| s.name == 'LoginHod'){
-						return <button className={` ${s.name == 'SignupHod' ? 'bg-white text-black border-2 border-black' : 'bg-black text-white'} rounded w-full h-[50px] font-medium px-[5px] py-[5px] mb-[10px] `}
+						return <button className={` ${s.name == 'SignupHod' ? 'bg-white text-black border-2 border-black' : 'bg-black text-white'} rounded w-full font-medium px-[5px] py-[5px] mb-[10px] `}
 							onClick={() => {
 								togglePrevSelectedNav(selectedNav)
 								toggleSelectedNav(s.name)

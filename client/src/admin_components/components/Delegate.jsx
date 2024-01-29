@@ -51,7 +51,7 @@ const Delegate = () => {
 	}
 	return (
 		<div className='h-[100vh] ml-[300px]'>
-			<div className='bg-red-100 text-[12px] px-[30px] py-[20px] rounded'>
+			<div className='bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
 				<span className='font-bold'>Filter by:</span>
 				<div className=''>
 					<form action="" onSubmit={handleSubmit}>
@@ -59,7 +59,7 @@ const Delegate = () => {
 							<tr className='font-bold'>
 								<td>
 									<span className='mr-[10px]'>Status:</span>
-									<select onChange={handleSelectChange4} className='rounded outline-none px-[5px] py-[5px]'>
+									<select onChange={handleSelectChange4} className='rounded outline-none px-[5px] py-[5px] text-black'>
 										<option value="all">All</option>
 										<option value="open">Open</option>
 										<option value="closed">Closed</option>
@@ -68,7 +68,7 @@ const Delegate = () => {
 								</td>
 								<td>
 									<span className='mr-[10px]'>Timeframe:</span>
-									<select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none ml-[20px] px-[5px] py-[5px] rounded'>
+									<select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
 										<option value="all">All</option>
 										<option value="1w">1W</option>
 										<option value="1m">1M</option>
@@ -78,7 +78,7 @@ const Delegate = () => {
 
 								<td>
 									<span className='mr-[10px]'>Catergory:</span>
-									<select value={selectedScope} onChange={handleSelectChange2} className='outline-none ml-[20px] px-[5px] py-[5px] rounded'>
+									<select value={selectedScope} onChange={handleSelectChange2} className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
 										<option value="all">All</option>
 										<option value="fees">Fees</option>
 										<option value="accademic">Accademic</option>
@@ -88,14 +88,14 @@ const Delegate = () => {
 
 								<td>
 									<span className='mr-[10px]'>Scope:</span>
-									<select value={selectedClass} onChange={handleSelectChange3} className='outline-none ml-[20px] px-[5px] py-[5px] rounded'>
+									<select value={selectedClass} onChange={handleSelectChange3} className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
 										<option value="all">All</option>
 										<option value="od">OD</option>
 										<option value="beng">BENG</option>
 									</select>
 								</td>
 								<td>
-									<button type='submit' className='ml-[20px] inline-block rounded bg-[#04314C] text-white font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
+									<button type='submit' className='ml-[20px] inline-block rounded bg-white text-black w-[100px] font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
 								</td>
 
 							</tr>
@@ -103,8 +103,10 @@ const Delegate = () => {
 					</form>
 				</div>
 			</div>
-			<div className='bottom-[50px] top-[140px] right-[50px] left-[350px] absolute border-[1px] rounded px-[10px] py-[10px] '>
-				<div className='h-full overflow-auto'>
+			<div className='bottom-[50px] top-[160px] right-[50px] left-[350px] absolute border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center '>
+				<div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
+				
+				<div>
 					{data?.map((s,i) => {
 						return <div key={i} className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
 							<div className='flex justify-between items-center'>
@@ -188,6 +190,7 @@ const Delegate = () => {
 						</div>
 					})}
 				</div>
+			</div>
 			</div>
 		</div>
 	)

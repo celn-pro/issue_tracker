@@ -8,16 +8,16 @@ const Track = () => {
 		<div className='mt-[20px]'>
         <div className=''>
           {/* <h1 className=' font-system font-bold text-[28px] text-center'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1> */}
-		  <div className=''>
-				<p className=' font-system font-bold'>TRACK:</p>
+		  <div className='mb-[10px]'>
+				<p className='font-bold text-[12px]'>TRACK:</p>
 		  </div>
         </div>
       </div>
       <div className='flex justify-center items-center'>
-          <div className='w-full text-black'>
+          <div className='w-full text-black text-[12px]'>
 				  <div className=''>
 					  <input type="text" name="" id="" placeholder='Enter your tracking key'
-						  className='w-full italic px-[10px] py-[px] mb-[10px] rounded focus:outline-none bg-white border-2 border-black  font-medium'
+						  className='w-full  px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white border-2 border-black  font-medium'
 					  />
 				  </div>
 				  <button className=' text-white w-[100px] font-semibold rounded  font-medium px-[5px] py-[5px] bg-black'>Track</button>
