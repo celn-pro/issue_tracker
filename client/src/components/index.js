@@ -11,8 +11,9 @@ import WelcomeStaff from "./WelcomeStaff"
 import Faqs from "./Faqs";
 import Feedback from "./Feedback";
 import SideBar from "./SideBar";
+import Analytics from "./Analytics";
 
 export {
     NavBar, Main, LoginHod, LoginStaff, SignupHod, SignupStaff, 
-    Submit, Track, WelcomeHod, WelcomeStaff, Faqs, Feedback, SideBar
+    Submit, Track, WelcomeHod, WelcomeStaff, Faqs, Feedback, SideBar, Analytics
 }

@@ -1,39 +1,34 @@
 import React, { useState } from 'react'
 
+import { faq} from '../constants'
+
 const Faqs = () => {
   const [searching, setSearching] = useState(false)
-
-  var faqs = [{
-    title: 'what is odd22?',
-    answer: 'odd22 is a simple yet powerfull system for submitting and tracking challenges that student meet at our campas'
-  },{
-    title: 'who is behind odd22?',
-    answer: 'odd22 is owned by the campass iteself, though it was developed by odd22 enrolled students'
-  }
-]
+  const faqs = [...faq]
 
   return (
-    <div>
+	  <div className='ml-[300px] h-[100vh]'>
+	  <div className='border-[1px] border-black top-[130px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+	  <div className=' h-[90%] w-[600px] rounded border-[1px] shadow-xl px-[20px]'>
       <div className='flex justify-center items-center mt-[20px] mb-[20px]'>
         <h2 className='font-system font-bold'>Frequent asked questions| Q&A</h2>
       </div>
-      <div className='flex justify-start items-center ml-[40px] mb-[30px]'>
-        <div className='md:ml-[13%] w-[79%] md:w-[58%]'>
+      <div className='flex justify-center items-center mb-[30px] px-[20px]'>
+        <div className='w-full'>
         <input type="search" name="" id="" placeholder='Search or ask here!'
-          className='outline-none w-[90%] bg-gray-100 h-[30px] py-[10px] px-[10px] rounded border-[1px]'
+          className='outline-none w-full bg-gray-100 h-[30px] py-[10px] px-[10px] rounded border-[1px]'
           onChange={()=>{
             setSearching(!searching)
           }}
         />
-
-        </div>       
+        </div> 
+		<div className= {`${searching?'block':'hidden'} flex justify-start items-center ml-[40px]`}>
+			<div className={` bg-gray-400`}>
+				<p>Seaching...</p>
+			</div>
+      </div>      
       </div>
-      <div className= {`${searching?'block':'hidden'} flex justify-start items-center ml-[40px]`}>
-        <div className={` md:ml-[13%] w-[70%] md:w-[52%] bg-gray-400`}>
-            <p>Seaching...</p>
-        </div>
-      </div>
-      <div className='flex justify-center items-center ml-[40px]'>
+      <div className=' px-[20px] py-[20px] h-[380px] rounded overflow-auto'>
         <div>
         {
           faqs.map((faq)=>(
@@ -41,7 +36,9 @@ const Faqs = () => {
           ))
         }
         </div>
-      </div>    
+      </div>
+	  </div> 
+	  </div>   
     </div>
   )
 }
@@ -51,7 +48,7 @@ const FaqCard = ({faq})=>{
 
   return (
     
-       <div className=' transition-all duration-300 '>
+       <div>
         
           <div className='mb-[20px]'>
             <h3 className='font-system font-bold font-medium'>
@@ -60,7 +57,7 @@ const FaqCard = ({faq})=>{
                       onClick={()=> setShowFaq(!showFaq)}
                       > Read</span>
             </h3>
-            <p className={`${showFaq?'block':'hidden'} font-verdan w-[70%] rounded border-[1px] py-[10px] px-[10px]`}>
+            <p className={`${showFaq?'block':'hidden'} font-verdan rounded border-[1px] py-[10px] px-[10px]`}>
               {faq.answer} 
               <span className={`${showFaq?'inline-block':'hidden'} hover:text-gray-400 cursor-pointer text-gray-300 pl-[20px]`}
                       onClick={()=> setShowFaq(!showFaq)}

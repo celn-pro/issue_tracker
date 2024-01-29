@@ -5,7 +5,7 @@ const LoginStaff = () => {
 	return (
 		<div className='px-[20px]'>
 			<div className='flex justify-center mt-[20px] items-center'>
-				<h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>LOGIN (HOD)</h2>
+				<h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>LOGIN (staff)</h2>
 			</div>
 			<div className='flex justify-center items-center'>
 				<div className='max-[600px]:w-full w-[500px]'>

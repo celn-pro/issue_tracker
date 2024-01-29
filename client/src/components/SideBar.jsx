@@ -16,7 +16,9 @@ const SideBar = () => {
 			<div className='border-[1px] border-black px-[20px] py-[20px] rounded h-full text-black'>
 				<div>
 					{sectionInfo.map((s) => {
-						return <div className={`flex justify-start items-center gap-5 mb-[10px] cursor-pointer rounded `} onClick={() => {
+						return <div className={`${selectedNav === s.name ? 'bg-yellow-300 ' : ''} ${((selectedNav == 'LoginStaff'||selectedNav=='SignupStaff') && s.name == 'WelcomeStaff') ?'bg-yellow-300':''}
+						${((selectedNav == 'LoginHod' || selectedNav == 'SignupHod') && s.name == 'WelcomeHod') ? 'bg-yellow-300' : ''}
+						flex justify-start items-center gap-5 mb-[10px] cursor-pointer rounded px-[10px]`} onClick={() => {
 								togglePrevSelectedNav(selectedNav)
 								toggleSelectedNav(s.name)
 							}}>{s.icon} <div className='inline-block'>{s.message}</div></div> 

@@ -27,9 +27,9 @@ const Main = () => {
             </div>
         </div>
         <div className='flex justify-start items-centermb-[15px] font-bold'>
-			  <div className='relative border-[1px] border-black rounded px-[20px] py-4'>
+			  <div className='relative border-[1px] border-black rounded px-[20px] py-4 text-[12px]'>
                 {showParagraph?(
-                    <p className='transition-all duration-300'
+                    <p className=''
                     >
                         Welcome to DIT report program, your one-stop solution for submitting and tracking the
                         progress of your issues. With our user-friendly interface you can effortlessly report

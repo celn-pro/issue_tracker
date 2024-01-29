@@ -3,7 +3,7 @@ import React from 'react'
 const SignupHod = () => {
   const department = ['COMPUTER', 'CIVIL', 'GS']
   return (
-    <div className='md:mx-[200px] px-[20px]'>
+	  <div className='ml-[300px] mt-[50px] mr-[50px] px-[20px]'>
       <div className='flex justify-center items-center'>
         <h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>SIGNUP (HOD)</h2>
       </div>

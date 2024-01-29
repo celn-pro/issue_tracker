@@ -5,7 +5,7 @@ const SignupStaff = () => {
 	return (
 		<div className='md:mx-[200px] px-[20px]'>
 			<div className='flex justify-center items-center'>
-				<h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>SIGNUP (HOD)</h2>
+				<h2 className='font-bold font-verydan mb-[10px] mt-[50px]'>SIGNUP (staff)</h2>
 			</div>
 			<div className='flex justify-center items-center'>
 				<div className='max-[600px]:w-full w-[500px]'>

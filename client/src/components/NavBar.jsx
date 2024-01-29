@@ -4,7 +4,6 @@ import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
 import { sectionInfo, ICONS_INFO, SELECTED_PAGES } from '../constants';
 
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [changeMenu, setChangeMenu] = useState(false);
@@ -13,7 +12,7 @@ const NavBar = () => {
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
   return (
-    <div className={`${selectedNav=='SignupHod'?'':''} ml-[300px] mt-[50px] bg-white mr-[50px] text-black`} >
+    <div className={`${selectedNav=='LoginHod'?'hidden':''} ml-[300px] mt-[50px] mr-[50px] text-black`} >
 
       <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
 			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
