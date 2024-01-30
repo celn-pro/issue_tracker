@@ -50,12 +50,12 @@ const Delegate = () => {
 		setData(filteredData)
 	}
 	return (
-		<div className='h-[100vh] ml-[300px]'>
-			<div className='bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
+		<div className=''>
+			<div className='bg-black text-white text-[12px] ml-[300px] px-[30px] py-[20px] h-[90px] rounded'>
 				<span className='font-bold'>Filter by:</span>
-				<div className=''>
+				<div className='w-full'>
 					<form action="" onSubmit={handleSubmit}>
-						<table className='w-[800px]'>
+						<table className='w-[900px]'>
 							<tr className='font-bold'>
 								<td>
 									<span className='mr-[10px]'>Status:</span>
@@ -68,7 +68,7 @@ const Delegate = () => {
 								</td>
 								<td>
 									<span className='mr-[10px]'>Timeframe:</span>
-									<select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
+									<select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none px-[5px] py-[5px] rounded text-black'>
 										<option value="all">All</option>
 										<option value="1w">1W</option>
 										<option value="1m">1M</option>
@@ -78,7 +78,7 @@ const Delegate = () => {
 
 								<td>
 									<span className='mr-[10px]'>Catergory:</span>
-									<select value={selectedScope} onChange={handleSelectChange2} className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
+									<select value={selectedScope} onChange={handleSelectChange2} className='outline-none px-[5px] py-[5px] rounded text-black'>
 										<option value="all">All</option>
 										<option value="fees">Fees</option>
 										<option value="accademic">Accademic</option>
@@ -88,19 +88,20 @@ const Delegate = () => {
 
 								<td>
 									<span className='mr-[10px]'>Scope:</span>
-									<select value={selectedClass} onChange={handleSelectChange3} className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
+									<select value={selectedClass} onChange={handleSelectChange3} className='outline-none px-[5px] py-[5px] rounded text-black'>
 										<option value="all">All</option>
 										<option value="od">OD</option>
 										<option value="beng">BENG</option>
 									</select>
 								</td>
 								<td>
-									<button type='submit' className='ml-[20px] inline-block rounded bg-white text-black w-[100px] font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
+									<button type='submit' className='ml-[20px] w-[100px] inline-block rounded bg-white text-black font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
 								</td>
 
 							</tr>
 						</table>
 					</form>
+					
 				</div>
 			</div>
 			<div className='bottom-[50px] top-[160px] right-[50px] left-[350px] absolute border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center '>
@@ -131,10 +132,11 @@ const Delegate = () => {
 							</div>
 
 							{/*  */}
-							<div className={`${selectedId == i&& openDetails?'block':'hidden'} absolute h-full w-full text-[14px] top-0 left-0 px-[20px] py-[20px] bg-white`}>
-								<div className='w-full h-full'>
-									<div className='flex justify-end items-center'>
-										<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-[#04314C]'
+							<div className={`${selectedId == i&& openDetails?'block':'hidden'} absolute h-full w-full text-[14px] top-0 left-0 px-[20px] py-[20px] bg-white flex justify-center items-center`}>
+								<div className='px-[20px] py-[20px] border-[1px] shadow-xl'>
+								<div className='w-[600px] h-[450px]'>
+									<div className='flex justify-end items-center pr-[30px]'>
+										<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-black'
 											onClick={()=>{
 												setSelectedId(null)
 												setOpenDetails(!openDetails)
@@ -170,6 +172,7 @@ const Delegate = () => {
 											{s.desc}
 										</div>
 									</div>
+								</div>
 								</div>
 							</div>
 

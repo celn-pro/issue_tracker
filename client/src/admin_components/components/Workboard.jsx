@@ -53,12 +53,12 @@ const Workboard = () => {
 	}
 	
   return (
-	<div className='h-[100vh] ml-[300px]'>
-		<div className='bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
+	<div className=''>
+		<div className=' ml-[300px] bg-black text-white text-[12px] px-[30px] py-[20px] rounded h-[90px]'>
 			<span className='font-bold'>Filter by:</span>
-			<div className=''>
+			<div className='w-full'>
 			<form action="" onSubmit={handleSubmit}>
-				<table className='w-full'>
+				<table className='w-[900px]'>
 						<tr className='font-bold'>
 						<td>
 							<span className='mr-[10px]'>Status:</span>
@@ -71,7 +71,7 @@ const Workboard = () => {
 						</td>
 						<td>
 							<span className='mr-[10px]'>Timeframe:</span>
-								<select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
+								<select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none px-[5px] py-[5px] rounded text-black'>
 								<option value="all">All</option>
 								<option value="1w">1W</option>
 								<option value="1m">1M</option>
@@ -81,7 +81,7 @@ const Workboard = () => {
 
 						<td>
 							<span className='mr-[10px]'>Catergory:</span>
-								<select value={selectedScope} onChange={handleSelectChange2} className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
+								<select value={selectedScope} onChange={handleSelectChange2} className='outline-none px-[5px] py-[5px] rounded text-black'>
 								<option value="all">All</option>
 								<option value="fees">Fees</option>
 								<option value="accademic">Accademic</option>
@@ -91,30 +91,29 @@ const Workboard = () => {
 
 						<td>
 							<span className='mr-[10px]'>Scope:</span>
-								<select value={selectedClass} onChange={handleSelectChange3} className='outline-none ml-[20px] px-[5px] py-[5px] rounded text-black'>
+								<select value={selectedClass} onChange={handleSelectChange3} className='outline-none px-[5px] py-[5px] rounded text-black'>
 								<option value="all">All</option>
 								<option value="od">OD</option>
 								<option value="beng">BENG</option>
 							</select>
 						</td>
 						<td>
-							<button type='submit' className='ml-[20px] inline-block rounded bg-white text-black font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
+							<button type='submit' className='ml-[20px] w-[100px] inline-block rounded bg-white text-black font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
 						</td>
-						<td>
-							<div className='px=[5px] py-[5px] rounded-[15px] bg-white text-black text-center'>compare in charts 
-								<div className='ml-[15px] rounded-[15px] h-[20px] px-[5px] inline-block cursor-pointer bg-gray-100' onClick={()=>setShowChart(!showChart)}>
-									<LineChart className='inline-block h-[15px]' />
-								</div>
-							</div>
-						</td>
-
 					</tr>
 				</table>
-			</form>	
+			</form>
+			<div className='absolute right-[70px] top-[90px] font-bold px-[10px] py-[5px] inline-block rounded-[15px] bg-white text-black text-center'>compare in charts
+				<div className='ml-[15px] rounded-[15px] h-[20px] px-[5px] inline-block cursor-pointer bg-gray-100' onClick={() => setShowChart(!showChart)}>
+					<LineChart className='inline-block h-[15px]' />
+				</div>
+			</div>
 		</div>
 		</div>
-		<div className='bottom-[50px] top-[160px] right-[50px] left-[350px] absolute border-[1px] border-black rounded justify-start items-start gap-3 px-[10px] py-[10px] flex justify-center items-center '>
+		<div className='h-[100vh] ml-[300px]'>
+		<div className='absolute left-[350px] top-[160px] right-[50px] bottom-[50px] border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
 			<div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
+
 			<div className={`${showChart?'hidden':'block'}`}>
 				{data?.map((s,i)=>{
 					return <div className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
@@ -139,8 +138,8 @@ const Workboard = () => {
 						</div>
 						{/*  */}
 						
-						<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute h-full w-full text-[14px] top-0 left-0 px-[20px] py-[20px] bg-white`}>
-							<div className='w-full h-full'>
+						<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[160px] right-[50px] left-[350px] bottom-[50px] px-[20px] py-[20px] bg-white`}>
+							{/* <div className='w-full h-full'> */}
 								<div className='flex justify-end items-center'>
 									<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-[#04314C]'
 										onClick={() => {
@@ -178,7 +177,7 @@ const Workboard = () => {
 										{s.desc}
 									</div>
 								</div>
-							</div>
+							{/* </div> */}
 						</div>
 						{/*  */}
 					</div>
@@ -186,10 +185,11 @@ const Workboard = () => {
 			</div>
 			<div className={`${showChart?'block':'hidden'} h-full px-[20px] py-[20px]`}>
 				<div className='flex justify-end items-center px-[20px]'>
-					<div className='w-[20px] bg-[#04314C] text-white flex justify-center items-center rounded cursor-pointer' onClick={()=> setShowChart(!showChart)}>X</div>
+					<div className='w-[20px] bg-black text-white flex justify-center items-center rounded cursor-pointer' onClick={()=> setShowChart(!showChart)}>X</div>
 				</div>
 				<LineChartCustom />
 			</div>
+		</div>
 		</div>
 		</div>
 	</div>

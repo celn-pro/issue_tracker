@@ -54,7 +54,7 @@ const Settings = () => {
 				</div>
 			</div>
 			<div className={`${index !=null?'block':'hidden'} flex justify-center`}>
-				<div className=' text-green-600 bg-black w-[300px] h-[70px] text-center pt-[10px] rounded'>
+				<div className=' text-white bg-black w-[300px] h-[70px] text-center text-[12px] pt-[10px] rounded'>
 					  <div>Saved changes successfully! </div>
 					  <div className='flex justify-center'> <Check /></div>
 				</div>

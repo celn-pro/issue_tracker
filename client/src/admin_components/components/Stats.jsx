@@ -59,7 +59,6 @@ const Stats = () => {
 		  <h1 className='font-bold'>Quick Stats:</h1>
 
 		  <div className="metrics">
-			  <DoughnutChart />
 			  <div>
 				  <span className='font-sans'>Percentage change over</span>
 				  <select name="" id="" className='outline-none'>
@@ -90,6 +89,8 @@ const Stats = () => {
 			  {/* Display List of Closed Issues */}
 			  <h2 className='font-bold'>On-progress: <span className='text-green-600'>{open}</span></h2>
 		  </div>
+		  <DoughnutChart />
+
 	  </div>
   )
 }
