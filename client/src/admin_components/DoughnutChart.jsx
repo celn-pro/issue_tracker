@@ -1,8 +1,8 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut, Bar, Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
+import {Doughnut} from 'react-chartjs-2'
+import {faker} from '@faker-js/faker'
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
 

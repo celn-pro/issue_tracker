@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
-import { faq} from '../constants'
+import {faq} from '../constants'
 
 const Faqs = () => {
   const [searching, setSearching] = useState(false)
@@ -15,7 +15,7 @@ const Faqs = () => {
       </div>
       <div className='flex justify-center items-center mb-[30px] px-[20px]'>
         <div className='w-full'>
-        <input type="search" name="" id="" placeholder='Search or ask here!'
+        <input type="search" placeholder='Search or ask here!'
           className='outline-none w-full bg-gray-100 h-[30px] py-[10px] px-[10px] rounded border-[1px]'
           onChange={()=>{
             setSearching(!searching)

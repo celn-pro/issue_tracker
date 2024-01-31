@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from 'react'
 import LineChartCustom from '../LineChart'
-import { User, BarChart, LineChart } from 'lucide-react'
+import {LineChart} from 'lucide-react'
 
-import { DATA } from '../../constants'
+import {DATA} from '../../constants'
 
 const Workboard = () => {
 	const [selectedId, setSelectedId] = useState(null)
@@ -53,11 +53,11 @@ const Workboard = () => {
 	}
 	
   return (
-	<div className=''>
+	<div>
 		<div className=' ml-[300px] bg-black text-white text-[12px] px-[30px] py-[20px] rounded h-[90px]'>
 			<span className='font-bold'>Filter by:</span>
 			<div className='w-full'>
-			<form action="" onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<table className='w-[900px]'>
 						<tr className='font-bold'>
 						<td>
@@ -139,7 +139,6 @@ const Workboard = () => {
 						{/*  */}
 						
 						<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[160px] right-[50px] left-[350px] bottom-[50px] px-[20px] py-[20px] bg-white`}>
-							{/* <div className='w-full h-full'> */}
 								<div className='flex justify-end items-center'>
 									<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-[#04314C]'
 										onClick={() => {
@@ -177,7 +176,6 @@ const Workboard = () => {
 										{s.desc}
 									</div>
 								</div>
-							{/* </div> */}
 						</div>
 						{/*  */}
 					</div>

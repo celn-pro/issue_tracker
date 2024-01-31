@@ -2,10 +2,10 @@ import React from 'react'
 import {Stats, Profile, Aunthenticate, Delegate, Logout, Settings, Dark, Workboard} from './components/index'
 
 
-import { useSelectedAdminSideBar } from '../hooks/useSelectedAdminSideBar'
+import {useSelectedAdminSideBar} from '../hooks/useSelectedAdminSideBar'
 
 const Home = () => {
-	const [selectedAdminSideBar, toggleSelectedAdminSideBar] = useSelectedAdminSideBar()
+	const selectedAdminSideBar = useSelectedAdminSideBar()[0]
   return (
 	<>
 		{selectedAdminSideBar == 'Stats'&& <Stats />}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import LineChart from '../LineChart'
 
 import { DATA } from '../../constants'
 
@@ -50,11 +49,11 @@ const Delegate = () => {
 		setData(filteredData)
 	}
 	return (
-		<div className=''>
+		<div>
 			<div className='bg-black text-white text-[12px] ml-[300px] px-[30px] py-[20px] h-[90px] rounded'>
 				<span className='font-bold'>Filter by:</span>
 				<div className='w-full'>
-					<form action="" onSubmit={handleSubmit}>
+					<form onSubmit={handleSubmit}>
 						<table className='w-[900px]'>
 							<tr className='font-bold'>
 								<td>
@@ -167,7 +166,7 @@ const Delegate = () => {
 										<h2>TITLE: {s.title}</h2>
 									</div>
 									<div className='mt-[20px] px-[30px]'>
-										<div className=' '>Description</div>
+										<div>Description</div>
 										<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px] overflow-auto'>
 											{s.desc}
 										</div>
@@ -180,7 +179,7 @@ const Delegate = () => {
 							<div className={`${selectedId == i&&openDelegate? 'block':'hidden'} absolute z-10 rounded border-[1px] right-[100px] px-[20px] py-[20px] bg-white h-[200px]`}>
 								<div className='h-full border-[1px] rounded px-[10px] py-[10px] font-bold'>
 									<span>Delegate this task to:</span>
-									<select name="" id="" className='outline-none'>
+									<select className='outline-none'>
 										<option value="">Gift Msigwa</option>
 										<option value="">Idrissa Muhammad</option>
 										<option value="">Ramadhan Salehe</option>

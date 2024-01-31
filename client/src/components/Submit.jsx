@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { File, Image } from 'lucide-react'
+import React, {useState} from 'react'
+import {Image} from 'lucide-react'
 
-import { inputText } from '../constants'
+import {inputText, department, course} from '../constants'
 
 const Submit = () => {
   const [selectedFileName, setSelectedFileName] = useState('')	
 
-  const courses = ['COE', 'IT', 'ETE']
-  const department = ['COMPUTER', 'CIVIL', 'GS']
+  const courses = [...course]
+  const departments = [...department]
 
   const handleFileChange =(e)=>{
 	const fileInput = e.target
@@ -30,7 +30,6 @@ const Submit = () => {
 		<div className='px-[20px] rounded border-[1px] shadow-xl w-[700px] h-[400px]'>
 		<div className='flex justify-center items-center '>
 			<div className='mt-[20px]'>
-				{/* <h2 className='font-bold font-system mb-[10px] text-[28px] text-center'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h2> */}
 				<div className='flex justify-center items-center'>
 					  <p className='relative font-bold font-system'>SUBMIT</p>
 				</div>
@@ -41,14 +40,14 @@ const Submit = () => {
           <div className=' text-black'>
            {inputText.map((s,i)=>{
 			return (i == 0||i==1||i==2)?(<>
-				<input type="text" name="" id="" placeholder={s.placeholder}
+				<input type="text" placeholder={s.placeholder}
 					className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 				/> <br />
 			</>):null
 		   })} 
             <div className='flex justify-start items-center'>
               <span className='relative w-[50%] '>Course:</span>
-              <select name="" id=""
+              <select
 					className='outline-none relative w-[50%] rounded bg-white border-2 border-[#04314C] px-[10px]  py-[5px]'
               >
                   {courses.map((course)=>(
@@ -59,7 +58,7 @@ const Submit = () => {
              <br />
             <div className='flex justify-start items-center'>
               <span className='w-[50%] relative '>Department:</span>
-              <select name="" id=""
+              <select
 					className='outline-none relative w-[50%] rounded  bg-white border-2 border-black px-[5px] py-[5px]'
               >
                   {department.map((department)=>(
@@ -70,7 +69,7 @@ const Submit = () => {
 			<span className=''>Title:</span>
 			 {inputText.map((s,i)=>{
 			return (i == 3||i==4)?(<>
-				<input type="text" name="" id="" placeholder={s.placeholder}
+				<input type="text" placeholder={s.placeholder}
 					className='w-full  px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 				/> <br />
 			</>):null
@@ -81,7 +80,7 @@ const Submit = () => {
         </div>
 		{/* text area */}
 		<div className=' mb-[20px] text-[12px] w-[300px]'>
-			<textarea name="" id="" cols="30" rows="9" placeholder='Describe your problem here'
+			<textarea cols="30" rows="9" placeholder='Describe your problem here'
 				className='w-full  px-[10px] py-[10px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black font-medium'
 			></textarea> <br />
 			<span className=''>Attach file if any(Optional):</span><br />
@@ -93,7 +92,7 @@ const Submit = () => {
 				</div>
 				<span>{selectedFileName?selectedFileName:'no file'}</span>
 			</div>
-			<input type="file" name="" id="file"
+			<input type="file" id="file"
 				onChange={handleFileChange}
 				className='w-full  hidden px-[10px] mb-[10px] rounded focus:outline-none bg-white text-text font-bold'
 			/>

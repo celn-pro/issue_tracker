@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import {File, Check} from 'lucide-react'
 
-import { textList } from '../../constants'
+import {textList} from '../../constants'
 
 const Aunthenticate = () => {
 	const [generatedKey, setGeneratedKey] = useState(null)
@@ -27,7 +27,6 @@ const Aunthenticate = () => {
 		let key1 = key.substring(0,4) + '-'
 		let key2 = key.substring(4,8) + '-' + key.slice(8,12)
 		key = 'dit-' + key1 + key2
-		// textList.push(key)
 
 		return key
 	}
@@ -49,7 +48,7 @@ const Aunthenticate = () => {
 		<div className='rounded border-[1px] border-black absolute bottom-[50px] top-[150px] right-[50px] left-[350px] '> 
 			<div className='w-full h-full flex justify-center items-center'>
 				<div className=' rounded border-[1px] px-[20px] py-[20px] shadow-xl w-[400px] h-[250px] flex justify-center items-center overflow-auto '>
-					<table className=''>
+					<table>
 						{texts.map((t, i) => {
 							return <tr>
 								<td className='border-[1px] w-[50px] px-[10px]'>{i + 1}</td>

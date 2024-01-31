@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Check } from 'lucide-react'
+import React, {useEffect, useState} from 'react'
+import {Check} from 'lucide-react'
 
-import { PERSON } from '../../constants'
+import {PERSON} from '../../constants'
 
 const Settings = () => {
 	const [showSaved, setShowSaved] = useState(false)

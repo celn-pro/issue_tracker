@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import { useSelectedNav } from '../hooks/useSelectedNav'
-import { usePrevSelectedNav } from '../hooks/usePrevSelectedNav'
-import Footer from './Footer'
+import React, {useState} from 'react'
+import {useSelectedNav} from '../hooks/useSelectedNav'
+import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
-import { sectionInfo } from '../constants'
+import {sectionInfo} from '../constants'
 
 const Main = () => {
     const [showParagraph, setShowParagraph] =useState(false)
     const [selectedNav, toggleSelectedNav] = useSelectedNav();
-    const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav()
+    const togglePrevSelectedNav = usePrevSelectedNav()[1]
 
   return (
 	<div className='h-[100vh] ml-[300px]'>
@@ -17,7 +16,7 @@ const Main = () => {
         <div className=' mt-[10px] relative flex justify-center items-center mb-[30px]'>
             <div className=''>
 				<div className='mb-[10px]'>
-					  <input type="search" name="" id="" placeholder='Track...' className='w-full h-[40px] mt-[10px] font-medium px-[5px] py-[5px] rounded border-[1px] border-black focus:outline-none' />
+					  <input type="search" placeholder='Track...' className='w-full h-[40px] mt-[10px] font-medium px-[5px] py-[5px] rounded border-[1px] border-black focus:outline-none' />
 				</div>
 				<div className='flex justify-center items-center'>
 					  <h1 className='mb-[10px] text-[20px] font-system font-bold px-[20px] text-center'>DAR ES SALAAM INSTITUTE OF TECHNOLOGY</h1>
@@ -76,13 +75,6 @@ const Main = () => {
 			 })}
             </div>
         </div>
-		{/* <div className='italic h-[80px] text-black font-bold mt-[30px] rounded'>
-			 <div>
-				<div>Concieved by: Msigwa G</div>
-			 	<div>Developed by: odd22</div>
-			 </div>
-		</div> */}
-		{/* <Footer /> */}
     </div>
 	</div>
 	  </div>

@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {createContext, useState} from 'react';
 
 export const SelectedAdminSideBarContext = createContext();
 
-export const SelectedAdminSideBarProvider = ({ children }) => {
+export const SelectedAdminSideBarProvider = ({children}) => {
 	const [selectedAdminSideBar, setSelectedAdminSideBar] = useState('Stats');
 
 

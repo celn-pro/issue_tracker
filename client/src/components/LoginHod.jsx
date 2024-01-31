@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { inputSignup} from '../constants'
+import React, {useState} from 'react'
+import {inputSignup} from '../constants'
 
 import AdminDashboard from '../admin_components/HodAccount'
 
@@ -17,7 +17,7 @@ export const LoginHod = () => {
 					  <div className='max-[600px]:w-full w-[500px]'>
 						  {inputSignup.map((s, i) => {
 							  return (s.placeholder == 'Password' || s.placeholder == 'Email') ? <>
-								  <input type="text" name="" id="" placeholder={s.placeholder}
+								  <input type="text" placeholder={s.placeholder}
 									  className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 								  /> <br />
 							  </> : null

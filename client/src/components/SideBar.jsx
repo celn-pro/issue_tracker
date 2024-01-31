@@ -1,15 +1,12 @@
 import React from 'react'
-import { useSelectedNav } from '../hooks/useSelectedNav'
-import { usePrevSelectedNav } from '../hooks/usePrevSelectedNav'
+import {useSelectedNav} from '../hooks/useSelectedNav'
+import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
-import { User, BarChart, Lock, Share, Layout, LogOut, Settings, Moon } from 'lucide-react'
-import { useSelectedAdminSideBar } from '../hooks/useSelectedAdminSideBar'
-
-import { ADMIN_SIDEBAR, sectionInfo } from '../constants'
+import {sectionInfo} from '../constants'
 
 const SideBar = () => {
 	const [selectedNav, toggleSelectedNav] = useSelectedNav();
-	const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav()
+	const togglePrevSelectedNav = usePrevSelectedNav()[1]
 
 	return (
 		<div className='bg-white w-[300px] h-[100vh] absolute top-0 left-0 px-[50px] py-[50px] font-sans font-bold text-[12px]'>
@@ -24,9 +21,6 @@ const SideBar = () => {
 							}}>{s.icon} <div className='inline-block'>{s.message}</div></div> 
 					})}
 				</div>
-				{/* <div className='bottom-[70px] absolute w-[160px]'>
-				
-				</div> */}
 			</div>
 		</div>
 	)

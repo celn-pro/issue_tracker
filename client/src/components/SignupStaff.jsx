@@ -1,8 +1,8 @@
 import React from 'react'
-import { inputSignup } from '../constants'
+import {inputSignup, department} from '../constants'
 
 const SignupStaff = () => {
-	const department = ['COMPUTER', 'CIVIL', 'GS']
+	const departments = [...department]
 	return (
 		 <div className='ml-[300px] h-[100vh]'>
 		<div className='absolute top-[130px] right-[50px] left-[300px] bottom-[50px] border-[1px] border-black rounded flex justify-center items-center'>
@@ -14,7 +14,7 @@ const SignupStaff = () => {
       <div className='max-[600px]:w-full w-[500px]'>
         {inputSignup.map((s,i)=>{
 			return (i!=4)?<>
-				<input type="text" name="" id="" placeholder={s.placeholder}
+				<input type="text" placeholder={s.placeholder}
 					className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 				/> <br />
 			</>:null
@@ -22,18 +22,18 @@ const SignupStaff = () => {
     
         <div className='flex justify-start items-center'>
           <span className='w-[50%] relative'>Department:</span>
-          <select name="" id=""
+          <select
 			className='outline-none relative w-[50%] rounded  bg-white border-2 border-black px-[5px] py-[5px]'
 
           >
-              {department.map((department)=>(
-                <option value={department}>{department}</option>
+              {departments.map((d)=>(
+                <option value={d}>{d}</option>
               ))}
           </select>
         </div> <br />
 			{inputSignup.map((s, i) => {
 				return (i == 4) ? <>
-					<input type="text" name="" id="" placeholder={s.placeholder}
+					<input type="text" placeholder={s.placeholder}
 						className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 					/> <br />
 				</> : null

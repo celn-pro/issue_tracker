@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import SideBar from './SideBar';
 import Home from './Home'
 
-import { SelectedAdminSideBarProvider } from '../contexts/SelectedAdminSideBar';
+import {SelectedAdminSideBarProvider} from '../contexts/SelectedAdminSideBar';
 
 function AdminDashboard() {
 

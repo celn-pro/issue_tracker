@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {createContext, useState} from 'react';
 
 export const SelectedNavContext = createContext();
 
-export const SelectedNavProvider = ({ children }) => {
+export const SelectedNavProvider = ({children}) => {
   const [selectedNav, setSelectedNav] = useState('');
   
 

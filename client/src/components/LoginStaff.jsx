@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { inputSignup } from '../constants'
+import {inputSignup} from '../constants'
 
 const LoginStaff = () => {
-	const department = ['COMPUTER', 'CIVIL', 'GS']
 	return (
 		<div className='ml-[300px] h-[100vh]'>
 			<div className='absolute top-[130px] right-[50px] left-[300px] bottom-[50px] border-[1px] border-black rounded flex justify-center items-center'>
@@ -15,7 +14,7 @@ const LoginStaff = () => {
 						<div className='max-[600px]:w-full w-[500px]'>
 							{inputSignup.map((s, i) => {
 								return (s.placeholder=='Password'||s.placeholder=='Email') ? <>
-									<input type="text" name="" id="" placeholder={s.placeholder}
+									<input type="text" placeholder={s.placeholder}
 										className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 									/> <br />
 								</> : null

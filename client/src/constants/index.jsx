@@ -2,21 +2,21 @@ import {User, BarChart, Lock, Share, Layout, LogOut, Settings, Moon,
 	 Crown, Badge, Speech, Megaphone, ArrowUpWideNarrow, PinIcon, ShieldQuestion,BarChart2, Home} from 'lucide-react'
 
 export const sectionInfo = [
-	{ name: 'Home', message: 'Home', icon: <Home className='w-[15px]' /> },
-	{ name: 'Analytics', message: 'Analytics', icon: <BarChart2 className='w-[15px]' /> },
-	{ name: 'WelcomeHod', message: 'Hod', icon: <Crown className='w-[15px]' /> },
-	{ name: 'WelcomeStaff', message: 'Staff', icon: <Badge className='w-[15px]' /> },
-	{ name: 'Track', message: 'Track', icon: <PinIcon className='w-[15px]' /> },
-	{ name: 'Submit', message: 'Submit', icon: <ArrowUpWideNarrow className='w-[15px]' /> },
-	{ name: 'FAQs', message: 'Faqs', icon: <Speech className='w-[15px]' /> },
-	{ name: 'Feedback', message: 'feedback', icon: <Megaphone className='w-[15px]' /> },
+	{name: 'Home', message: 'Home', icon: <Home className='w-[15px]' />},
+	{name: 'Analytics', message: 'Analytics', icon: <BarChart2 className='w-[15px]' />},
+	{name: 'WelcomeHod', message: 'Hod', icon: <Crown className='w-[15px]' />},
+	{name: 'WelcomeStaff', message: 'Staff', icon: <Badge className='w-[15px]' />},
+	{name: 'Track', message: 'Track', icon: <PinIcon className='w-[15px]' />},
+	{name: 'Submit', message: 'Submit', icon: <ArrowUpWideNarrow className='w-[15px]' />},
+	{name: 'FAQs', message: 'Faqs', icon: <Speech className='w-[15px]' />},
+	{name: 'Feedback', message: 'feedback', icon: <Megaphone className='w-[15px]' />},
 	]
 
 
  export const ICONS_INFO = [
-	  { name: 'undo', togglePrevSelectedNav: true, toggleSelectedNav: true, source:'icons/undo.png'},
-	  { name: 'redo', togglePrevSelectedNav: true, toggleSelectedNav: true, source: 'icons/redo.png' },
-	  { name: 'brightness-and-contrast',darkTheme: true, source: 'icons/brightness-and-contrast.png' },
+	  {name: 'undo', togglePrevSelectedNav: true, toggleSelectedNav: true, source:'icons/undo.png'},
+	  {name: 'redo', togglePrevSelectedNav: true, toggleSelectedNav: true, source: 'icons/redo.png'},
+	  {name: 'brightness-and-contrast',darkTheme: true, source: 'icons/brightness-and-contrast.png'},
   ]
 
   export const SELECTED_PAGES = [
@@ -34,8 +34,8 @@ export const sectionInfo = [
 	{name: 'Stats', icon: <BarChart className='w-[15px]'/>},
 	{name:'Aunthenticate', icon: <Lock className='w-[15px]' />},
 	{name:'Delegate', icon: <Share className='w-[15px]' />},
-	{name:'WorkBoard', icon: <Layout className='w-[15px]' /> },
-	{name:'Logout', icon: <LogOut className='w-[15px]' /> },
+	{name:'WorkBoard', icon: <Layout className='w-[15px]' />},
+	{name:'Logout', icon: <LogOut className='w-[15px]' />},
 	{name:'Settings', icon: <Settings className='w-[15px]' />},
 	{name:'Dark', icon: <Moon className='w-[15px]' />}
   ]
@@ -92,10 +92,10 @@ export const sectionInfo = [
 ]
 
 export const statsDatas = [{
-	w: { name: '7 days', change: 8, on_progress: 30, closed: 10, never_attended: 50},
-	m: { name: 'last month', change: 11, on_progress: 40, closed: 80, never_attended: 90 },
-	y: { name: 'last year', change: 5, on_progress: 100, closed: 150, never_attended: 300 },
-	all: { name: 'all', change: 2, on_progress: 500, closed: 250, never_attended: 900 },
+	w: {name: '7 days', change: 8, on_progress: 30, closed: 10, never_attended: 50},
+	m: {name: 'last month', change: 11, on_progress: 40, closed: 80, never_attended: 90},
+	y: {name: 'last year', change: 5, on_progress: 100, closed: 150, never_attended: 300},
+	all: {name: 'all', change: 2, on_progress: 500, closed: 250, never_attended: 900},
 
 }]
 
@@ -136,18 +136,20 @@ export const faq = [
 
 export const inputText = [
 	{placeholder: 'Enter Your Name'},
-	{placeholder: 'Registration #' },
-	{placeholder: 'Your class i.e OD22COE' },
-	{placeholder: 'Title of your problem' },
+	{placeholder: 'Registration #'},
+	{placeholder: 'Your class i.e OD22COE'},
+	{placeholder: 'Title of your problem'},
 	{placeholder: 'Problematic module if any(Optional)'},
 ]
 
 export const inputSignup = [
-	{ placeholder: 'Your Name' },
-	{ placeholder: 'Password' },
-	{ placeholder: 'Verify password' },
-	{ placeholder: 'Email' },
-	{ placeholder: 'Aunthentication key #' },
+	{placeholder: 'Your Name'},
+	{placeholder: 'Password'},
+	{placeholder: 'Verify password'},
+	{placeholder: 'Email'},
+	{placeholder: 'Aunthentication key #'},
 ]
 
 export const department = ['COMPUTER', 'CIVIL', 'GS']
+export const course = ['COE', 'IT', 'ETE']
+

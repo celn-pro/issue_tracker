@@ -1,12 +1,12 @@
 import React from 'react'
-import { useSelectedNav } from '../hooks/useSelectedNav'
-import { usePrevSelectedNav } from '../hooks/usePrevSelectedNav';
+import {useSelectedNav} from '../hooks/useSelectedNav'
+import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav';
 
-import { sectionInfo, SELECTED_PAGES } from '../constants';
+import {SELECTED_PAGES} from '../constants';
 
 const WelcomeStaff = () => {
 	const [selectedNav, toggleSelectedNav] = useSelectedNav();
-	const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
+	const togglePrevSelectedNav = usePrevSelectedNav()[1]
 
 	return (
 		<div className='ml-[300px] h-[100vh]'>

@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import { DoughnutChart } from '../DoughnutChart'
+import {DoughnutChart} from '../DoughnutChart'
 
-import {useSelectedAdminSideBar} from '../../hooks/useSelectedAdminSideBar'
-
-import { statsDatas} from '../../constants/index'
+import {statsDatas} from '../../constants/index'
 
 const Stats = () => {
 	const [selectedTd, setSelectedTd] = useState('1W')
-	const [selectedAdminSideBar, toggleSelectedAdminSideBar] = useSelectedAdminSideBar('Stats')
 
 	const [closed , setClosed] = useState()
 	const [open, setOpen] = useState()
@@ -61,7 +58,7 @@ const Stats = () => {
 		  <div className="metrics">
 			  <div>
 				  <span className='font-sans'>Percentage change over</span>
-				  <select name="" id="" className='outline-none'>
+				  <select className='outline-none'>
 					  <option value="">7 days</option>
 					  <option value="">last month</option>
 					  <option value="">last year</option>
@@ -82,11 +79,9 @@ const Stats = () => {
 		  </div>
 		  <div className="issues font-sans text-[15px]">
 
-			  {/* Display List of Issues */}
 			  <h2 className='font-bold'>Closed Issues: {closed} ✔</h2>
 			  <h2 className='font-bold'>Never attended: {neverAttended} 🚫</h2>
 
-			  {/* Display List of Closed Issues */}
 			  <h2 className='font-bold'>On-progress: <span className='text-green-600'>{open}</span></h2>
 		  </div>
 		  <DoughnutChart />

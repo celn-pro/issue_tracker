@@ -1,5 +1,5 @@
-import { PrevSelectedNavContext} from "../contexts/PrevSelectedNavContext";
-import { useContext } from "react";
+import {PrevSelectedNavContext} from "../contexts/PrevSelectedNavContext";
+import {useContext} from "react";
 
 export const usePrevSelectedNav  = ()=>{
     

@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import { useSelectedNav } from '../hooks/useSelectedNav';
+import {useSelectedNav} from '../hooks/useSelectedNav';
 import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
-import { sectionInfo, ICONS_INFO, SELECTED_PAGES } from '../constants';
+import {ICONS_INFO, SELECTED_PAGES} from '../constants';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const NavBar = () => {
       <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
 			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
           onClick={()=>setShowNews(!showNews)}
-			  > x</div><span><i>Take care of Red eyes infections!</i></span> 
+			  > x</div><span className='text-[15px] italic'>Take care of Red eyes infections!</span> 
       </div>
 
 		<div className='flex justify-between items-center bg-black rounded px-[20px] py-[5px]'>
@@ -61,7 +61,7 @@ const NavBar = () => {
             </button>
           </div>
 
-			  <div className={`absolute border-[1px] w-[120px] bg-white rounded shodow origin-top-right md:hidden ${showNews ?'top-[70px]':'top-[36px]'} transition-all duration-300 ${isOpen?'right-[20px]':'-right-full hidden'} z-10`}>
+		  <div className={`absolute border-[1px] w-[120px] bg-white rounded shodow origin-top-right md:hidden ${showNews ?'top-[70px]':'top-[36px]'} transition-all duration-300 ${isOpen?'right-[20px]':'-right-full hidden'} z-10`}>
           <ul className='py-[10px] px-[10px]'>
               {SELECTED_PAGES.map(p => {
 				 if(p.name=='Home'){
@@ -85,7 +85,7 @@ const NavBar = () => {
 						setChangeMenu(!changeMenu)
 						setIsOpen(!isOpen)
 				}}
-			  ></button>
+				></button>
 		
 		{/* destop navbar */}
          <div className={` flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 hidden`}>
@@ -99,10 +99,6 @@ const NavBar = () => {
 								if (i.togglePrevSelectedNav && i.toggleSelectedNav) {
 									togglePrevSelectedNav(selectedNav)
 									toggleSelectedNav(holder)
-								} if (i.darkTheme) {
-
-								} else {
-
 								}
 							}
 						}}><img src={i?.source} className='h-[10px] ' /></div>

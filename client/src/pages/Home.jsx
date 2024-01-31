@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect} from 'react'
 import {NavBar, Main, Submit, Track, LoginHod,
         LoginStaff, SignupHod, SignupStaff, WelcomeHod, WelcomeStaff, Faqs, Feedback,SideBar, Analytics
 } from '../components'
-import { useSelectedNav } from '../hooks/useSelectedNav';
+import {useSelectedNav} from '../hooks/useSelectedNav';
 
 
 const Home = () => {

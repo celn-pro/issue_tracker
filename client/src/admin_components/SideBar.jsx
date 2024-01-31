@@ -1,9 +1,8 @@
 import React from 'react'
 
-import {User, BarChart, Lock, Share, Layout, LogOut, Settings, Moon} from 'lucide-react'
-import { useSelectedAdminSideBar } from '../hooks/useSelectedAdminSideBar'
+import {useSelectedAdminSideBar} from '../hooks/useSelectedAdminSideBar'
 
-import { ADMIN_SIDEBAR } from '../constants'
+import {ADMIN_SIDEBAR} from '../constants'
 
 const SideBar = () => {
 	const [selectedAdminSideBar, toggleSelectedAdminSideBar] = useSelectedAdminSideBar()
