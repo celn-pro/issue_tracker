@@ -1,10 +1,11 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
 
-const app = express();
-const port = 3000;
+const routes = require('./routes/routes')
 
-//MongoDB Connection Url
+const app = express()
+const port = 3000
 const url = 'mongodb://localhost:27017/myDatabase';
 
 //connect to mongoDB using Mongoose
@@ -12,41 +13,26 @@ mongoose.connect(url,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-    .then(()=>{
-        console.log('Connected successfully to database!');
 
-        //create a mongoose model (schema)
-        const customerSchema = new mongoose.Schema({
-            name: String,
-            age: Number,
-            email: String
-        });
+// Enable CORS
+app.use(cors())
 
-        //create a mongoose collection based on the schema
-        const customerModel = mongoose.model('customers', customerSchema);
+//Logging middleware
+app.use((req, res, next) => {
+  console.log('Incoming request data:')
+  next() // Pass control to the next middleware
+})
 
-        //adding a customer in customers
-        const newData = new customerModel({
-            name: 'Anne',
-            age: 18,
-            email: 'anne@gmail.com'
-        });
+// Parse JSON and form data
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-        //save the document to the collection
-        newData.save()
-            .then(()=>{
-                console.log('document inserted successfull');
+// Enable CORS
+app.use(cors())
 
-            })
-            .catch((err)=>{
-                console.error('Error inserting document', err)
-            });
+// Routes
+app.use('/', routes)
 
-    })
-    .catch((err)=>{
-        console.error('Error connecting to mongodb', err);
-    })
-
-    app.listen(port, ()=>{
-        console.log(`Server is running on port ${port}`)
-    });
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`)
+})
