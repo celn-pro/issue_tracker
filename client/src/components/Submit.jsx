@@ -23,6 +23,32 @@ const Submit = () => {
 	document.getElementById('file').click()
   }
 
+	const handleSubmit = (e) => {
+		const input = document.getElementById('file')
+
+		const file = input.files[0]
+
+		if (file) {
+			const reader = new FileReader()
+
+			reader.readAsDataURL(file)
+
+			console.log(file)
+
+			// const formData = new FormData()
+			// formData.append('profileImage', file)
+
+			// fetch('', {
+			// 	method: 'POST',
+			// 	body: formData,
+			// })
+			// .then(console.log('uploaded'))
+
+		} else {
+			pre.src = '#'
+		}
+	}
+
   return (
 	  <div className=' ml-[300px] h-[100vh]'>
 	  <div className='border-[1px] border-black top-[130px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
@@ -61,7 +87,7 @@ const Submit = () => {
               <select
 					className='outline-none relative w-[50%] rounded  bg-white border-2 border-black px-[5px] py-[5px]'
               >
-                  {department.map((department)=>(
+                  {departments.map((department)=>(
                     <option value={department}>{department}</option>
                   ))}
               </select>
@@ -97,7 +123,9 @@ const Submit = () => {
 				className='w-full  hidden px-[10px] mb-[10px] rounded focus:outline-none bg-white text-text font-bold'
 			/>
 			<div className='flex justify-end items-center'>
-				<button className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'>Send</button>
+				<button className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'
+					onClick={handleSubmit}
+				>Send</button>
 			</div>
 		</div>
       </div>

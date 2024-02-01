@@ -1,25 +1,28 @@
 import React, { useState } from 'react'
 
 const Track = () => {
-	const [data, setData] = useState()
+	const [trackId, setTrackId] = useState()
 
 	const handleTrack = async () => {
 		try {
-			const response = await fetch('http://localhost:3000/track', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					// Add other headers if required
-				},
-				body: JSON.stringify({ age: data, name: 'Glace'  }), // Send data as a JSON object
-			});
+			if(trackId != ''){
+				const response = await fetch('http://localhost:3000/track', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						// Add other headers if required
+					},
+					body: JSON.stringify({ trackId: trackId }), // Send data as a JSON object
+				});
 
-			if (!response.ok) {
-				throw new Error('Request failed');
+				if (!response.ok) {
+					throw new Error('Request failed');
+				}
+
+				const responseData = await response.json();
+				console.log(responseData);
 			}
 
-			const responseData = await response.json();
-			console.log(responseData.savedCustomer.name);
 		} catch (e) {
 			console.error(e);
 		}
@@ -30,7 +33,7 @@ const Track = () => {
 	const handleOnChange = (e)=>{
 		const value = e.target.value
 		console.log(value)
-		setData(value)
+		setTrackId(value)
 	}
   return (
 	  <div className='ml-[300px] h-[100vh]'>
