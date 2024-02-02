@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Track = () => {
 	const [trackId, setTrackId] = useState()
+	const [warning, setWarning] = useState()
+
+	useEffect(()=>{
+		setTimeout(()=>{
+			setWarning(null)
+		}, 4000)
+	},[warning])
 
 	const handleTrack = async () => {
 		try {
-			if(trackId != ''){
+			if(trackId){
 				const response = await fetch('http://localhost:3000/track', {
 					method: 'POST',
 					headers: {
@@ -21,6 +28,8 @@ const Track = () => {
 
 				const responseData = await response.json();
 				console.log(responseData);
+			}else{
+				setWarning(true)
 			}
 
 		} catch (e) {
@@ -59,6 +68,7 @@ const Track = () => {
 						className=' text-white w-[100px] font-semibold rounded  font-medium px-[5px] py-[5px] bg-black'>Track</button>
 				</div>
       		</div>
+			<div className={`${warning?'block':'hidden'} text-[13px] text-red-500 font-bold`}>⚠ Please enter a valid tracking key</div>
 	  </div>
 	  </div>
     </div>

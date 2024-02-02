@@ -135,19 +135,19 @@ export const faq = [
 ]
 
 export const inputText = [
-	{placeholder: 'Enter Your Name'},
-	{placeholder: 'Registration #'},
-	{placeholder: 'Your class i.e OD22COE'},
-	{placeholder: 'Title of your problem'},
-	{placeholder: 'Problematic module if any(Optional)'},
+	{index:0, name: 'name', placeholder: 'Enter Your Name'},
+	{index:1, name: 'regId', placeholder: 'Registration #'},
+	{index:2, name: 'class', placeholder: 'Your class i.e OD22COE'},
+	{index:3, name: 'title', placeholder: 'Title of your problem'},
+	{index:4, name: 'contact', placeholder: 'ie 0754-765-987'},
 ]
 
 export const inputSignup = [
-	{placeholder: 'Your Name'},
-	{placeholder: 'Password'},
-	{placeholder: 'Verify password'},
-	{placeholder: 'Email'},
-	{placeholder: 'Aunthentication key #'},
+	{index: 0, placeholder: 'Your Name'},
+	{index: 1, placeholder: 'Password'},
+	{index: 2,placeholder: 'Verify password'},
+	{index: 3, placeholder: 'Email'},
+	{index: 4, placeholder: 'Aunthentication key #'},
 ]
 
 export const department = ['COMPUTER', 'CIVIL', 'GS']

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-//create a mongoose model (schema)
+//create a mongoose schema
 const issuesSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -24,11 +24,15 @@ const issuesSchema = new mongoose.Schema({
 	status: {
 		type: String,
 		default: 'never attended',
-	}
+	}, 
+	deligated_to: {
+		type: String,
+		default: 'none',
+	},
 	
 });
 
-//create a mongoose collection based on the schema
+//create a mongoose model based on the schema
 const issuesModel = mongoose.model('issues', issuesSchema);
 
 module.exports = issuesModel

@@ -19,7 +19,7 @@ app.use(cors())
 
 //Logging middleware
 app.use((req, res, next) => {
-  console.log('Incoming request data:')
+  console.log('Incoming request data:', req.body)
   next() // Pass control to the next middleware
 })
 

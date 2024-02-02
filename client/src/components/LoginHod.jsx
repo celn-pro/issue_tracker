@@ -1,10 +1,35 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {inputSignup} from '../constants'
 
 import AdminDashboard from '../admin_components/HodAccount'
 
 export const LoginHod = () => {
-	const [loged, setLoged] = useState(true)
+	const [loged, setLoged] = useState(false)
+	const [warning, setWarning] = useState()
+	const [data, setData] = useState([])
+	const [message, setMessage] = useState('⚠ Invalid field')
+
+	useEffect(()=>{
+		setTimeout(()=>{
+			setWarning(null)
+		}, 4000)
+	}, [warning])
+
+	const handleLogin = async()=>{
+		if(data[1]&&data[3]){
+			const response = await fetch('http://localhost:3000/login_hod', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({password: data[1], email: data[3]})
+			})
+
+			
+		}else{
+			setWarning(true)
+		}
+	}
 
 	return loged?<AdminDashboard />:(
 	  <div className='ml-[300px] h-[100vh]'>
@@ -18,14 +43,24 @@ export const LoginHod = () => {
 						  {inputSignup.map((s, i) => {
 							  return (s.placeholder == 'Password' || s.placeholder == 'Email') ? <>
 								  <input type="text" placeholder={s.placeholder}
+									  onChange={(e) => {
+										  setData((prevData) => {
+											  const newData = [...prevData]
+											  newData[s.index] = e.target.value
+
+											  return newData
+										  })
+									  }}
 									  className='w-full px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white text-black border-2 border-black'
 								  /> <br />
 							  </> : null
 						  })}
 
-
+							<div className={`${warning?'block':'hidden'} text-white bg-black flex justify-center items-center py-[5px] mb-[10px]`}>{message}</div>
 						  <div className='flex justify-end items-center'>
-							  <button className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'>Login</button>
+							  <button className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'
+							  	onClick={handleLogin}
+							  >Login</button>
 						  </div>
 					  </div>
 				  </div>
