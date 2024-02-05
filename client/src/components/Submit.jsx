@@ -64,7 +64,7 @@ const Submit = () => {
 						// Add other headers if required
 					},
 					body: JSON.stringify({
-						name: data[0], regId: data[1], class_: data[2], course: data[5], department: data[6],
+						name: data[0], regId: data[1], class: data[2], course: data[5], department: data[6],
 						title: data[3], contact: data[4], description: data[7], file: data[8]
 					}), // Send data as a JSON object
 				})

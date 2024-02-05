@@ -16,7 +16,8 @@ const hodSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-	}
+	},
+	profileImg: String,
 })
 
 const hodModel = mongoose.model('hods', hodSchema)

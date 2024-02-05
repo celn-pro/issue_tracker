@@ -49,9 +49,9 @@ const SignupHod = () => {
 					console.log(responseData.message)
 
 					if (responseData.message === 'signed') {
+						setSigned(true)
 						setMessage('You successfull signedup, we redirecting you to login!')
 						setWarning(true)
-						setSigned(true)
 					} else {
 						setMessage(responseData.message)
 						setWarning(true)

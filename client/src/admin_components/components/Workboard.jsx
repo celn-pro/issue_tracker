@@ -140,7 +140,7 @@ const Workboard = ({userData}) => {
 						
 						<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[160px] right-[50px] left-[350px] bottom-[50px] px-[20px] py-[20px] bg-white`}>
 								<div className='flex justify-end items-center'>
-									<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-[#04314C]'
+									<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-black'
 										onClick={() => {
 											setSelectedId(null)
 											setOpenDetails(!openDetails)
@@ -163,7 +163,7 @@ const Workboard = ({userData}) => {
 										</tr>
 										<tr>
 											<td>Class:</td>
-											<td>{s.clas}</td>
+											<td>{s.class_}</td>
 										</tr>
 									</table>
 								</div>
@@ -172,7 +172,7 @@ const Workboard = ({userData}) => {
 								</div>
 								<div className='mt-[20px] px-[30px]'>
 									<div className=''>Description</div>
-									<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px]'>
+									<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px] overflow-auto'>
 										{s.desc}
 									</div>
 								</div>

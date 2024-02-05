@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const issuesModel = require('../models/issuesModel')
+const descModel = require('../models/descModel')
 const authKeyModel = require('../models/authKeyModel')
 const hodModel = require('../models/hodModel')
 const staffModel = require('../models/staffModel')
@@ -22,16 +23,29 @@ router.post('/track', async(req, res)=>{
 
 			const userName = fetchedUser.name
 			const userId = fetchedUser.registrationId
+			const fetchedIssues = await issuesModel.find({registrationId: trackId}).populate({path:'description', select: '-_id description'}).lean().exec()
+			const transformedData = fetchedIssues.map(s=>({
+				name: s.name,
+				registrationId: s.registrationId,
+				class: s.class,
+				course: s.course,
+				department: s.department,
+				title: s.title,
+				contacts: s.contacts,
+				description: s.description.description,
+				status: s.status,
+				deligated_to: s.deligated_to,
+				date: s.date,
+			}))
 
-			const fetchedIssues = await issuesModel.find({registrationId: trackId})
+			res.status(200).json({transformedData, userName, userId});
 			
-			res.status(200).json({fetchedIssues, userName, userId});
 		}else{
 			res.status(200).json({message: 'Wrong Tracking Key!'});
 		}
 
 	}catch(e){
-		res.status(200).json({message: 'Error while fetching data!'});
+		res.status(200).json({message: 'Error while fetching data!', e});
 	}
 })
 
@@ -47,6 +61,13 @@ router.post('/submit', async (req, res)=>{
 		const description = req.body.description
 		const file = req.body.file
 
+		const newDesc = new descModel({
+			registrationId: registrationId,
+			description: description
+		})
+
+		const descData = await newDesc.save()
+
 		//adding a issue in customers or creating new instance of your model
 		const newIssue = new issuesModel({
 		name: name,
@@ -55,8 +76,8 @@ router.post('/submit', async (req, res)=>{
 		course: course,
 		department: department,
 		title: title,
-		contact: contact,
-		description: description,
+		contacts: contact,
+		description: descData._id,
 		file: file,
 	})
 
@@ -78,7 +99,7 @@ router.post('/signup_hod', async(req, res)=>{
 		const department = req.body.department
 		const authKey = req.body.authKey
 
-		const keyData = await authKeyModel.findOne({key: authKey})
+		const keyData = await authKeyModel.find({key: authKey})
 
 		if(keyData){
 			const newHod = new hodModel({
@@ -93,7 +114,7 @@ router.post('/signup_hod', async(req, res)=>{
 			res.status(200).json({message: 'signed'})
 			
 		}else{
-			res.status(200).json({message: 'Wrong Authentication key'})
+			res.status(200).json({message: `Wrong Authentication key ${keyData}`})
 		}
 	}catch(e){
 		res.status(200).json({message: 'could not signup by sever'})

@@ -3,6 +3,8 @@ import {NavBar, Main, Submit, Track, LoginHod,
         LoginStaff, SignupHod, SignupStaff, WelcomeHod, 
 		WelcomeStaff, Faqs, Feedback,SideBar, Analytics, Congrats
 } from '../components'
+
+import AdminDashboard from '../admin_components/HodAccount';
 import {useSelectedNav} from '../hooks/useSelectedNav';
 
 
@@ -31,6 +33,8 @@ const Home = () => {
       {selectedNav == 'WelcomeStaff'&&<WelcomeStaff />}
 	  {selectedNav == 'Analytics'&&<Analytics />}
 	  {selectedNav == 'Congrats'&&<Congrats />}
+	  {selectedNav == 'Logged'&&<AdminDashboard />}
+
 
     </>
   )

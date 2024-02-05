@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { inputSignup } from '../constants'
 
 import AdminDashboard from '../admin_components/HodAccount'
+import { useSelectedNav } from '../hooks/useSelectedNav';
 
 export const LoginHod = () => {
+	const toggleSelectedNav = useSelectedNav()[1]
+
 	const [loged, setLoged] = useState(false)
 	const [warning, setWarning] = useState()
 	const [greenMsg, setGreenMsg] = useState(true)
@@ -18,10 +21,10 @@ export const LoginHod = () => {
 		}, 4000)
 	}, [warning])
 
-	const handleLogin = async (e) => {
+	const handleLogin = async(e) => {
 		e.preventDefault()
 		if (data[1] && data[3]) {
-			const response = await fetch('http://localhost:3000/login_staff', {
+			const response = await fetch('http://localhost:3000/login_hod', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -36,7 +39,8 @@ export const LoginHod = () => {
 				setWarning(true)
 			} else if (responseData.userData) {
 				setUserData(responseData.userData)
-				setLoged(true)
+				setLoged(!loged)
+				toggleSelectedNav('Logged')
 			} else {
 				throw new Error('There is a problem logging in!')
 			}
@@ -47,7 +51,7 @@ export const LoginHod = () => {
 		}
 	}
 
-	return loged ? <AdminDashboard userData={userData} /> : (
+	return (
 		<div className='ml-[300px] h-[100vh]'>
 			<div className='absolute top-[130px] right-[50px] left-[300px] bottom-[50px] border-[1px] border-black rounded flex justify-center items-center'>
 				<div className='px-[20px] py-[20px] w-[400px] h-[250px] rounded border-[1px] shadow-xl text-[12px]'>
@@ -58,7 +62,7 @@ export const LoginHod = () => {
 
 					<div className='flex justify-center items-center'>
 						<div className='max-[600px]:w-full w-[500px]'>
-							<form action="" onSubmit={handleLogin}>
+							<form onSubmit={handleLogin}>
 								{inputSignup.map((s, i) => {
 									return (s.placeholder == 'Password' || s.placeholder == 'Email') ? <>
 										<input type={s.placeholder == 'Email' ? 'email' : 'text'} placeholder={s.placeholder}
@@ -78,7 +82,6 @@ export const LoginHod = () => {
 								<div className={`${warning ? 'text-red-600' : 'text-white'} font-bold px-[10px] py-[5px] mb-[10px]`}>⚠{message}</div>
 								<div className='flex justify-end items-center'>
 									<button type='submit' className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'
-									// onClick={handleLogin}
 									>Login</button>
 								</div>
 							</form>

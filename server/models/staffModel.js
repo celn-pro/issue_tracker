@@ -16,7 +16,8 @@ const staffSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-	}
+	}, 
+	profileImg: String,
 })
 
 const staffModel = mongoose.model('staffs', staffSchema)

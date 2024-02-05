@@ -15,7 +15,10 @@ const issuesSchema = new mongoose.Schema({
 	department: String,
 	title: String,
 	contacts: String,
-	description: String,
+	description: {
+		type: String,
+		ref: 'descriptions',
+	},
 	file: String,
 	date:{
 		type:Date,
