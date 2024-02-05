@@ -3,13 +3,13 @@ import Home from './Home'
 
 import {SelectedAdminSideBarProvider} from '../contexts/SelectedAdminSideBar';
 
-function AdminDashboard() {
+function AdminDashboard({userData}) {
 
 	return (
 		<SelectedAdminSideBarProvider>
 			<div className='px-[50px] py-[50px]'>
 				<SideBar />
-				<Home />
+				<Home userData={userData} />
 			</div>
 		</SelectedAdminSideBarProvider>
 	)

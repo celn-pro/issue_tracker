@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { DATA } from '../../constants'
 
-const Delegate = () => {
+const Delegate = ({userData}) => {
 	const [selectedId, setSelectedId] = useState(null)
 	const [openDetails, setOpenDetails] = useState(false)
 	const [openDelegate, setOpenDelegate] = useState(false)

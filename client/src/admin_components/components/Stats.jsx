@@ -3,7 +3,7 @@ import {DoughnutChart} from '../DoughnutChart'
 
 import {statsDatas} from '../../constants/index'
 
-const Stats = () => {
+const Stats = ({userData}) => {
 	const [selectedTd, setSelectedTd] = useState('1W')
 
 	const [closed , setClosed] = useState()

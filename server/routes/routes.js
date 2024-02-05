@@ -10,15 +10,26 @@ router.get('/', (req, res) => {
 	res.send('Welcome to the main route')
 })
 
-router.post('/track', async (req, res)=>{
+router.post('/track', async(req, res)=>{
 	try{
 
 		const trackId = req.body.trackId
 
 		//fetch the matching user
-		const fetchedUser = await customerModel.find({registrationId: trackId})
+		const fetchedUser = await issuesModel.findOne({registrationId: trackId})
 
-		res.status(200).json({fetchedUser});
+		if(fetchedUser){
+
+			const userName = fetchedUser.name
+			const userId = fetchedUser.registrationId
+
+			const fetchedIssues = await issuesModel.find({registrationId: trackId})
+			
+			res.status(200).json({fetchedIssues, userName, userId});
+		}else{
+			res.status(200).json({message: 'Wrong Tracking Key!'});
+		}
+
 	}catch(e){
 		res.status(200).json({message: 'Error while fetching data!'});
 	}
@@ -52,7 +63,7 @@ router.post('/submit', async (req, res)=>{
 	//save the document to the collection
 	await newIssue.save()
 
-	res.status(200).json({message: 'Submitted successfully!'});
+	res.status(200).json({message: 'submitted'});
 
 	}catch(e){
 	res.status(200).json({message: 'There was a problem while submmiting, please try again later.'});
@@ -149,7 +160,7 @@ router.post('/login_staff', async(req, res)=>{
 		const email = req.body.email
 		const password = req.body.password
 
-		const userEmailData = await staffModel.findOne({email: email})
+		const userEmailData = await staffModel.findOne({email: email})		
 
 		if(userEmailData){
 			
@@ -159,10 +170,12 @@ router.post('/login_staff', async(req, res)=>{
 				res.status(200).json({userData})
 			}else{
 				res.status(200).json({message: 'Wrong password'})
+
+				return
 			}
 			
 		}else{
-			res.status(200).json({message: 'Wrong email'})
+			res.status(200).json({message: 'Invalid email'})
 		}
 	}catch(e){
 		res.status(200).json({message: 'Could not login by server'})

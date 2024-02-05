@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {NavBar, Main, Submit, Track, LoginHod,
-        LoginStaff, SignupHod, SignupStaff, WelcomeHod, WelcomeStaff, Faqs, Feedback,SideBar, Analytics
+        LoginStaff, SignupHod, SignupStaff, WelcomeHod, 
+		WelcomeStaff, Faqs, Feedback,SideBar, Analytics, Congrats
 } from '../components'
 import {useSelectedNav} from '../hooks/useSelectedNav';
 
@@ -29,6 +30,8 @@ const Home = () => {
       {selectedNav == 'WelcomeHod'&&<WelcomeHod />}
       {selectedNav == 'WelcomeStaff'&&<WelcomeStaff />}
 	  {selectedNav == 'Analytics'&&<Analytics />}
+	  {selectedNav == 'Congrats'&&<Congrats />}
+
     </>
   )
 }

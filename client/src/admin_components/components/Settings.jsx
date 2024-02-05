@@ -3,7 +3,7 @@ import {Check} from 'lucide-react'
 
 import {PERSON} from '../../constants'
 
-const Settings = () => {
+const Settings = ({userData}) => {
 	const [showSaved, setShowSaved] = useState(false)
 	const [change, setChange] = useState(false)
 	const [index, setIndex] = useState(null)

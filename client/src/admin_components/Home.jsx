@@ -4,18 +4,18 @@ import {Stats, Profile, Aunthenticate, Delegate, Logout, Settings, Dark, Workboa
 
 import {useSelectedAdminSideBar} from '../hooks/useSelectedAdminSideBar'
 
-const Home = () => {
+const Home = ({userData}) => {
 	const selectedAdminSideBar = useSelectedAdminSideBar()[0]
   return (
 	<>
-		{selectedAdminSideBar == 'Stats'&& <Stats />}
-		{selectedAdminSideBar == 'Profile' && <Profile />}
-		{selectedAdminSideBar == 'Delegate'&& <Delegate />}
-		{selectedAdminSideBar == 'WorkBoard' && <Workboard />}
-		{selectedAdminSideBar == 'Aunthenticate'&& <Aunthenticate />}
-		{selectedAdminSideBar == 'Logout'&& <Logout />}
-		{selectedAdminSideBar == 'Settings' && <Settings />}
-		{selectedAdminSideBar == 'Dark' && <Dark />}
+		{selectedAdminSideBar == 'Stats'&& <Stats userData={userData} />}
+		{selectedAdminSideBar == 'Profile' && <Profile userData={userData} />}
+		{selectedAdminSideBar == 'Delegate'&& <Delegate userData={userData}/>}
+		{selectedAdminSideBar == 'WorkBoard' && <Workboard userData={userData} />}
+		{selectedAdminSideBar == 'Aunthenticate'&& <Aunthenticate userData={userData}/>}
+		{selectedAdminSideBar == 'Logout'&& <Logout userData={userData}/>}
+		{selectedAdminSideBar == 'Settings' && <Settings userData={userData}/>}
+		{selectedAdminSideBar == 'Dark' && <Dark userData={userData}/>}
 
 	</>
   )

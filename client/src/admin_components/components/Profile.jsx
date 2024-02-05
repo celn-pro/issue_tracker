@@ -1,7 +1,7 @@
 import React from 'react'
 import {Camera} from 'lucide-react'
 
-const Profile = () => {
+const Profile = ({userData}) => {
 
 	const handleClick = ()=>{
 		document.getElementById('file').click()

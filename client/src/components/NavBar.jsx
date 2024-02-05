@@ -12,12 +12,12 @@ const NavBar = () => {
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
   return (
-    <div className={`${selectedNav=='LoginHod'?'hidden':''} ml-[300px] mt-[50px] mr-[50px] text-black`} >
+    <div className={`${selectedNav=='LoginHod'?'':''} ml-[300px] mt-[50px] mr-[50px] text-black`} >
 
       <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
 			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
           onClick={()=>setShowNews(!showNews)}
-			  > x</div><span className='text-[15px] italic'>Take care of Red eyes infections!</span> 
+			  > x</div><span className='text-[12px] italic font-bold'>Take care of Red eyes infections!</span> 
       </div>
 
 		<div className='flex justify-between items-center bg-black rounded px-[20px] py-[5px]'>

@@ -15,6 +15,7 @@ const SideBar = () => {
 					{sectionInfo.map((s) => {
 						return <div className={`${selectedNav === s.name ? 'bg-yellow-300 ' : ''} ${((selectedNav == 'LoginStaff'||selectedNav=='SignupStaff') && s.name == 'WelcomeStaff') ?'bg-yellow-300':''}
 						${((selectedNav == 'LoginHod' || selectedNav == 'SignupHod') && s.name == 'WelcomeHod') ? 'bg-yellow-300' : ''}
+						${((selectedNav == 'Submit' || selectedNav == 'Congrats') && s.name == 'Submit') ? 'bg-yellow-300' : ''}
 						flex justify-start items-center gap-5 mb-[10px] cursor-pointer rounded px-[10px]`} onClick={() => {
 								togglePrevSelectedNav(selectedNav)
 								toggleSelectedNav(s.name)

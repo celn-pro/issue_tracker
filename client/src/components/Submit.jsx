@@ -1,12 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import {Image} from 'lucide-react'
 
+import { useSelectedNav } from '../hooks/useSelectedNav'
+import { usePrevSelectedNav } from '../hooks/usePrevSelectedNav'
+
 import {inputText, department, course} from '../constants'
 
 const Submit = () => {
+  const [selectedNav, toggleSelectedNav] = useSelectedNav()
+  const togglePrevSelectedNav = usePrevSelectedNav()[1]
 
   const [selectedFileName, setSelectedFileName] = useState('')
   const [warning, setWarning] = useState()
+  const [message, setMessage] = useState('')
+  const [submitted, setSubmitted] = useState(false)
   const [data, setData] = useState([])
   	
 
@@ -14,9 +21,15 @@ const Submit = () => {
   const departments = [...department]
 
   useEffect(()=>{
-	setTimeout(()=>{
-		setWarning(null)
-	},4000)
+	if(warning){
+		setTimeout(() => {
+			setWarning(null)
+			if (submitted) {
+				togglePrevSelectedNav(selectedNav)
+				toggleSelectedNav('Congrats')
+			}
+		}, 4000)
+	}
   }, [warning])
 
   const handleFileChange =(e)=>{
@@ -40,9 +53,10 @@ const Submit = () => {
   }
 
 	const handleSubmit = async(e) => {
+		e.preventDefault()
 		try{
 			if (data[0] && data[1] && data[2] && data[3] && data[4] && data[5] && data[6] && data[7]) {
-				console.log("everything is ok")
+				// console.log("everything is ok")
 				const response = await fetch('http://localhost:3000/submit', {
 					method: 'POST',
 					headers: {
@@ -54,7 +68,22 @@ const Submit = () => {
 						title: data[3], contact: data[4], description: data[7], file: data[8]
 					}), // Send data as a JSON object
 				})
+
+				const responseData = await response.json()
+
+				if(responseData.message == 'submitted'){
+					console.log('testing sub')
+
+					setMessage('Submitted successfully!')
+					setWarning(true)
+					setSubmitted(true)
+
+				}else{
+					setMessage(responseData.message)
+					setWarning(true)
+				}
 			} else {
+				setMessage('⚠Some important fields required!')
 				setWarning(true)
 			}
 		}catch(e){
@@ -66,8 +95,10 @@ const Submit = () => {
 	  <div className=' ml-[300px] h-[100vh]'>
 	  <div className='border-[1px] border-black top-[130px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
 		<div className='px-[40px] py-[20px] flex justify-center items-center'>
+		<form action="" onSubmit={handleSubmit}>
+
 		<div className='px-[20px] rounded border-[1px] shadow-xl w-[700px] h-[400px]'>
-			<div className={` ${warning?'block':'hidden'} absolute w-[400px] h-[100px] bg-black text-white font-bold top-[200px] left-[400px] flex justify-center items-center z-10`}> ⚠Some important fields required!</div>
+			<div className={` ${warning?'block':'hidden'} absolute rounded-xl opacity-50 w-[400px] h-[100px] bg-black text-white font-bold top-[200px] left-[400px] flex justify-center items-center z-10`}>{message}</div>
 		<div className='flex justify-center items-center '>
 			<div className='mt-[20px]'>
 				<div className='flex justify-center items-center'>
@@ -179,13 +210,14 @@ const Submit = () => {
 				className='w-full  hidden px-[10px] mb-[10px] rounded focus:outline-none bg-white text-text font-bold'
 			/>
 			<div className='flex justify-end items-center'>
-				<button className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'
-					onClick={handleSubmit}
+				<button type='submit' className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'
+					// onClick={handleSubmit}
 				>Send</button>
 			</div>
 		</div>
       </div>
 	  </div>
+	  </form>
 	  </div>
 	  </div>
     </div>

@@ -4,7 +4,7 @@ import {LineChart} from 'lucide-react'
 
 import {DATA} from '../../constants'
 
-const Workboard = () => {
+const Workboard = ({userData}) => {
 	const [selectedId, setSelectedId] = useState(null)
 	const [openDetails, setOpenDetails] = useState(false)
 	const [showChart, setShowChart] = useState(false)

@@ -3,7 +3,7 @@ import {File, Check} from 'lucide-react'
 
 import {textList} from '../../constants'
 
-const Aunthenticate = () => {
+const Aunthenticate = ({userData}) => {
 	const [generatedKey, setGeneratedKey] = useState(null)
 	const [showCopied, setShowCopied] = useState(false)
 	const [copiedId, setCopiedId] = useState(null)
