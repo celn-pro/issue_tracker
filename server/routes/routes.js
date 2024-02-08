@@ -1,4 +1,8 @@
 const express = require('express')
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
+
 const router = express.Router()
 
 const issuesModel = require('../models/issuesModel')
@@ -6,6 +10,24 @@ const descModel = require('../models/descModel')
 const authKeyModel = require('../models/authKeyModel')
 const hodModel = require('../models/hodModel')
 const staffModel = require('../models/staffModel')
+
+//create uploads if it dont exists yet
+const uploadDir = path.join(__dirname, 'uploads')
+if(!fs.existsSync(uploadDir)){
+	fs.mkdirSync(uploadDir)
+}
+
+//multer setup for handline file upload
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, 'uploads/') //specify the directory where you want to store
+	},
+	filename: (req, file, cb) =>{
+		cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`) //save file as jpeg
+	}
+})
+
+const upload = multer({storage})
 
 router.get('/', (req, res) => {
 	res.send('Welcome to the main route')
@@ -192,7 +214,6 @@ router.post('/login_staff', async(req, res)=>{
 			}else{
 				res.status(200).json({message: 'Wrong password'})
 
-				return
 			}
 			
 		}else{
@@ -200,6 +221,195 @@ router.post('/login_staff', async(req, res)=>{
 		}
 	}catch(e){
 		res.status(200).json({message: 'Could not login by server'})
+	}
+})
+
+router.post('/keys', async(req, res)=>{
+	try{
+		const _id = req.body.generated_by
+		const key = req.body.key
+
+		if(key){
+			const newKey = new authKeyModel({
+			key: key,
+			generated_by: _id,
+		})
+
+		await newKey.save()
+
+		}
+
+		const keys = await authKeyModel.find({generated_by: _id})
+
+		if(keys){
+			res.status(200).json({message:'We didi it ', keys})
+		}else{
+			res.status(200).json({message: 'No keys yet'})
+	}
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/post_keys', async(req, res)=>{
+	try{
+		const _id = req.body.generated_by
+		const key = req.body.key
+
+		const newKey = new authKeyModel({
+			key: key,
+			generated_by: _id,
+		})
+
+		await newKey.save()
+
+		const keys = await authKeyModel.find({generated_by: _id})
+
+		if(keys){
+			res.status(200).json({message:'We didi it ', keys})
+		}else{
+			res.status(200).json({message: 'No keys yet'})
+	}
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/stats', async(req, res) => {
+	try{
+		const department = req.body.department
+
+		const stats = await issuesModel.find({department: department})
+
+		if(stats){
+			res.status(200).json({stats})
+		}else{
+			res.status(200).json({message: 'No stats yet'})
+		}
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/delete_key', async(req, res) => {
+	try{
+		const key = req.body.key
+
+		const stats = await authKeyModel.deleteOne({key: key})
+
+		if(stats){
+			const keys = await authKeyModel.find()
+			
+			res.status(200).json({keys})
+		}else{
+			res.status(200).json({message: 'No stats yet'})
+		}
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/issues', async(req, res)=>{
+	try{
+
+		const department = req.body.department
+
+		const fetchedIssues = await issuesModel.find({department: department}).populate({path:'description', select: '-_id description'}).lean().exec()
+		const transformedData = fetchedIssues.map(s=>({
+			_id: s._id,
+			name: s.name,
+			registrationId: s.registrationId,
+			class: s.class,
+			course: s.course,
+			department: s.department,
+			title: s.title,
+			contacts: s.contacts,
+			description: s.description.description,
+			status: s.status,
+			deligated_to: s.deligated_to,
+			date: s.date,
+		}))
+
+		res.status(200).json({transformedData});
+			
+	}catch(e){
+		res.status(200).json({message: 'Error while fetching data!', e});
+	}
+})
+
+router.post('/delegate', async(req, res)=>{
+	try{
+
+		const department = req.body.department
+		const _id = req.body._id
+		const deligated_to = req.body.deligated_to
+
+		await issuesModel.updateOne({_id: _id}, {$set:{deligated_to: deligated_to}})
+
+		const fetchedIssues = await issuesModel.find({department: department}).populate({path:'description', select: '-_id description'}).lean().exec()
+		const transformedData = fetchedIssues.map(s=>({
+			_id: s._id,
+			name: s.name,
+			registrationId: s.registrationId,
+			class: s.class,
+			course: s.course,
+			department: s.department,
+			title: s.title,
+			contacts: s.contacts,
+			description: s.description.description,
+			status: s.status,
+			deligated_to: s.deligated_to,
+			date: s.date,
+		}))
+
+		res.status(200).json({transformedData});
+			
+	}catch(e){
+		res.status(200).json({message: 'Error while fetching data!', e});
+	}
+})
+
+router.post('/profileImg', upload.single('profileImage'), async(req, res)=>{
+	try{
+		const profile = req.file.path
+		const id = req.body.id
+
+		await hodModel.updateOne({_id: id}, {$set: {profileImg: profile}})
+
+		const user = await hodModel.findOne({_id: id})
+
+		res.status(200).json({user})
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/update_hod', async(req, res)=>{
+	try{
+		const id = req.body.id
+
+		const userData = await hodModel.findOne({_id: id})
+
+		res.status(200).json({userData})
+		
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/settings', async(req, res)=>{
+	try{
+		const id = req.body.id
+		const name = req.body.name
+		const email = req.body.email
+		const password = req.body.password
+
+		const changedDetails = await hodModel.updateOne({_id:id}, {$set:{name: name, email: email, password: password}})
+
+		res.status(200).json({changedDetails})
+		
+	}catch(e){
+		console.log(e)
 	}
 })
 

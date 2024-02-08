@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import { useAtom } from 'jotai';
+import {atomWithStorage} from 'jotai/utils'
+
 import { inputSignup } from '../constants'
 
-import AdminDashboard from '../admin_components/HodAccount'
+// import AdminDashboard from '../admin_components/HodAccount'
 import { useSelectedNav } from '../hooks/useSelectedNav';
+
+//set user data
+export const userDataAtom = atomWithStorage('userData',{})
 
 export const LoginHod = () => {
 	const toggleSelectedNav = useSelectedNav()[1]
-
+	const [userData, setUserData] = useAtom(userDataAtom)
 	const [loged, setLoged] = useState(false)
 	const [warning, setWarning] = useState()
 	const [greenMsg, setGreenMsg] = useState(true)
 	const [data, setData] = useState([])
 	const [message, setMessage] = useState('Invalid field')
-	const [userData, setUserData] = useState({})
+	// const [userData, setUserData] = useState({})
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -38,8 +44,8 @@ export const LoginHod = () => {
 				setMessage(responseData.message)
 				setWarning(true)
 			} else if (responseData.userData) {
-				setUserData(responseData.userData)
 				setLoged(!loged)
+				setUserData(responseData.userData)
 				toggleSelectedNav('Logged')
 			} else {
 				throw new Error('There is a problem logging in!')

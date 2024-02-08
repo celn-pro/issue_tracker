@@ -2,9 +2,7 @@ import React,{useState, useEffect} from 'react'
 import LineChartCustom from '../LineChart'
 import {LineChart} from 'lucide-react'
 
-import {DATA} from '../../constants'
-
-const Workboard = ({userData}) => {
+const Workboard = (props) => {
 	const [selectedId, setSelectedId] = useState(null)
 	const [openDetails, setOpenDetails] = useState(false)
 	const [showChart, setShowChart] = useState(false)
@@ -14,8 +12,10 @@ const Workboard = ({userData}) => {
 	const [selectedStatus, setSelectedStatus] = useState('all')
 	const [data, setData] = useState([])
 
+	const userData = props.userData
+
 	useEffect(() => {
-		setData(DATA)
+		fetchIssues()
 	}, [])
 
 	const handleSelectChange1 = (e) => {
@@ -50,6 +50,23 @@ const Workboard = ({userData}) => {
 
 		setData(filteredData)
 
+	}
+
+	const fetchIssues = async () => {
+		const response = await fetch('http://localhost:3000/issues', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				// Add other headers if required
+			},
+			body: JSON.stringify({ department: userData.department })
+		})
+
+		const responseData = await response.json()
+
+		if (responseData.transformedData) {
+			setData(responseData.transformedData)
+		}
 	}
 	
   return (
@@ -123,9 +140,9 @@ const Workboard = ({userData}) => {
 								{s.status}</p>
 						</div>
 						<div>Title: {s.title}</div>
-						<div className='h-[20px] overflow-hidden'>{s.desc}</div>
+						<div className='h-[20px] overflow-hidden'>{s.description}</div>
 						<div className='flex justify-between items-center'>
-							<div>{s.date}</div>
+							<div>{s.date?.substring(0, 10) + ' ' + s.date?.substring(11, 16)}</div>
 							<div className='flex justify-end items-center gap-2'>
 								<div className='cursor-pointer px-[10px] py-[5px] bg-[#04314C] rounded text-white'
 									onClick={() => {
@@ -133,12 +150,12 @@ const Workboard = ({userData}) => {
 										setSelectedId(i)
 									}}
 								>Details</div>
-								<div className='cursor-pointer'>Delegated to {s.name}</div>
+								<div className='cursor-pointer'>Delegated to {s.deligated_to}</div>
 							</div>
 						</div>
 						{/*  */}
 						
-						<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[160px] right-[50px] left-[350px] bottom-[50px] px-[20px] py-[20px] bg-white`}>
+						<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[20px] right-[50px] left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
 								<div className='flex justify-end items-center'>
 									<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-black'
 										onClick={() => {
@@ -159,21 +176,25 @@ const Workboard = ({userData}) => {
 										</tr>
 										<tr>
 											<td>Registration:</td>
-											<td>{s.regNo}</td>
+											<td>{s.registrationId}</td>
 										</tr>
 										<tr>
 											<td>Class:</td>
-											<td>{s.class_}</td>
+											<td>{s.class}</td>
 										</tr>
+									<tr>
+										<td>Contact:</td>
+										<td>{s.contacts}</td>
+									</tr>
 									</table>
 								</div>
 								<div className='px-[30px] mt-[20px] text-[15px]'>
-									<h2>TITLE: {s.title.toLocaleUpperCase()}</h2>
+									<h2>Title: {s.title}</h2>
 								</div>
 								<div className='mt-[20px] px-[30px]'>
 									<div className=''>Description</div>
 									<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px] overflow-auto'>
-										{s.desc}
+										{s.description}
 									</div>
 								</div>
 						</div>

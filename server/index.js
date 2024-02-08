@@ -1,10 +1,18 @@
 const express = require('express')
+const path = require('path')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
 const routes = require('./routes/routes')
 
 const app = express()
+
+// Define the uploads directory
+const uploadDir = path.join(__dirname, 'uploads');
+
+// Middleware to serve static files from the uploads directory
+app.use('/uploads', express.static(uploadDir));
+
 const port = 3000
 const url = 'mongodb://localhost:27017/myDatabase';
 

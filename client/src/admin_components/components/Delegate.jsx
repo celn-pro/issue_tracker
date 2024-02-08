@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { DATA } from '../../constants'
-
-const Delegate = ({userData}) => {
+const Delegate = (props) => {
 	const [selectedId, setSelectedId] = useState(null)
 	const [openDetails, setOpenDetails] = useState(false)
 	const [openDelegate, setOpenDelegate] = useState(false)
@@ -10,10 +8,13 @@ const Delegate = ({userData}) => {
 	const [selectedScope, setSelectedScope] = useState('all')
 	const [selectedClass, setSelectedClass] = useState('all')
 	const [selectedStatus, setSelectedStatus] = useState('all')
+	const [selectedStaff, setSelectedStaff] = useState()
 	const [data, setData] = useState([])
+
+	const userData = props.userData
 	
 	useEffect(()=>{
-		setData(DATA)
+		fetchIssues()
 	}, [])
 
 	const handleSelectChange1 = (e)=>{
@@ -30,6 +31,27 @@ const Delegate = ({userData}) => {
 
 	const handleSelectChange4 = (e) =>{
 		setSelectedStatus(e.target.value)
+	}
+
+	const handleStaffOnChange = (e)=>{
+		setSelectedStaff(e.target.value)
+	}
+
+	const fetchIssues = async()=>{
+		const response = await fetch('http://localhost:3000/issues', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				// Add other headers if required
+			},
+			body: JSON.stringify({ department: userData.department })
+		})
+
+		const responseData = await response.json()
+
+		if (responseData.transformedData) {
+			setData(responseData.transformedData)
+		}
 	}
 
 	const handleSubmit = (e) => {
@@ -115,9 +137,9 @@ const Delegate = ({userData}) => {
 									{s.status}</p>
 							</div>
 							<div className='text-[14px]'>Title: {s.title}</div>
-							<div className='h-[20px] overflow-hidden'>{s.desc}</div>
+							<div className='h-[20px] overflow-hidden'>{s.description}</div>
 							<div className='flex justify-between items-center'>
-								<div>{s.date}</div>
+								<div>{s.date?.substring(0, 10) + ' ' + s.date?.substring(11, 16)}</div>
 								<div className='flex justify-end items-center gap-2'>
 									<div className='cursor-pointer text-white bg-[#04314C] font-bold rounded px-[10px] py-[5px]' onClick={()=>{
 										setOpenDetails(!openDetails)
@@ -154,11 +176,11 @@ const Delegate = ({userData}) => {
 											</tr>
 											<tr>
 												<td>Registration:</td>
-												<td>{s.regNo}</td>
+												<td>{s.registrationId}</td>
 											</tr>
 											<tr>
 												<td>Class:</td>
-												<td>{s.clas}</td>
+												<td>{s.class}</td>
 											</tr>
 										</table>
 									</div>
@@ -168,7 +190,7 @@ const Delegate = ({userData}) => {
 									<div className='mt-[20px] px-[30px]'>
 										<div>Description</div>
 										<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px] overflow-auto'>
-											{s.desc}
+											{s.description}
 										</div>
 									</div>
 								</div>
@@ -179,12 +201,27 @@ const Delegate = ({userData}) => {
 							<div className={`${selectedId == i&&openDelegate? 'block':'hidden'} absolute z-10 rounded border-[1px] right-[100px] px-[20px] py-[20px] bg-white h-[200px]`}>
 								<div className='h-full border-[1px] rounded px-[10px] py-[10px] font-bold'>
 									<span>Delegate this task to:</span>
-									<select className='outline-none'>
-										<option value="">Gift Msigwa</option>
-										<option value="">Idrissa Muhammad</option>
-										<option value="">Ramadhan Salehe</option>
+									<select className='outline-none' onChange={handleStaffOnChange}>
+										<option value="">select</option>
+										<option value="Gift Msigwa">Gift Msigwa</option>
+										<option value="Idrissa Muhammad">Idrissa Muhammad</option>
+										<option value="Ramadhan Salehe">Ramadhan Salehe</option>
 									</select>
-									<button className='rounded bg-[#04314C] px-[10px] py-[5px] block text-white font-bold' onClick={()=> setSelectedId(null)}>Done</button>
+									<button className='rounded bg-[#04314C] px-[10px] py-[5px] block text-white font-bold' onClick={async() => {
+											const response = await fetch('http://localhost:3000/delegate', {
+												method: 'POST',
+												headers: {
+													'Content-Type': 'application/json',
+													// Add other headers if required
+												},
+												body: JSON.stringify({deligated_to: selectedStaff, _id: s._id, department: s.department })
+											})
+
+											const responseData = await response.json()
+
+											setData(responseData.transformedData)
+											setSelectedId(null)
+										}}>Done</button>
 
 								</div>
 							</div>
