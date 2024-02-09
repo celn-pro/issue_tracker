@@ -10,6 +10,8 @@ const descModel = require('../models/descModel')
 const authKeyModel = require('../models/authKeyModel')
 const hodModel = require('../models/hodModel')
 const staffModel = require('../models/staffModel')
+const faqsModel = require('../models/faqsModel')
+const feedbackModel = require('../models/feedbackModel')
 
 //create uploads if it dont exists yet
 const uploadDir = path.join(__dirname, 'uploads')
@@ -408,6 +410,50 @@ router.post('/settings', async(req, res)=>{
 
 		res.status(200).json({changedDetails})
 		
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/submit_faqs', async(req, res)=>{
+	try{
+		const title = req.body.title
+		const description = req.body.description
+
+		const newFaqs = new faqsModel({
+			title: title,
+			description: description,
+		})
+
+		await newFaqs.save()
+
+		res.status(200).json({message: 'done'})
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/fetch_faqs', async(req, res)=>{
+	try{
+		const faqs = await faqsModel.find({})
+
+		res.status(200).json({faqs})
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/submit_feedback', async(req, res)=>{
+	try{
+		const feedback = req.body.feedback
+
+		const newFeedback = new feedbackModel({
+			feedback: feedback,
+		})
+
+		await newFeedback.save()
+
+		res.status(200).json({message: 'done'})
 	}catch(e){
 		console.log(e)
 	}

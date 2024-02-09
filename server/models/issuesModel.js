@@ -7,7 +7,7 @@ const issuesSchema = new mongoose.Schema({
 		required: true,
 	},
 	registrationId: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	class: String,

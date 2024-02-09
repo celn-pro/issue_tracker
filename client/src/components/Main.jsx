@@ -1,4 +1,7 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import { useAtom } from 'jotai'
+
+import { userDataAtom } from './LoginHod'
 import {useSelectedNav} from '../hooks/useSelectedNav'
 import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
@@ -8,6 +11,13 @@ const Main = () => {
     const [showParagraph, setShowParagraph] =useState(false)
     const [selectedNav, toggleSelectedNav] = useSelectedNav();
     const togglePrevSelectedNav = usePrevSelectedNav()[1]
+	const [userData] = useAtom(userDataAtom)
+
+	useEffect(()=>{
+		if(userData!==null){
+			toggleSelectedNav('Logged')
+		}
+	},[])
 
   return (
 	<div className='h-[100vh] ml-[300px]'>

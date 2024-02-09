@@ -122,7 +122,7 @@ const Aunthenticate = (props) => {
 								<div className={`${showCopied && copiedId ==i?'block':'hidden'} absolute w-[100px] h-[30px] pt-[10px] bg-black text-white text-center ml-[10px] rounded text-[12px]`}>copied</div>
 							</tr>
 						})}
-					</table>): (<div>No keys yet, you can generate one!</div>)}
+					</table>): (<div className=' flex justify-center items-center'>No keys yet, you can generate one!</div>)}
 					</div>
 				</div>
 			</div>

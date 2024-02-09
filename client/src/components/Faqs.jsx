@@ -1,10 +1,28 @@
-import React, {useState} from 'react'
-
-import {faq} from '../constants'
+import React, {useEffect, useState} from 'react'
 
 const Faqs = () => {
   const [searching, setSearching] = useState(false)
-  const faqs = [...faq]
+  const [faqs, setFaqs] = useState([])
+
+  useEffect(()=>{
+	fetchFaqs()
+  },[])
+
+  const fetchFaqs = async()=>{
+	  const response = await fetch('http://localhost:3000/fetch_faqs', {
+		  method: 'POST',
+		  headers: {
+			  'Content-Type': 'application/json',
+			  // Add other headers if required
+		  },
+	  })
+
+	  const responseData = await response.json()
+
+	  if(responseData.faqs){
+		setFaqs(responseData.faqs)
+	  }
+  }
 
   return (
 	  <div className='ml-[300px] h-[100vh]'>
@@ -58,7 +76,7 @@ const FaqCard = ({faq})=>{
                       > Read</span>
             </h3>
             <p className={`${showFaq?'block':'hidden'} font-verdan rounded border-[1px] py-[10px] px-[10px]`}>
-              {faq.answer} 
+              {faq.description} 
               <span className={`${showFaq?'inline-block':'hidden'} hover:text-gray-400 cursor-pointer text-gray-300 pl-[20px]`}
                       onClick={()=> setShowFaq(!showFaq)}
                       > hide</span>

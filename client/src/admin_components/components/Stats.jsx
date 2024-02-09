@@ -198,7 +198,7 @@ const Stats = (props) => {
   return (
 	  <div className="dashboard h-[100vh] ml-[300px]">
 		  <h1 className='font-bold'>Quick Stats:</h1>
-			<h1 className='text-[28px] font-semibold'>{userData.department} DEPARTMENT</h1>
+			<h1 className='text-[28px] font-semibold'>{userData?.department} DEPARTMENT</h1>
 		  <div className="metrics">
 			  <div>
 				  <span className='font-sans'>Percentage change over</span>
