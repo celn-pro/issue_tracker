@@ -83,7 +83,7 @@ const Submit = () => {
 					setWarning(true)
 				}
 			} else {
-				setMessage('⚠Some important fields required!')
+				setMessage('Some important fields required!')
 				setWarning(true)
 			}
 		}catch(e){
@@ -98,7 +98,16 @@ const Submit = () => {
 		<form action="" onSubmit={handleSubmit}>
 
 		<div className='px-[20px] rounded border-[1px] shadow-xl w-[700px] h-[400px]'>
-			<div className={` ${warning?'block':'hidden'} absolute rounded-xl opacity-50 w-[400px] h-[100px] bg-black text-white font-bold top-[200px] left-[400px] flex justify-center items-center z-10`}>{message}</div>
+			<div className={` ${warning?'block':'hidden'} absolute rounded-xl w-[400px] h-[100px] bg-black text-gray-200 text-[12px] top-[200px] left-[400px] flex justify-center items-center z-10`}>
+				<div>
+					<div className='flex justify-center items-center'>
+						<div className='text-white w-[30px] h-[30px] rounded-[50%] border-[2px] border-white flex justify-center items-center'>
+							⚠
+						</div>
+					</div>
+					<div>{message}</div>
+				</div>
+			</div>
 		<div className='flex justify-center items-center '>
 			<div className='mt-[20px]'>
 				<div className='flex justify-center items-center'>
