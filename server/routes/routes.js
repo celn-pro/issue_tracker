@@ -316,7 +316,11 @@ router.post('/issues', async(req, res)=>{
 
 		const department = req.body.department
 
-		const fetchedIssues = await issuesModel.find({department: department}).populate({path:'description', select: '-_id description'}).lean().exec()
+		const fetchedIssues = await issuesModel.find({department: department})
+		.populate({path:'description', select: 'description'})
+		.populate({path: 'deligated_to', select: 'name'}).lean().exec()
+
+		const staffs = await staffModel.find({})
 		const transformedData = fetchedIssues.map(s=>({
 			_id: s._id,
 			name: s.name,
@@ -328,11 +332,11 @@ router.post('/issues', async(req, res)=>{
 			contacts: s.contacts,
 			description: s.description.description,
 			status: s.status,
-			deligated_to: s.deligated_to,
+			deligated_to: s.deligated_to.name,
 			date: s.date,
 		}))
 
-		res.status(200).json({transformedData});
+		res.status(200).json({transformedData, staffs});
 			
 	}catch(e){
 		res.status(200).json({message: 'Error while fetching data!', e});
@@ -386,11 +390,40 @@ router.post('/profileImg', upload.single('profileImage'), async(req, res)=>{
 	}
 })
 
+router.post('/staff_profileImg', upload.single('profileImage'), async(req, res)=>{
+	try{
+		const profile = req.file.path
+		const id = req.body.id
+
+		await staffModel.updateOne({_id: id}, {$set: {profileImg: profile}})
+
+		const user = await staffModel.findOne({_id: id})
+
+		res.status(200).json({user})
+	}catch(e){
+		console.log(e)
+	}
+})
+
+
 router.post('/update_hod', async(req, res)=>{
 	try{
 		const id = req.body.id
 
 		const userData = await hodModel.findOne({_id: id})
+
+		res.status(200).json({userData})
+		
+	}catch(e){
+		console.log(e)
+	}
+})
+
+router.post('/update_staff', async(req, res)=>{
+	try{
+		const id = req.body.id
+
+		const userData = await staffModel.findOne({_id: id})
 
 		res.status(200).json({userData})
 		

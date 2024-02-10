@@ -65,7 +65,6 @@ const Workboard = (props) => {
 		const responseData = await response.json()
 
 		if (responseData.transformedData) {
-			console.log(responseData)
 			setData(responseData.transformedData)
 		}
 	}

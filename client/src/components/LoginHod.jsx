@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { useAtom } from 'jotai';
+import {useAtom} from 'jotai'
 import {atomWithStorage} from 'jotai/utils'
 
-import { inputSignup } from '../constants'
+import {useNavigate} from 'react-router-dom'
 
-// import AdminDashboard from '../admin_components/HodAccount'
-import { useSelectedNav } from '../hooks/useSelectedNav';
+import {inputSignup} from '../constants'
 
 //set user data
-export const userDataAtom = atomWithStorage('userData',{})
+export const hodDataAtom = atomWithStorage('hodData',{})
 
 export const LoginHod = () => {
-	const toggleSelectedNav = useSelectedNav()[1]
-	const [userData, setUserData] = useAtom(userDataAtom)
+	const setHodData = useAtom(hodDataAtom)[1]
 	const [loged, setLoged] = useState(false)
 	const [warning, setWarning] = useState()
 	const [greenMsg, setGreenMsg] = useState(true)
 	const [data, setData] = useState([])
 	const [message, setMessage] = useState('Invalid field')
-	// const [userData, setUserData] = useState({})
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -45,8 +44,8 @@ export const LoginHod = () => {
 				setWarning(true)
 			} else if (responseData.userData) {
 				setLoged(!loged)
-				setUserData(responseData.userData)
-				toggleSelectedNav('Logged')
+				setHodData(responseData.userData)
+				navigate('/hod_dashboard')
 			} else {
 				throw new Error('There is a problem logging in!')
 			}

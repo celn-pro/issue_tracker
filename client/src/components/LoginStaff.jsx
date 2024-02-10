@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import { useAtom } from 'jotai'
+import { atomWithStorage } from 'jotai/utils'
+
+import { useNavigate } from 'react-router-dom'
+
 import { inputSignup } from '../constants'
 
-import AdminDashboard from '../admin_components/HodAccount'
+//set user data
+export const staffDataAtom = atomWithStorage('staffData', {})
 
 export const LoginStaff = () => {
+	const setStaffData = useAtom(staffDataAtom)[1]
 	const [loged, setLoged] = useState(false)
 	const [warning, setWarning] = useState()
 	const [greenMsg, setGreenMsg] = useState(true)
 	const [data, setData] = useState([])
 	const [message, setMessage] = useState('Invalid field')
-	const [userData, setUserData] = useState({})
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -34,9 +42,12 @@ export const LoginStaff = () => {
 			if (responseData.message) {
 				setMessage(responseData.message)
 				setWarning(true)
+				return
 			} else if (responseData.userData) {
-				setUserData(responseData.userData)
-				setLoged(true)
+				setLoged(!loged)
+				setStaffData(responseData.userData)
+				navigate('/staff_dashboard')
+				return
 			} else {
 				throw new Error('There is a problem logging in!')
 			}
@@ -47,7 +58,7 @@ export const LoginStaff = () => {
 		}
 	}
 
-	return loged ? <AdminDashboard userData={userData} /> : (
+	return (
 		<div className='ml-[300px] h-[100vh]'>
 			<div className='absolute top-[130px] right-[50px] left-[300px] bottom-[50px] border-[1px] border-black rounded flex justify-center items-center'>
 				<div className='px-[20px] py-[20px] w-[400px] h-[250px] rounded border-[1px] shadow-xl text-[12px]'>
@@ -58,7 +69,7 @@ export const LoginStaff = () => {
 
 					<div className='flex justify-center items-center'>
 						<div className='max-[600px]:w-full w-[500px]'>
-							<form action="" onSubmit={handleLogin}>
+							<form onSubmit={handleLogin}>
 								{inputSignup.map((s, i) => {
 									return (s.placeholder == 'Password' || s.placeholder == 'Email') ? <>
 										<input type={s.placeholder == 'Email' ? 'email' : 'text'} placeholder={s.placeholder}
@@ -78,7 +89,6 @@ export const LoginStaff = () => {
 								<div className={`${warning ? 'text-red-600' : 'text-white'} font-bold px-[10px] py-[5px] mb-[10px]`}>⚠{message}</div>
 								<div className='flex justify-end items-center'>
 									<button type='submit' className=' text-white w-full font-medium rounded w-full font-medium px-[5px] py-[5px] bg-black'
-									// onClick={handleLogin}
 									>Login</button>
 								</div>
 							</form>

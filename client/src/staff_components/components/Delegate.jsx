@@ -9,9 +9,6 @@ const Delegate = (props) => {
 	const [selectedClass, setSelectedClass] = useState('all')
 	const [selectedStatus, setSelectedStatus] = useState('all')
 	const [selectedStaff, setSelectedStaff] = useState()
-	const [selectedStaffIndex, setSelectedStaffIndex] = useState(null)
-
-	const [staffs, setStaffs] = useState([])
 	const [data, setData] = useState([])
 
 	const userData = props.userData
@@ -51,8 +48,8 @@ const Delegate = (props) => {
 		})
 
 		const responseData = await response.json()
+
 		if (responseData.transformedData) {
-			setStaffs(responseData.staffs)
 			setData(responseData.transformedData)
 		}
 	}
@@ -207,23 +204,16 @@ const Delegate = (props) => {
 												</div>
 											</div>
 
-											{/*deligate */}
-											<div className={`${selectedId == i && openDelegate ? 'block' : 'hidden'} absolute z-10 rounded border-[1px] right-[100px] px-[20px] py-[20px] bg-white h-[300px] w-[350px]`}>
+											{/*  */}
+											<div className={`${selectedId == i && openDelegate ? 'block' : 'hidden'} absolute z-10 rounded border-[1px] right-[100px] px-[20px] py-[20px] bg-white h-[200px]`}>
 												<div className='h-full border-[1px] rounded px-[10px] py-[10px] font-bold'>
 													<span>Delegate this task to:</span>
-												
-													<div className='h-[180px] mb-[5px] mt-[10px] overflow-auto rounded bg-gray-100 px-[10px] py-[10px] '>
-														{staffs.map((s,i)=>{
-															return <div className='flex justify-start items-center gap-3 mb-[5px]'>
-																<div className='w-[30px] h-[30px] rounded-[50%] overflow-hidden flex justify-center items-center bg-white'><img src={'http://localhost:3000/'+s.profileImg?.replace(/\\/g, '/')} alt="" /></div> 
-																<div className={`${selectedStaffIndex==i?'bg-yellow-300':''} cursor-pointer  px-[10px] rounded`} onClick={(e)=> {
-																	setSelectedStaffIndex(i)
-																	setSelectedStaff(s._id)
-																	
-																}}>{s.name}</div>
-															</div>
-														})}
-													</div>
+													<select className='outline-none' onChange={handleStaffOnChange}>
+														<option value="">select</option>
+														<option value="Gift Msigwa">Gift Msigwa</option>
+														<option value="Idrissa Muhammad">Idrissa Muhammad</option>
+														<option value="Ramadhan Salehe">Ramadhan Salehe</option>
+													</select>
 													<button className='rounded bg-[#04314C] px-[10px] py-[5px] block text-white font-bold' onClick={async () => {
 														const response = await fetch('http://localhost:3000/delegate', {
 															method: 'POST',
@@ -238,7 +228,6 @@ const Delegate = (props) => {
 
 														setData(responseData.transformedData)
 														setSelectedId(null)
-														setSelectedStaffIndex(null)
 													}}>Done</button>
 
 												</div>

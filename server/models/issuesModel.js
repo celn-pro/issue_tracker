@@ -30,6 +30,7 @@ const issuesSchema = new mongoose.Schema({
 	}, 
 	deligated_to: {
 		type: String,
+		ref: 'staffs',
 		default: 'none',
 	},
 	

@@ -21,7 +21,7 @@ const SignupStaff = () => {
 				setWarning(null)
 				if (signed) {
 					togglePrevSelectedNav(selectedNav)
-					toggleSelectedNav('LoginHod')
+					toggleSelectedNav('LoginStaff')
 				}
 			}, 4000)
 		}
@@ -33,7 +33,7 @@ const SignupStaff = () => {
 			// console.log(data)
 			if (data[1] === data[2]) {
 				if (data[0] && data[1] && data[3] && data[4] && data[5]) {
-					const response = await fetch('http://localhost:3000/signup_hod', {
+					const response = await fetch('http://localhost:3000/signup_staff', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
@@ -49,9 +49,9 @@ const SignupStaff = () => {
 					console.log(responseData.message)
 
 					if (responseData.message === 'signed') {
+						setSigned(true)
 						setMessage('You successfull signedup, we redirecting you to login!')
 						setWarning(true)
-						setSigned(true)
 					} else {
 						setMessage(responseData.message)
 						setWarning(true)

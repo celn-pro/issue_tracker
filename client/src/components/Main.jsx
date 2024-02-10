@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAtom } from 'jotai'
 
-import { userDataAtom } from './LoginHod'
+import { hodDataAtom } from './LoginHod'
+import { staffDataAtom } from './LoginStaff'
 import {useSelectedNav} from '../hooks/useSelectedNav'
 import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
 
@@ -9,13 +11,20 @@ import {sectionInfo} from '../constants'
 
 const Main = () => {
     const [showParagraph, setShowParagraph] =useState(false)
-    const [selectedNav, toggleSelectedNav] = useSelectedNav();
+    const [selectedNav, toggleSelectedNav] = useSelectedNav()
     const togglePrevSelectedNav = usePrevSelectedNav()[1]
-	const [userData] = useAtom(userDataAtom)
+	const [hodData] = useAtom(hodDataAtom)
+	const [staffData] = useAtom(staffDataAtom)
+
+	const navigate = useNavigate()
 
 	useEffect(()=>{
-		if(userData!==null){
-			toggleSelectedNav('Logged')
+		if(hodData && Object.keys(hodData).length > 0){
+			navigate('hod_dashboard')
+			return
+		}else if(staffData && Object.keys(staffData).length > 0){
+			// navigate('staff_dashboard')
+			return
 		}
 	},[])
 

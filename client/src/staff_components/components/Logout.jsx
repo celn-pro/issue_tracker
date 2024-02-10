@@ -2,7 +2,7 @@ import React from 'react'
 import { useAtom } from 'jotai'
 import { useNavigate } from 'react-router-dom'
 
-import { hodDataAtom } from '../../components/LoginHod'
+import { staffDataAtom } from '../../components/LoginStaff'
 
 import {useSelectedAdminSideBar} from '../../hooks/useSelectedAdminSideBar'
 import { useSelectedNav } from '../../hooks/useSelectedNav'
@@ -11,7 +11,7 @@ import { useSelectedNav } from '../../hooks/useSelectedNav'
 const Logout = (props) => {
 
 	const toggleSelectedAdminSideBar = useSelectedAdminSideBar()[1]
-	const setUserData = useAtom(hodDataAtom)[1]
+	const setUserData = useAtom(staffDataAtom)[1]
 	const toggleSelectedNav = useSelectedNav()[1]
 
 	const navigate = useNavigate()
