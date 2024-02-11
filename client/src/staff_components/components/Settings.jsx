@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Check} from 'lucide-react'
 
-import {PERSON} from '../../constants'
-
 const Settings = (props) => {
 	const [showSaved, setShowSaved] = useState(false)
 	const [change, setChange] = useState(false)
@@ -22,7 +20,7 @@ const Settings = (props) => {
 
 	const updateUser = async () => {
 
-		const response = await fetch('http://localhost:3000/update_hod', {
+		const response = await fetch('http://localhost:3000/update_staff', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -56,7 +54,7 @@ const Settings = (props) => {
 				'Content-Type': 'application/json',
 				// Add other headers if required
 			},
-			body: JSON.stringify({id: data[3], name: data[0], email: data[1], password: data[2]})
+			body: JSON.stringify({id: data[3], name: data[0], email: data[1], password: data[2], who: 'staff'})
 		})
 
 		const responseData = await response.json()
@@ -110,7 +108,7 @@ const Settings = (props) => {
 						  </div>
 						  <div>
 							  <div>Email: {userData.email}</div>
-							  <div>New name:
+							  <div>New email:
 								  <input type="email" placeholder={userData.email} className='w-[400px] ml-[20px] enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
 										setData((prevData) => {
 										const newData = [...prevData]

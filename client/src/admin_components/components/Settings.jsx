@@ -56,7 +56,7 @@ const Settings = (props) => {
 				'Content-Type': 'application/json',
 				// Add other headers if required
 			},
-			body: JSON.stringify({id: data[3], name: data[0], email: data[1], password: data[2]})
+			body: JSON.stringify({id: data[3], name: data[0], email: data[1], password: data[2], who:'hod'})
 		})
 
 		const responseData = await response.json()

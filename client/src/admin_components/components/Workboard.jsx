@@ -11,6 +11,8 @@ const Workboard = (props) => {
 	const [selectedClass, setSelectedClass] = useState('all')
 	const [selectedStatus, setSelectedStatus] = useState('all')
 	const [data, setData] = useState([])
+	const [filteredData, setFilteredData] = useState([])
+	const [dataLength, setDataLength] = useState(Number)
 
 	const userData = props.userData
 
@@ -18,27 +20,28 @@ const Workboard = (props) => {
 		fetchIssues()
 	}, [])
 
-	const handleSelectChange1 = (e) => {
+	const handleSelectedFrame = (e) => {
 		setSelectedFrame(e.target.value)
 	}
 
-	const handleSelectChange2 = (e) => {
+	const handleSelectedCategory = (e) => {
 		setSelectedScope(e.target.value)
 	}
 
-	const handleSelectChange3 = (e) => {
+	const handleSelectedScope = (e) => {
 		setSelectedClass(e.target.value)
 	}
 
-	const handleSelectChange4 = (e) => {
+	const handleSelectedStatus = (e) => {
 		setSelectedStatus(e.target.value)
+
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		let copyData = [...DATA]
-
+		let copyData = [...data]
+		
 		let filteredData = copyData.filter((d) => {
 			return (
 				(selectedFrame === 'all' || d.frame === selectedFrame) &&
@@ -47,8 +50,8 @@ const Workboard = (props) => {
 				(selectedStatus === 'all' || d.status === selectedStatus)
 			);
 		});
-
-		setData(filteredData)
+		setFilteredData(filteredData)
+		
 
 	}
 
@@ -65,14 +68,15 @@ const Workboard = (props) => {
 		const responseData = await response.json()
 
 		if (responseData.transformedData) {
-			console.log(responseData)
 			setData(responseData.transformedData)
+			setDataLength(data.length)
+			setFilteredData(responseData.transformedData)
 		}
 	}
 	
   return (
 	<div>
-		{data.length<1? (
+		{dataLength.length<1? (
 			<div  className=' text-black text-[12px] ml-[300px] px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
 				<div>No data yet</div>
 			</div>
@@ -87,8 +91,8 @@ const Workboard = (props) => {
 									  <tr className='font-bold'>
 										  <td>
 											  <span className='mr-[10px]'>Status:</span>
-											  <select onChange={handleSelectChange4} className='rounded outline-none px-[5px] py-[5px] text-black'>
-												  <option value="all">All</option>
+											  <select onChange={handleSelectedStatus} className='rounded outline-none px-[5px] py-[5px] text-black'>
+												  <option value="all" selected>All</option>
 												  <option value="open">Open</option>
 												  <option value="closed">Closed</option>
 												  <option value="never attended">Never attended</option>
@@ -96,7 +100,7 @@ const Workboard = (props) => {
 										  </td>
 										  <td>
 											  <span className='mr-[10px]'>Timeframe:</span>
-											  <select value={selectedFrame} onChange={handleSelectChange1} id="" className='outline-none px-[5px] py-[5px] rounded text-black'>
+											  <select value={selectedFrame} onChange={handleSelectedFrame} id="" className='outline-none px-[5px] py-[5px] rounded text-black'>
 												  <option value="all">All</option>
 												  <option value="1w">1W</option>
 												  <option value="1m">1M</option>
@@ -106,7 +110,7 @@ const Workboard = (props) => {
 
 										  <td>
 											  <span className='mr-[10px]'>Catergory:</span>
-											  <select value={selectedScope} onChange={handleSelectChange2} className='outline-none px-[5px] py-[5px] rounded text-black'>
+											  <select value={selectedScope} onChange={handleSelectedCategory} className='outline-none px-[5px] py-[5px] rounded text-black'>
 												  <option value="all">All</option>
 												  <option value="fees">Fees</option>
 												  <option value="accademic">Accademic</option>
@@ -116,7 +120,7 @@ const Workboard = (props) => {
 
 										  <td>
 											  <span className='mr-[10px]'>Scope:</span>
-											  <select value={selectedClass} onChange={handleSelectChange3} className='outline-none px-[5px] py-[5px] rounded text-black'>
+											  <select value={selectedClass} onChange={handleSelectedScope} className='outline-none px-[5px] py-[5px] rounded text-black'>
 												  <option value="all">All</option>
 												  <option value="od">OD</option>
 												  <option value="beng">BENG</option>
@@ -140,7 +144,7 @@ const Workboard = (props) => {
 							  <div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
 								  <div className={`${showChart ? 'hidden' : 'block'}`}>
-									  {data?.map((s, i) => {
+									  {filteredData?.map((s, i) => {
 										  return <div className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
 											  <div className='flex justify-between items-center'>
 												  <p>{s.name}</p>

@@ -13,6 +13,8 @@ const Delegate = (props) => {
 
 	const [staffs, setStaffs] = useState([])
 	const [data, setData] = useState([])
+	const [filteredData, setFilteredData] = useState([])
+	const [dataLength, setDataLength] = useState(Number)
 
 	const userData = props.userData
 	
@@ -54,13 +56,16 @@ const Delegate = (props) => {
 		if (responseData.transformedData) {
 			setStaffs(responseData.staffs)
 			setData(responseData.transformedData)
+			setDataLength(data.length)
+			setFilteredData(responseData.transformedData)
+
 		}
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		
-		let copyData = [...DATA]
+		let copyData = [...data]
 
 		let filteredData = copyData.filter((d) => {
 			return (
@@ -71,11 +76,11 @@ const Delegate = (props) => {
 			);
 		});
 
-		setData(filteredData)
+		setFilteredData(filteredData)
 	}
 	return (
 		<div>
-			{data.length<1? (
+			{dataLength.length<1? (
 				<div className=' text-black text-[12px] ml-[300px] px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
 					<div>No data yet</div>
 				</div>
@@ -91,7 +96,7 @@ const Delegate = (props) => {
 											<td>
 												<span className='mr-[10px]'>Status:</span>
 												<select onChange={handleSelectChange4} className='rounded outline-none px-[5px] py-[5px] text-black'>
-													<option value="all">All</option>
+													<option value="all" selected>All</option>
 													<option value="open">Open</option>
 													<option value="closed">Closed</option>
 													<option value="never attended">Never attended</option>
@@ -139,7 +144,7 @@ const Delegate = (props) => {
 							<div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
 								<div>
-									{data?.map((s, i) => {
+									{filteredData?.map((s, i) => {
 										return <div key={i} className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
 											<div className='flex justify-between items-center'>
 												<p>{s.name}</p>

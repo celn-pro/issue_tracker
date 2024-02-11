@@ -3,7 +3,7 @@ import { useAtom } from 'jotai'
 
 import { staffDataAtom } from '../components/LoginStaff'
 
-import {Stats, Profile, Aunthenticate, Delegate, Logout, Settings, Dark, Workboard} from './components/index'
+import {Profile,Logout, Settings, Dark, Workboard} from './components/index'
 
 
 import {useSelectedAdminSideBar} from '../hooks/useSelectedAdminSideBar'

@@ -315,28 +315,52 @@ router.post('/issues', async(req, res)=>{
 	try{
 
 		const department = req.body.department
+		const deligated_to = req.body.deligated_to
 
 		const fetchedIssues = await issuesModel.find({department: department})
 		.populate({path:'description', select: 'description'})
 		.populate({path: 'deligated_to', select: 'name'}).lean().exec()
 
-		const staffs = await staffModel.find({})
-		const transformedData = fetchedIssues.map(s=>({
-			_id: s._id,
-			name: s.name,
-			registrationId: s.registrationId,
-			class: s.class,
-			course: s.course,
-			department: s.department,
-			title: s.title,
-			contacts: s.contacts,
-			description: s.description.description,
-			status: s.status,
-			deligated_to: s.deligated_to.name,
-			date: s.date,
-		}))
+		if(deligated_to){
+			const staffIssues = await issuesModel.find({deligated_to: deligated_to})
+					.populate({path:'description', select: 'description'})
+					.populate({path: 'deligated_to', select: 'name'}).lean().exec()
+		
+			const staffData = staffIssues.map(s=>({
+				_id: s._id,
+				name: s.name,
+				registrationId: s.registrationId,
+				class: s.class,
+				course: s.course,
+				department: s.department,
+				title: s.title,
+				contacts: s.contacts,
+				description: s.description.description,
+				status: s.status,
+				deligated_to: s.deligated_to.name,
+				date: s.date,
+			}))
+			
+			res.status(200).json({staffData})
+		}else{ 
+			const staffs = await staffModel.find({})
+			const transformedData = fetchedIssues.map(s=>({
+				_id: s._id,
+				name: s.name,
+				registrationId: s.registrationId,
+				class: s.class,
+				course: s.course,
+				department: s.department,
+				title: s.title,
+				contacts: s.contacts,
+				description: s.description.description,
+				status: s.status,
+				deligated_to: s.deligated_to.name,
+				date: s.date,
+			}))
 
-		res.status(200).json({transformedData, staffs});
+			res.status(200).json({transformedData, staffs});
+		}
 			
 	}catch(e){
 		res.status(200).json({message: 'Error while fetching data!', e});
@@ -438,10 +462,14 @@ router.post('/settings', async(req, res)=>{
 		const name = req.body.name
 		const email = req.body.email
 		const password = req.body.password
-
-		const changedDetails = await hodModel.updateOne({_id:id}, {$set:{name: name, email: email, password: password}})
-
-		res.status(200).json({changedDetails})
+		const who = req.body.who
+		if(who==='staff'){
+			const changedDetails = await staffModel.updateOne({_id:id}, {$set:{name: name, email: email, password: password}})
+			res.status(200).json({changedDetails})
+		}else if(who ==='hod'){
+			const changedDetails = await hodModel.updateOne({_id:id}, {$set:{name: name, email: email, password: password}})
+			res.status(200).json({changedDetails})
+		}
 		
 	}catch(e){
 		console.log(e)
