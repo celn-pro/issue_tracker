@@ -220,7 +220,9 @@ const Delegate = (props) => {
 													<div className='h-[180px] mb-[5px] mt-[10px] overflow-auto rounded bg-gray-100 px-[10px] py-[10px] '>
 														{staffs.map((s,i)=>{
 															return <div className='flex justify-start items-center gap-3 mb-[5px]'>
-																<div className='w-[30px] h-[30px] rounded-[50%] overflow-hidden flex justify-center items-center bg-white'><img src={'http://localhost:3000/'+s.profileImg?.replace(/\\/g, '/')} alt="" /></div> 
+																<div className='w-[30px] h-[30px] rounded-[50%] overflow-hidden flex justify-center items-center bg-white'>
+																	<img src={'http://localhost:3000/'+s.profileImg?.replace(/\\/g, '/')} className='w-[30px] h-[30px]' />
+																</div> 
 																<div className={`${selectedStaffIndex==i?'bg-yellow-300':''} cursor-pointer  px-[10px] rounded`} onClick={(e)=> {
 																	setSelectedStaffIndex(i)
 																	setSelectedStaff(s._id)

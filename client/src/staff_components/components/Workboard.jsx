@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { LineChart } from 'lucide-react'
 
 const Workboard = (props) => {
 	const [selectedId, setSelectedId] = useState(null)
 	const [openDetails, setOpenDetails] = useState(false)
-	const [showChart, setShowChart] = useState(false)
+	const [swich, setSwich] = useState(false)
 	const [selectedFrame, setSelectedFrame] = useState('all')
 	const [selectedScope, setSelectedScope] = useState('all')
 	const [selectedClass, setSelectedClass] = useState('all')
@@ -12,13 +11,21 @@ const Workboard = (props) => {
 	const [data, setData] = useState([])
 	const [filteredData, setFilteredData] = useState([])
 	const [dataLength, setDataLength] = useState(Number)
-	const [status, setStatus] = useState(String)
+	const [status, setStatus] = useState({_id: String, status: String})
 
 	const userData = props.userData
 
 	useEffect(() => {
-		fetchIssues()
-	}, [])
+		
+		if( swich){
+			updateStatus()
+			window.location.reload()
+		}
+		else{
+			fetchIssues()
+		}
+
+	}, [status])
 
 	const handleSelectedFrame = (e) => {
 		setSelectedFrame(e.target.value)
@@ -75,6 +82,20 @@ const Workboard = (props) => {
 
 	const handleRadioChange = async(e)=>{
 		setStatus(e.target.value)
+	}
+
+	const updateStatus = async()=> {
+		const response = await fetch('http://localhost:3000/update_status', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+
+			},
+			body: JSON.stringify({_id: status._id, status: status.status})
+		})
+
+		console.log('Hey i was triggered')
+
 	}
 
 	return (
@@ -141,7 +162,7 @@ const Workboard = (props) => {
 							<div className='absolute left-[350px] top-[160px] right-[50px] bottom-[50px] border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
 								<div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
-									<div className={`${showChart ? 'hidden' : 'block'}`}>
+									<div className={``}>
 										{filteredData?.map((s, i) => {
 											return <div className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
 												<div className='flex justify-between items-center'>
@@ -154,24 +175,38 @@ const Workboard = (props) => {
 												<div className='flex justify-between items-center'>
 													<div>{s.date?.substring(0, 10) + ' ' + s.date?.substring(11, 16)}</div>
 													<div className='flex justify-center items-center gap-5 '>
-														Mark as:
+														Marked as:
 														
 														<div className={`${s.status ==='open'?'block':'hidden'}`}>
-															<input type="radio" name="status" value='open' id="" />delivered
+															<input type="radio" checked={s.status ==='open'} name="" id="" />delivered
 														</div>
-														<div className={`${s.status === 'never attended' ? 'block' : 'hidden'}`} onChange={handleRadioChange}>
-															<input type="radio" name="status" value='open' id="" />delivered
+														<div className={`${s.status === 'never attended'||s.status=='closed' ? 'block' : 'hidden'}`}>
+															<input type="radio" name="" value='open' id="" onChange={(e) => {
+																setSwich(true)
+																setStatus((prevStatus) => {
+																	let updatedStatus = { ...prevStatus, _id: s._id, status: e.target.value }
+
+																	return updatedStatus
+																})
+															}} />delivered
 														</div>
-														<div className={`${s.status === 'open' ? 'block' : 'hidden'}`}>
-															<input type="radio" name="status" value='open' id="" />closed
+														<div className={`${s.status === 'closed' ? 'block' : 'hidden'}`}>
+															<input type="radio" checked={s.status==='closed'} name="" id="" />closed
 														</div>
-														<div className={`${s.status === 'never attended' ? 'block' : 'hidden'}`} onChange={handleRadioChange}>
-															<input type="radio" name="status" value='closed' id="" />closed
+														<div className={`${s.status === 'never attended'||s.status =='open'? 'block' : 'hidden'}`}>
+															<input type="radio" name="" value='closed' id="" onChange={(e) => {
+																setSwich(true)
+																setStatus((prevStatus) => {
+																	let updatedStatus = { ...prevStatus, _id: s._id, status: e.target.value }
+
+																	return updatedStatus
+																})
+															}} />closed
 														</div>
 														
 													</div>
 													<div className='flex justify-end items-center gap-2'>
-														<div className='cursor-pointer px-[10px] py-[5px] bg-[#04314C] rounded text-white'
+														<div className='cursor-pointer px-[10px] py-[5px] bg-black rounded text-white'
 															onClick={() => {
 																setOpenDetails(!openDetails)
 																setSelectedId(i)
@@ -184,12 +219,12 @@ const Workboard = (props) => {
 
 												<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[20px] right-[50px] left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
 													<div className='flex justify-end items-center'>
-														<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-black'
+														<div className='font-bold border-[1px] px-[5px] py-[5px] w-[20px] h-[20px] rounded text-white flex justify-center items-center cursor-pointer bg-black'
 															onClick={() => {
 																setSelectedId(null)
 																setOpenDetails(!openDetails)
 															}}
-														>X</div>
+														>x</div>
 													</div>
 													<div className='px-[30px]'>
 														<table className='w-[300px]'>

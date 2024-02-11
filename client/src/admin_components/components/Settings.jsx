@@ -83,7 +83,7 @@ const Settings = (props) => {
 					  <div>Email: {userData.email}</div>
 				  </div>
 				  <div>
-					  <div>Password: {userData.password}</div>
+					  <div>Password: *****</div>
 				  </div>
 				<button className='px-[10px] py-[5px] bg-[#04314C] rounded text-white text-[12px]' onClick={()=>setChange(!change)}>Change</button>
 			</div>

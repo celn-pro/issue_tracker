@@ -520,4 +520,15 @@ router.post('/submit_feedback', async(req, res)=>{
 	}
 })
 
+router.post('/update_status', async(req, res)=>{
+	try{
+		const _id = req.body._id
+		const status = req.body.status
+		
+		await issuesModel.updateOne({_id: _id}, {$set: {status: status}})
+	}catch(e){
+		console.log(e)
+	}
+})
+
 module.exports = router
