@@ -101,66 +101,66 @@ const Workboard = (props) => {
 	return (
 		<div>
 			{dataLength.length < 1 ? (
-				<div className=' text-black text-[12px] ml-[300px] px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
+				<div className=' text-black text-[12px] ml-[300px] max-[800px]:ml-0 px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
 					<div>No data yet</div>
 				</div>
 			) :
 				(
 					<div>
-						<div className=' ml-[300px] bg-black text-white text-[12px] px-[30px] py-[20px] rounded h-[90px]'>
+						<div className=' ml-[300px] max-[800px]:ml-0 bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
 							<span className='font-bold'>Filter by:</span>
-							<div className='w-full'>
+							{/* <div className='w-full'> */}
 								<form onSubmit={handleSubmit}>
-									<table className='w-[900px]'>
-										<tr className='font-bold'>
-											<td>
-												<span className='mr-[10px]'>Status:</span>
+									{/* <div className='w-[900px]'> */}
+										<div className='font-bold grid grid-cols-2 gap-3'>
+											<div>
+												<span className=''>Status:</span>
 												<select onChange={handleSelectedStatus} className='rounded outline-none px-[5px] py-[5px] text-black'>
 													<option value="all" selected>All</option>
 													<option value="open">Open</option>
 													<option value="closed">Closed</option>
 													<option value="never attended">Never attended</option>
 												</select>
-											</td>
-											<td>
-												<span className='mr-[10px]'>Timeframe:</span>
+											</div>
+											<div>
+												<span className=''>Timeframe:</span>
 												<select value={selectedFrame} onChange={handleSelectedFrame} id="" className='outline-none px-[5px] py-[5px] rounded text-black'>
 													<option value="all">All</option>
 													<option value="1w">1W</option>
 													<option value="1m">1M</option>
 													<option value="1y">1Y</option>
 												</select>
-											</td>
+											</div>
 
-											<td>
-												<span className='mr-[10px]'>Catergory:</span>
+											<div>
+												<span className=''>Catergory:</span>
 												<select value={selectedScope} onChange={handleSelectedCategory} className='outline-none px-[5px] py-[5px] rounded text-black'>
 													<option value="all">All</option>
 													<option value="fees">Fees</option>
 													<option value="accademic">Accademic</option>
 													<option value="others">Others</option>
 												</select>
-											</td>
+											</div>
 
-											<td>
+											<div>
 												<span className='mr-[10px]'>Scope:</span>
 												<select value={selectedClass} onChange={handleSelectedScope} className='outline-none px-[5px] py-[5px] rounded text-black'>
 													<option value="all">All</option>
 													<option value="od">OD</option>
 													<option value="beng">BENG</option>
 												</select>
-											</td>
-											<td>
-												<button type='submit' className='ml-[20px] w-[100px] inline-block rounded bg-white text-black font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
-											</td>
-										</tr>
-									</table>
+											</div>
+											<div>
+												<button type='submit' className=' w-[100px] inline-block rounded bg-white text-black font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
+											</div>
+										</div>
+									{/* </div> */}
 								</form>
-							</div>
+							{/* </div> */}
 						</div>
-						<div className='h-[100vh] ml-[300px]'>
-							<div className='absolute left-[350px] top-[160px] right-[50px] bottom-[50px] border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
-								<div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
+						<div className='h-[100vh] ml-[300px] max-[800px]:ml-0'>
+							<div className='absolute left-[350px] max-[800px]:left-[50px] top-[220px] right-[50px] bottom-[50px] max-[800px]:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
+								<div className='w-[950px] h-[450px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
 									<div className={``}>
 										{filteredData?.map((s, i) => {
@@ -172,39 +172,39 @@ const Workboard = (props) => {
 												</div>
 												<div>Title: {s.title}</div>
 												<div className='h-[20px] overflow-hidden'>{s.description}</div>
+												<div className='flex justify-start items-center gap-5 '>
+													Marked as:
+
+													<div className={`${s.status === 'open' ? 'block' : 'hidden'}`}>
+														<input type="radio" checked={s.status === 'open'} name="" id="" />delivered
+													</div>
+													<div className={`${s.status === 'never attended' || s.status == 'closed' ? 'block' : 'hidden'}`}>
+														<input type="radio" name="" value='open' id="" onChange={(e) => {
+															setSwich(true)
+															setStatus((prevStatus) => {
+																let updatedStatus = { ...prevStatus, _id: s._id, status: e.target.value }
+
+																return updatedStatus
+															})
+														}} />delivered
+													</div>
+													<div className={`${s.status === 'closed' ? 'block' : 'hidden'}`}>
+														<input type="radio" checked={s.status === 'closed'} name="" id="" />closed
+													</div>
+													<div className={`${s.status === 'never attended' || s.status == 'open' ? 'block' : 'hidden'}`}>
+														<input type="radio" name="" value='closed' id="" onChange={(e) => {
+															setSwich(true)
+															setStatus((prevStatus) => {
+																let updatedStatus = { ...prevStatus, _id: s._id, status: e.target.value }
+
+																return updatedStatus
+															})
+														}} />closed
+													</div>
+
+												</div>
 												<div className='flex justify-between items-center'>
 													<div>{s.date?.substring(0, 10) + ' ' + s.date?.substring(11, 16)}</div>
-													<div className='flex justify-center items-center gap-5 '>
-														Marked as:
-														
-														<div className={`${s.status ==='open'?'block':'hidden'}`}>
-															<input type="radio" checked={s.status ==='open'} name="" id="" />delivered
-														</div>
-														<div className={`${s.status === 'never attended'||s.status=='closed' ? 'block' : 'hidden'}`}>
-															<input type="radio" name="" value='open' id="" onChange={(e) => {
-																setSwich(true)
-																setStatus((prevStatus) => {
-																	let updatedStatus = { ...prevStatus, _id: s._id, status: e.target.value }
-
-																	return updatedStatus
-																})
-															}} />delivered
-														</div>
-														<div className={`${s.status === 'closed' ? 'block' : 'hidden'}`}>
-															<input type="radio" checked={s.status==='closed'} name="" id="" />closed
-														</div>
-														<div className={`${s.status === 'never attended'||s.status =='open'? 'block' : 'hidden'}`}>
-															<input type="radio" name="" value='closed' id="" onChange={(e) => {
-																setSwich(true)
-																setStatus((prevStatus) => {
-																	let updatedStatus = { ...prevStatus, _id: s._id, status: e.target.value }
-
-																	return updatedStatus
-																})
-															}} />closed
-														</div>
-														
-													</div>
 													<div className='flex justify-end items-center gap-2'>
 														<div className='cursor-pointer px-[10px] py-[5px] bg-black rounded text-white'
 															onClick={() => {
@@ -217,7 +217,7 @@ const Workboard = (props) => {
 												</div>
 												{/*  */}
 
-												<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[20px] right-[50px] left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
+												<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[30px] max-[800px]:right-0 right-[50px] max-[800px]:left-0 left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
 													<div className='flex justify-end items-center'>
 														<div className='font-bold border-[1px] px-[5px] py-[5px] w-[20px] h-[20px] rounded text-white flex justify-center items-center cursor-pointer bg-black'
 															onClick={() => {
@@ -255,7 +255,7 @@ const Workboard = (props) => {
 													</div>
 													<div className='mt-[20px] px-[30px]'>
 														<div className=''>Description</div>
-														<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px] overflow-auto'>
+														<div className='border-[1px] rounded md:h-[200px] h-[300px] px-[20px] py-[20px] overflow-auto'>
 															{s.description}
 														</div>
 													</div>

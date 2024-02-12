@@ -72,8 +72,8 @@ const Settings = (props) => {
 	}
 
   return (
-	  <div className='h-[100vh] ml-[300px]'>
-		  <div className=' bottom-[50px] rounded top-[50px] right-[50px] left-[350px] absolute border-[1px] px-[20px] py-[20px]'>
+	  <div className='h-[100vh] ml-[300px] max-[800px]:ml-0'>
+		  <div className=' bottom-[50px] rounded top-[50px] right-[50px] max-[800px]:left-[50px] left-[350px] absolute max-[800px]:border-none border-[1px] px-[20px] py-[20px]'>
 			<div className='border-[1px] px-[10px] py-[10px] font-bold'>
 				<div className='text-[28px]'>Security & Settings</div>
 				  <div>
@@ -88,7 +88,7 @@ const Settings = (props) => {
 				<button className='px-[10px] py-[5px] bg-[#04314C] rounded text-white text-[12px]' onClick={()=>setChange(!change)}>Change</button>
 			</div>
 
-			<div className={`${change?'block':'hidden'} rounded h-[500px] absolute z-10 bg-white bottom-[50px] right-[100px] left-[150px] px-[10px] py-[10px]`}>
+			<div className={`${change?'block':'hidden'} rounded h-[500px] absolute z-10 bg-white bottom-[50px] max-[800px]:top-0 max-[800px]:right-0 right-[100px] max-[800px]:left-0 left-[150px] px-[10px] py-[10px]`}>
 				<div className='rounded border-[1px] w-full h-full px-[20px] py-[20px]'>
 					<div className='flex justify-end items-center'>
 						<div className='bg-[#04314C] w-[20px] text-white rounded text-center cursor-pointer' onClick={()=>setChange(!change)}>x</div>
@@ -98,7 +98,7 @@ const Settings = (props) => {
 						  <div>
 							  <div>Name: {userData.name?.substring(0,1).toLocaleUpperCase()+userData.name?.substring(1,userData.name?.length)}</div>
 							  <div>New name:
-								  <input type="text" placeholder={userData.name?.substring(0,1).toLocaleUpperCase()+userData.name?.substring(1,userData.name?.length)} className='w-[400px] ml-[20px] enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
+								  <input type="text" placeholder={userData.name?.substring(0,1).toLocaleUpperCase()+userData.name?.substring(1,userData.name?.length)} className='md:w-[400px] ml-[20px] max-[800px]:ml-0 enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
 										setData((prevData) => {
 											const newData = [...prevData]
 											newData[0] = e.target.value
@@ -111,7 +111,7 @@ const Settings = (props) => {
 						  <div>
 							  <div>Email: {userData.email}</div>
 							  <div>New name:
-								  <input type="email" placeholder={userData.email} className='w-[400px] ml-[20px] enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
+								  <input type="email" placeholder={userData.email} className='md:w-[400px] ml-[20px] max-[800px]:ml-0 enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
 										setData((prevData) => {
 										const newData = [...prevData]
 										newData[1] = e.target.value
@@ -124,7 +124,7 @@ const Settings = (props) => {
 						  <div>
 							  <div>Password: {userData.password}</div>
 							  <div>New name:
-								  <input type="text" placeholder={userData.password} className='w-[400px] ml-[20px] enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
+								  <input type="text" placeholder={userData.password} className='md:w-[400px] max-[800]:w-full ml-[20px] max-[800px]:ml-0 enabled outline-none px-[10px] py-[10px] border-[1px] rounded text-green-500 font-bold' onChange={(e)=>{
 										setData((prevData) => {
 										const newData = [...prevData]
 										newData[2] = e.target.value
@@ -135,7 +135,7 @@ const Settings = (props) => {
 							  </div>
 						  </div>
 						<div>
-							<button type='submit' className='bg-green-600 w-[100px] px-[10px] py-[5px] rounded text-white'>Save</button>
+							<button type='submit' className='bg-green-600 w-[100px] mt-[10px] px-[10px] py-[5px] rounded text-white'>Save</button>
 						</div>
 						</form>
 						
@@ -148,7 +148,7 @@ const Settings = (props) => {
 					  <div className='flex justify-center'> <Check /></div>
 				</div>
 			</div>
-			<button className={`${change?'block':'hidden'} w-full h-full absolute z-9 bg-black bottom-[50px] rounded top-[0px] right-[0px] opacity-50`} onClick={()=>setChange(!change)}></button>
+			<button className={`${change?'block':'hidden'} w-full h-full absolute z-9 bg-white bottom-[50px] rounded top-[0px] right-[0px] opacity-50`} onClick={()=>setChange(!change)}></button>
 		</div>
 	  </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { User, Menu } from 'lucide-react'
+import {Menu } from 'lucide-react'
 
 import {useSelectedAdminSideBar} from '../hooks/useSelectedAdminSideBar'
 
@@ -27,8 +27,8 @@ const SideBar = () => {
 			</div>
 		</div>
 	</div>
-	<div className='bg-gray-200 hidden max-[800px]:block absolute left-0 z-30'>
-		{open?<div className='w-[30px] h-[30px] flex justify-center items-center' onClick={()=>setOpen(!open)}>
+	<div className='bg-white border-[1px] hidden max-[800px]:block top-[47px] absolute left-[10px] z-30 rounded'>
+		{open?<div className='w-[30px] h-[30px] flex justify-center items-center ml-[30px] mt-[10px] rounded w-[30px] h-[30px] flex justify-center items-center border-[1px] border-black' onClick={()=>setOpen(!open)}>
 			<div>x</div>
 		</div>:
 		<div className='w-[30px] h-[30px] flex justify-center items-center' onClick={()=>setOpen(!open)}>
@@ -44,7 +44,7 @@ const SideBar = () => {
 						}}>{s.icon} <div className='inline-block'>{s.name}</div></div>:null
 				})}
 			</div>
-			<div className='bottom-[70px] absolute w-[160px]'>
+			<div className='bottom-[40px] absolute w-[160px]'>
 				{ADMIN_SIDEBAR.map((s) => {
 					return (s.name == 'Logout' || s.name == 'Settings' || s.name == 'Dark') ?
 					<div className={` ${selectedAdminSideBar == s.name ? 'bg-yellow-300' : ''} px-[10px] flex justify-start items-center gap-5 mb-[10px] cursor-pointer rounded`} onClick={()=> {
