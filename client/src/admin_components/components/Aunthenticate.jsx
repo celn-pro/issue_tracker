@@ -72,9 +72,9 @@ const Aunthenticate = (props) => {
 	}
 
   return (
-	<div className='h-[100vh] ml-[300px] text-black text-[13px] font-bold'>
+	<div className='h-[100vh] ml-[300px] max-[800px]:ml-0 text-black text-[13px] font-bold'>
 		<h2>You can always generate keys to let the staff members signup</h2>
-		<button className='border-[1px] rounded bg-black text-white font-bold px-[10px] py-[5px]' onClick={()=> setGeneratedKey(generateRandomKey(12))}>Generate</button>
+		<button className='border-[1px] rounded bg-black text-white font-bold mb-[10px] px-[10px] py-[5px]' onClick={()=> setGeneratedKey(generateRandomKey(12))}>Generate</button>
 		<div className='flex justify-start items-center gap-5'>
 			<div className='flex justify-center items-center  w-[200px] border-[1px] rounded h-[35px]'>
 				{generatedKey}
@@ -82,7 +82,7 @@ const Aunthenticate = (props) => {
 				onClick={popstdKeys}
 			>Use</button>
 		</div>
-		<div className='rounded border-[1px] border-black absolute bottom-[50px] top-[150px] right-[50px] left-[350px] '> 
+		<div className='rounded max-[800px]:border-none border-[1px] border-black absolute bottom-[50px] top-[150px] right-[50px] left-[350px] max-[800px]:left-[50px] '> 
 			<div className='w-full h-full flex justify-center items-center'>
 				  <div className=' rounded border-[1px] px-[20px] py-[20px] shadow-xl w-[500px] h-[450px] flex justify-center items-center overflow-auto '>
 					<div className='mt-[20px] px-[20px] py-[20px] w-[450px]'>

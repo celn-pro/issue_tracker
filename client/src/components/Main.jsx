@@ -29,12 +29,12 @@ const Main = () => {
 	},[])
 
   return (
-	<div className='h-[100vh] ml-[300px]'>
-	  <div className='border-[1px] border-black right-[50px] left-[300px] top-[130px] bottom-[50px] absolute rounded overflow-auto px-[20px] flex justify-center items-center'>
-		<div className=' w-[600px] h-[500px] px-[20px] border-[1px] rounded shadow-xl'>
+	<div className=' ml-[300px] max-[800px]:ml-[50px]'>
+	  <div className='border-[1px] border-black right-[50px] left-[300px] max-[800px]:left-[50px]  top-[130px] bottom-[50px] absolute rounded overflow-auto px-[20px] flex justify-center items-center'>
+		<div className=' w-[600px] h-[500px] px-[20px] border-[1px] rounded shadow-xl overflow-auto'>
         <div className=' mt-[10px] relative flex justify-center items-center mb-[30px]'>
             <div className=''>
-				<div className='mb-[10px]'>
+				<div className='mb-[10px] max-[800px]:hidden'>
 					  <input type="search" placeholder='Track...' className='w-full h-[40px] mt-[10px] font-medium px-[5px] py-[5px] rounded border-[1px] border-black focus:outline-none' />
 				</div>
 				<div className='flex justify-center items-center'>

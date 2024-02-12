@@ -81,13 +81,13 @@ const Delegate = (props) => {
 	return (
 		<div>
 			{dataLength.length<1? (
-				<div className=' text-black text-[12px] ml-[300px] px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
+				<div className=' text-black hidden text-[12px] ml-[300px] px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
 					<div>No data yet</div>
 				</div>
 			):
 			(
 				<div>
-						<div className='bg-black text-white text-[12px] ml-[300px] px-[30px] py-[20px] h-[90px] rounded'>
+						<div className='bg-black text-white text-[12px] ml-[300px] max-[800px]:ml-0 px-[30px] py-[20px] rounded hidden'>
 							<span className='font-bold'>Filter by:</span>
 							<div className='w-full'>
 								<form onSubmit={handleSubmit}>
@@ -140,14 +140,14 @@ const Delegate = (props) => {
 
 							</div>
 						</div>
-						<div className='bottom-[50px] top-[160px] right-[50px] left-[350px] absolute border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center '>
+						<div className='bottom-[50px] top-[160px] right-[50px] left-[350px] max-[800px]:left-[50px] absolute max-[800px]:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center '>
 							<div className='w-[950px] h-[500px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
 								<div>
 									{filteredData?.map((s, i) => {
 										return <div key={i} className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
 											<div className='flex justify-between items-center'>
-												<p>{s.name}</p>
+												<p>Name: {s.name}</p>
 												<p>status: <div className={`${s.status == 'open' ? 'bg-green-500' : ''} ${s.status == 'closed' ? 'bg-yellow-400' : ''} ${s.status == 'never attended' ? 'bg-red-600' : ''} ml-[10px] h-[10px] w-[10px] inline-block`}></div>
 													{s.status}</p>
 											</div>

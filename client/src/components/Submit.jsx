@@ -92,14 +92,14 @@ const Submit = () => {
 	}
 
   return (
-	  <div className=' ml-[300px] h-[100vh]'>
-	  <div className='border-[1px] border-black top-[130px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
-		<div className='px-[40px] py-[20px] flex justify-center items-center'>
+	  <div className=' h-[100vh]'>
+	  <div className='max-[1090px]:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-[800px]:left-[50px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+		{/* <div className='px-[40px] py-[20px] md:flex justify-center items-center'> */}
 		<form action="" onSubmit={handleSubmit}>
 
-		<div className='px-[20px] rounded border-[1px] shadow-xl w-[700px] h-[400px]'>
-			<div className={` ${warning?'block':'hidden'} absolute rounded-xl w-[400px] h-[100px] bg-black text-gray-200 text-[12px] top-[200px] left-[400px] flex justify-center items-center z-10`}>
-				<div>
+		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] h-[500px] overflow-auto'>
+			<div className={` ${warning?'block':'hidden'} absolute rounded-xl text-gray-200 text-[12px] top-[50px] right-[50px] bottom-[50px] left-[300px] max-[800px]:left-[50px] flex justify-center items-center z-10`}>
+				<div className='bg-black py-[20px] px-[20px] rounded'>
 					<div className='flex justify-center items-center'>
 						<div className='text-white w-[30px] h-[30px] rounded-[50%] border-[2px] border-white flex justify-center items-center'>
 							⚠
@@ -115,7 +115,7 @@ const Submit = () => {
 				</div>
 			</div>
 		</div>
-      <div className='md:flex md:justify-center md:items-center md:gap-10 mt-[20px]'>
+      <div className='lg:flex justify-center items-center md:gap-10 mt-[20px] overflow-auto'>
         <div className='text-[12px] w-[300px]'>
           <div className=' text-black'>
            {inputText.map((s,i)=>{
@@ -227,7 +227,7 @@ const Submit = () => {
       </div>
 	  </div>
 	  </form>
-	  </div>
+	  {/* </div> */}
 	  </div>
     </div>
   )

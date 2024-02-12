@@ -25,8 +25,8 @@ const Faqs = () => {
   }
 
   return (
-	  <div className='ml-[300px] h-[100vh]'>
-	  <div className='border-[1px] border-black top-[130px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+	  <div className=' h-[100vh]'>
+	  <div className='md:border-[1px] border-black top-[130px] right-[50px] left-[300px] max-[800px]:left-[50px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
 	  <div className=' h-[90%] w-[600px] rounded border-[1px] shadow-xl px-[20px]'>
       <div className='flex justify-center items-center mt-[20px] mb-[20px]'>
         <h2 className='font-system font-bold'>Frequent asked questions| Q&A</h2>
@@ -69,13 +69,13 @@ const FaqCard = ({faq})=>{
        <div>
         
           <div className='mb-[20px]'>
-            <h3 className='font-system font-bold font-medium'>
+            <h3 className='font-system font-bold max-[800px]:text-[12px] font-medium'>
               {faq.title.toLocaleUpperCase()}
               <span className={`${showFaq?'hidden':'inline-block'} hover:text-gray-400 cursor-pointer text-gray-300 pl-[20px]`}
                       onClick={()=> setShowFaq(!showFaq)}
                       > Read</span>
             </h3>
-            <p className={`${showFaq?'block':'hidden'} font-verdan rounded border-[1px] py-[10px] px-[10px]`}>
+            <p className={`${showFaq?'block':'hidden'} font-verdan rounded max-[800px]:text-[12px] border-[1px] py-[10px] px-[10px]`}>
               {faq.description} 
               <span className={`${showFaq?'inline-block':'hidden'} hover:text-gray-400 cursor-pointer text-gray-300 pl-[20px]`}
                       onClick={()=> setShowFaq(!showFaq)}

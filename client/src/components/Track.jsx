@@ -65,8 +65,8 @@ name.toLocaleUpperCase()
 		setTrackId(value)
 	}
   return (
-	  <div className='ml-[300px] h-[100vh]'>
-      <div className='border-[1px] border-black top-[130px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+	  <div className=' max-[800px]:ml-[50px] h-[100vh]'>
+      <div className='border-[1px] border-black max-[800px]:border-none top-[130px] max-[800px]:left-[50px] right-[50px] left-[300px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
 		<div className={`${showTracks?'block':'hidden'} text-[12px] font-bold h-[500px] w-[700px] border-[1px] rounded shadow-xl px-[20px] py-[20px]`}>
 			<div className='px-[20px] text-white flex justify-end items-center mb-[10px]'>
 				<div className='bg-black w-[20px] h-[20px] flex justify-center items-center rounded cursor-pointer'
@@ -165,7 +165,7 @@ name.toLocaleUpperCase()
 					<div>
 						<input type="text" placeholder='Enter your tracking key'
 							onChange={handleOnChange}
-							className='w-full  px-[10px] py-[5px] mb-[10px] rounded focus:outline-none bg-white border-2 border-black  font-medium'
+							className='w-full  px-[10px] py-[5px] mb-[10px] md:rounded focus:outline-none bg-white md:border-2 max-[800px]:border-b-2 border-gray  font-medium'
 						/>
 					</div>
 					<button 

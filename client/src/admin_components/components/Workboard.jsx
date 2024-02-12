@@ -147,7 +147,7 @@ const Workboard = (props) => {
 									  {filteredData?.map((s, i) => {
 										  return <div className='border-[1px] rounded px-[20px] py-[10px] text-[12px] font-bold mb-[10px]'>
 											  <div className='flex justify-between items-center'>
-												  <p>{s.name}</p>
+												  <p>Name: {s.name}</p>
 												  <p>status: <div className={`${s.status == 'open' ? 'bg-green-500' : ''} ${s.status == 'closed' ? 'bg-yellow-400' : ''} ${s.status == 'never attended' ? 'bg-red-600' : ''} ml-[10px] h-[10px] w-[10px] inline-block`}></div>
 													  {s.status}</p>
 											  </div>
@@ -156,7 +156,7 @@ const Workboard = (props) => {
 											  <div className='flex justify-between items-center'>
 												  <div>{s.date?.substring(0, 10) + ' ' + s.date?.substring(11, 16)}</div>
 												  <div className='flex justify-end items-center gap-2'>
-													  <div className='cursor-pointer px-[10px] py-[5px] bg-[#04314C] rounded text-white'
+													  <div className='cursor-pointer px-[10px] py-[5px] bg-black rounded text-white'
 														  onClick={() => {
 															  setOpenDetails(!openDetails)
 															  setSelectedId(i)
@@ -169,12 +169,12 @@ const Workboard = (props) => {
 
 											  <div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[20px] right-[50px] left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
 												  <div className='flex justify-end items-center'>
-													  <div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-black'
+													  <div className='font-bold border-[1px] px-[5px] py-[5px] w-[20px] h-[20px] rounded text-white text-center cursor-pointer bg-black flex justify-center items-center'
 														  onClick={() => {
 															  setSelectedId(null)
 															  setOpenDetails(!openDetails)
 														  }}
-													  >X</div>
+													  >x</div>
 												  </div>
 												  <div className='px-[30px]'>
 													  <table className='w-[300px]'>
@@ -216,7 +216,7 @@ const Workboard = (props) => {
 								  </div>
 								  <div className={`${showChart ? 'block' : 'hidden'} h-full px-[20px] py-[20px]`}>
 									  <div className='flex justify-end items-center px-[20px]'>
-										  <div className='w-[20px] bg-black text-white flex justify-center items-center rounded cursor-pointer' onClick={() => setShowChart(!showChart)}>X</div>
+										  <div className='w-[20px] h-[20px] bg-black text-white flex justify-center items-center rounded cursor-pointer' onClick={() => setShowChart(!showChart)}>x</div>
 									  </div>
 									  <LineChartCustom />
 								  </div>

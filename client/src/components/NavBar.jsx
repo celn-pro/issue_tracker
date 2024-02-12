@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import {useSelectedNav} from '../hooks/useSelectedNav';
 import {usePrevSelectedNav} from '../hooks/usePrevSelectedNav'
+import { sectionInfo } from '../constants'
+
+import SideBar from './SideBar'
 
 import {ICONS_INFO, SELECTED_PAGES} from '../constants';
 
@@ -12,7 +15,7 @@ const NavBar = () => {
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
   return (
-    <div className={`${selectedNav=='Logged'?'hidden':''} ml-[300px] mt-[50px] mr-[50px] text-black`} >
+    <div className={`${selectedNav=='Logged'?'hidden':''} ml-[300px] max-[800px]:ml-[50px] mt-[50px] mr-[50px] text-black`} >
 
       <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
 			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
@@ -23,8 +26,8 @@ const NavBar = () => {
 		<div className='flex justify-between items-center bg-black rounded px-[20px] py-[5px]'>
         <div className='cursor-pointer font-medium text-white'><i>od22</i></div>
 
-         {/* Mobile menu button */}
-         <div className="flex md:hidden">
+         {/* Mobile menu button */} 
+         <div className="max-[800px]:flex hidden max-[800px]:block">
             {ICONS_INFO.map(i => {
 				return <div
 					className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] bg-[#FFFFFF] hover:bg-white rounded-[50%] mr-[10px]'
@@ -61,26 +64,24 @@ const NavBar = () => {
             </button>
           </div>
 
-		  <div className={`absolute border-[1px] w-[120px] bg-white rounded shodow origin-top-right md:hidden ${showNews ?'top-[70px]':'top-[36px]'} transition-all duration-300 ${isOpen?'right-[20px]':'-right-full hidden'} z-10`}>
-          <ul className='py-[10px] px-[10px]'>
-              {SELECTED_PAGES.map(p => {
-				 if(p.name=='Home'){
-					 return <li className={`${selectedNav == p.name ? 'text-green-600' : ''} mb-[10px] border-b border-[#333333] cursor-pointer`}
-						 onClick={() => {
-							 if (p.togglePrevSelectedNav && p.toggleSelectedNav && p.setChangeMenu && p.setIsOpen) {
-								 togglePrevSelectedNav(selectedNav)
-								 toggleSelectedNav(p.name)
-								 setChangeMenu(!changeMenu)
-								 setIsOpen(!isOpen)
-							 }
-						 }}
-					 >{p?.label ?? p.name}</li>
-				 }
-				 return null
-			  })}
-          </ul>
+		  <div className={`absolute w-[150px] bg-white rounded shodow origin-top-right ${showNews ?'top-[70px]':'top-[132px]'} transition-all duration-300 ${isOpen?'right-[53px] block':'-right-full hidden'} z-40`}>
+				<div className=' px-[10px] py-[20px] rounded h-full text-black'>
+					<div>
+						{sectionInfo.map((s) => {
+							return <div className={`${selectedNav === s.name ? 'bg-yellow-300 ' : ''} ${((selectedNav == 'LoginStaff' || selectedNav == 'SignupStaff') && s.name == 'WelcomeStaff') ? 'bg-yellow-300' : ''}
+					${((selectedNav == 'LoginHod' || selectedNav == 'SignupHod') && s.name == 'WelcomeHod') ? 'bg-yellow-300' : ''}
+					${((selectedNav == 'Submit' || selectedNav == 'Congrats') && s.name == 'Submit') ? 'bg-yellow-300' : ''}
+					flex justify-start items-center gap-5 mb-[10px] cursor-pointer rounded px-[10px]`} onClick={() => {
+									togglePrevSelectedNav(selectedNav)
+									toggleSelectedNav(s.name)
+									setChangeMenu(!changeMenu)
+									setIsOpen(!isOpen)
+								}}>{s.icon} <div className='inline-block'>{s.message}</div></div>
+						})}
+					</div>
+				</div>
          </div>
-			  <button className={`absolute ${showNews ? 'top-[70px]' : 'top-[36px]'} transition-all duration-300 ${isOpen ? 'right-[20px] vissible w-full h-[100vh] bg-black opacity-50' : 'hidden -right-full hidden'} z-9 `}
+			  <button className={`absolute ${showNews ? 'top-[70px]' : 'top-[130px]'} transition-all duration-300 ${isOpen ? 'right-[50px] left-[50px] bottom-[50px] vissible rounded bg-black opacity-50' : ' hidden'} z-30 `}
 			  	onClick={()=>{
 						setChangeMenu(!changeMenu)
 						setIsOpen(!isOpen)
@@ -88,7 +89,7 @@ const NavBar = () => {
 				></button>
 		
 		{/* destop navbar */}
-         <div className={` flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 hidden`}>
+         <div className={` flex-1 justify-self-center pb-3 mt-8  block md:pb-0 md:mt-0 max-[800px]:hidden`}>
           <ul className='items-center justify-end space-y-8 md:flex md:space-x-6 md:space-y-0 '>
 				{ICONS_INFO.map(i => {
 					return <div
