@@ -6,9 +6,16 @@ const cors = require('cors')
 const routes = require('./routes/routes')
 
 require('dotenv').config();
-const dbHost = process.env.MONGODB_URI
 
 const app = express()
+// Enable CORS
+app.use(cors({
+	origin:['https://odd22-celn-pro.vercel.app/', 'http://localhost:5173'],
+
+}))
+
+const dbHost = process.env.MONGODB_URI
+
 
 // Define the uploads directory
 const uploadDir = path.join(__dirname, 'uploads');
@@ -29,9 +36,6 @@ mongoose.connect(url,{
     useUnifiedTopology: true
 })
 
-// Enable CORS
-app.use(cors())
-
 //Logging middleware
 app.use((req, res, next) => {
   console.log('Incoming request data:', req.body)
@@ -43,7 +47,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Enable CORS
-app.use(cors())
+// app.use(cors())
 
 // Routes
 app.use('/', routes)
