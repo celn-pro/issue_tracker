@@ -14,7 +14,11 @@ const uploadDir = path.join(__dirname, 'uploads');
 app.use('/uploads', express.static(uploadDir));
 
 const port = 3000
-const url = 'mongodb://localhost:27017/myDatabase';
+//mongosh "mongodb+srv://cluster0.srhtczz.mongodb.net/" --apiVersion 1 --username ayouberasto7
+//const url = 'mongodb://localhost:27017/myDatabase';
+// mongosh "mongodb+srv://ayouberasto7:94kpian0KvRbR98y@cluster0.srhtczz.mongodb.net/od22?apiVersion=1"
+
+const url = "mongodb+srv://ayouberasto7:94kpian0KvRbR98y@cluster0.srhtczz.mongodb.net/od22"
 
 //connect to mongoDB using Mongoose
 mongoose.connect(url,{
