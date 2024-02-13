@@ -8,10 +8,17 @@ const routes = require('./routes/routes')
 require('dotenv').config();
 
 const app = express()
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://odd22-celn-pro.vercel.app"); 
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 // Enable CORS
 app.use(cors({
-	origin:['https://odd22-celn-pro.vercel.app/', 'http://localhost:5173'],
-
+	origin:'*'
 }))
 
 const dbHost = process.env.MONGODB_URI
