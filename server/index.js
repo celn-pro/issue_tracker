@@ -5,6 +5,9 @@ const cors = require('cors')
 
 const routes = require('./routes/routes')
 
+require('dotenv').config();
+const dbHost = process.env.MONGODB_URI
+
 const app = express()
 
 // Define the uploads directory
@@ -13,12 +16,12 @@ const uploadDir = path.join(__dirname, 'uploads');
 // Middleware to serve static files from the uploads directory
 app.use('/uploads', express.static(uploadDir));
 
-const port = 3000
+// const port = 3000
 //mongosh "mongodb+srv://cluster0.srhtczz.mongodb.net/" --apiVersion 1 --username ayouberasto7
 //const url = 'mongodb://localhost:27017/myDatabase';
 // mongosh "mongodb+srv://ayouberasto7:94kpian0KvRbR98y@cluster0.srhtczz.mongodb.net/od22?apiVersion=1"
 
-const url = "mongodb+srv://ayouberasto7:94kpian0KvRbR98y@cluster0.srhtczz.mongodb.net/od22"
+const url = dbHost
 
 //connect to mongoDB using Mongoose
 mongoose.connect(url,{
@@ -45,6 +48,7 @@ app.use(cors())
 // Routes
 app.use('/', routes)
 
+const port = process.env.PORT || 3000; // Use PORT environment variable or default to 3000
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
-})
+  console.log(`Server is running on port ${port}`);
+});
