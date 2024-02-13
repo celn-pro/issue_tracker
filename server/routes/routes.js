@@ -520,6 +520,16 @@ router.post('/submit_feedback', async(req, res)=>{
 	}
 })
 
+router.post('/get_feedback', async(req, res)=>{
+	try{
+		const feedbacks = await feedbackModel.find({})
+
+		res.status(200).json({feedbacks})
+	}catch(e){
+		console.log(e)
+	}
+})
+
 router.post('/update_status', async(req, res)=>{
 	try{
 		const _id = req.body._id
