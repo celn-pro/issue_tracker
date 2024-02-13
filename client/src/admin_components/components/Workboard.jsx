@@ -83,7 +83,7 @@ const Workboard = (props) => {
 		):
 		(
 			<div>
-					  <div className=' ml-[300px] max-[800px]:ml-0 bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
+					  <div className=' ml-[300px] max-800:ml-0 bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
 						  <span className='font-bold'>Filter by:</span>
 						  {/* <div className=''> */}
 							  <form onSubmit={handleSubmit}>
@@ -129,7 +129,7 @@ const Workboard = (props) => {
 											<div>
 												<button type='submit' className='w-[100px] inline-block rounded bg-white text-black font-bold cursor-pointer px-[10px] py-[5px]'>Apply</button>
 											</div>
-											<div className='col-span-2 font-bold px-[10px] py-[5px] inline-block rounded-[15px] bg-white text-black text-center'>compare in charts
+											<div className='col-span-2 max-800:hidden font-bold px-[10px] py-[5px] inline-block rounded-[15px] bg-white text-black text-center'>compare in charts
 												<div className='ml-[15px] rounded-[15px] h-[20px] px-[5px] inline-block cursor-pointer bg-gray-100' onClick={() => setShowChart(!showChart)}>
 													<LineChart className='inline-block h-[15px]' />
 												</div>
@@ -139,8 +139,8 @@ const Workboard = (props) => {
 							  </form>
 						  {/* </div> */}
 					  </div>
-					  <div className='h-[100vh] ml-[300px] max-[800px]:ml-0'>
-						  <div className='absolute left-[350px] max-[800px]:left-[50px] top-[270px] right-[50px] bottom-[50px] max-[800px]:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
+					  <div className='h-[100vh] ml-[300px] max-800:ml-0'>
+						  <div className='absolute left-[350px] max-800:left-[50px] top-[270px] right-[50px] bottom-[50px] max-800:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
 							  <div className='w-[950px] h-[400px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
 								  <div className={`${showChart ? 'hidden' : 'block'}`}>
@@ -167,7 +167,7 @@ const Workboard = (props) => {
 											  </div>
 											  {/*  */}
 
-											  <div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[20px] max-[800px]:right-0 right-[50px] max-[800px]:left-0 left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
+											  <div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[20px] max-800:right-0 right-[50px] max-800:left-0 left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
 												  <div className='flex justify-end items-center'>
 													  <div className='font-bold border-[1px] px-[5px] py-[5px] w-[20px] h-[20px] rounded text-white text-center cursor-pointer bg-black flex justify-center items-center'
 														  onClick={() => {
@@ -205,7 +205,7 @@ const Workboard = (props) => {
 												  </div>
 												  <div className='mt-[20px] px-[30px]'>
 													  <div className=''>Description</div>
-													  <div className='border-[1px] rounded h-[150px] px-[20px] py-[20px] overflow-auto'>
+													  <div className='border-[1px] rounded max-800:h-[300px] h-[150px] px-[20px] py-[20px] overflow-auto'>
 														  {s.description}
 													  </div>
 												  </div>

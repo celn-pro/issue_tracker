@@ -71,7 +71,7 @@ const SignupHod = () => {
 
 	return (
 		<div className=' h-[100vh]'>
-			<div className='absolute top-[130px] right-[50px] left-[300px] max-[800px]:left-[50px] bottom-[50px] md:border-[1px] border-black rounded flex justify-center items-center'>
+			<div className='absolute top-[130px] right-[50px] left-[300px] max-800:left-[50px] bottom-[50px] md:border-[1px] border-black rounded flex justify-center items-center'>
 				<div className='px-[20px] py-[20px] w-[400px] h-[380px] rounded border-[1px] shadow-xl text-[12px]'>
 					<div className='flex justify-center items-center'>
 						<h2 className='font-bold font-verydan mb-[10px]'>SIGNUP</h2>
@@ -92,7 +92,7 @@ const SignupHod = () => {
 													return newData
 												})
 											}}
-											className='w-full px-[10px] py-[5px] mb-[10px] md:rounded focus:outline-none bg-white text-black max-[800px]:border-b-2 md:border-2 border-gray'
+											className='w-full px-[10px] py-[5px] mb-[10px] md:rounded focus:outline-none bg-white text-black max-800:border-b-2 md:border-2 border-gray'
 										/> <br />
 									</> : null
 								})}
@@ -128,7 +128,7 @@ const SignupHod = () => {
 													return newData
 												})
 											}}
-											className='w-full px-[10px] py-[5px] mb-[10px] md:rounded focus:outline-none bg-white text-black max-[800px]:border-b-2 md:border-2 border-gray'
+											className='w-full px-[10px] py-[5px] mb-[10px] md:rounded focus:outline-none bg-white text-black max-800:border-b-2 md:border-2 border-gray'
 										/> <br />
 									</> : null
 								})}

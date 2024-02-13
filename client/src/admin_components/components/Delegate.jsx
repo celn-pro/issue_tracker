@@ -87,7 +87,7 @@ const Delegate = (props) => {
 			):
 			(
 				<div>
-						<div className='bg-black text-white text-[12px] ml-[300px] max-[800px]:ml-0 px-[30px] py-[20px] rounded'>
+						<div className='bg-black text-white text-[12px] ml-[300px] max-800:ml-0 px-[30px] py-[20px] rounded'>
 							<span className='font-bold'>Filter by:</span>
 							{/* <div className=''> */}
 								<form onSubmit={handleSubmit} className=''>
@@ -139,7 +139,7 @@ const Delegate = (props) => {
 								</form>
 							{/* </div> */}
 						</div>
-						<div className='bottom-[50px] top-[270px] right-[50px] left-[350px] max-[800px]:left-[50px] absolute max-[800px]:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
+						<div className='bottom-[50px] top-[270px] right-[50px] left-[350px] max-800:left-[50px] absolute max-800:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
 							<div className={`${openDetails ? '' :'shadow-xl'} w-[950px] h-[400px] rounded overflow-auto px-[20px] py-[20px]`}>
 
 								<div>
@@ -169,7 +169,7 @@ const Delegate = (props) => {
 											{/*  */}
 											<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute right-0 bottom-0 left-0 top-[0px] text-[14px] px-[20px] py-[20px] flex justify-center items-center`}>
 												<div className='px-[20px] py-[20px] border-[1px] bg-white shadow-xl'>
-													<div className='md:w-[600px] max-[800px]:h-[500px] h-[450px]'>
+													<div className='md:w-[600px] max-800:h-[500px] h-[450px]'>
 														<div className='flex justify-end items-center pr-[30px]'>
 															<div className='font-bold border-[1px] px-[5px] py-[5px] w-[30px] rounded text-white text-center cursor-pointer bg-black'
 																onClick={() => {
@@ -212,7 +212,7 @@ const Delegate = (props) => {
 											</div>
 
 											{/*deligate */}
-											<div className={`${selectedId == i && openDelegate ? 'block' : 'hidden'} absolute z-10 rounded border-[1px] right-[100px] max-[800px]:right-0 px-[20px] py-[20px] bg-white h-[300px] w-[350px]`}>
+											<div className={`${selectedId == i && openDelegate ? 'block' : 'hidden'} absolute z-10 rounded border-[1px] right-[100px] max-800:right-0 px-[20px] py-[20px] bg-white h-[300px] w-[350px]`}>
 												<div className='h-full border-[1px] rounded px-[10px] py-[10px] font-bold'>
 													<span>Delegate this task to:</span>
 												

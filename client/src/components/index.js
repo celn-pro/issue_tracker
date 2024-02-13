@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import Main from "./Main";
-import LoginHod from "./loginHod";
+import LoginHod from "./LoginHod";
 import LoginStaff from "./LoginStaff";
 import SignupHod from "./SignupHod";
 import SignupStaff from "./SignupStaff";

@@ -10,7 +10,7 @@ const WelcomeHod = () => {
 
   return (
 		<div className='h-[100vh]'>
-			<div className=' px-[20px] right-[50px] left-[300px] max-[800px]:left-[50px] top-[130px] bottom-[50px] absolute md:border-[1px] border-black rounded font-bold text-black flex justify-center items-center'>
+			<div className=' px-[20px] right-[50px] left-[300px] max-800:left-[50px] top-[130px] bottom-[50px] absolute md:border-[1px] border-black rounded font-bold text-black flex justify-center items-center'>
 				<div className='w-[500px] px-[20px] py-[20px] rounded border-[1px] shadow-xl'>
 					<div className='flex justify-center items-center'>
 						<div className='relative mt-[20px] '>

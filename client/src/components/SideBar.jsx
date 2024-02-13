@@ -9,7 +9,7 @@ const SideBar = () => {
 	const togglePrevSelectedNav = usePrevSelectedNav()[1]
 
 	return (
-		<div className='bg-white max-[800px]:hidden w-[300px] h-[100vh] absolute top-0 left-0 px-[50px] py-[50px] font-sans font-bold text-[12px]'>
+		<div className='bg-white max-800:hidden w-[300px] h-[100vh] absolute top-0 left-0 px-[50px] py-[50px] font-sans font-bold text-[12px]'>
 			<div className='border-[1px] border-black px-[20px] py-[20px] rounded h-full text-black'>
 				<div>
 					{sectionInfo.map((s) => {

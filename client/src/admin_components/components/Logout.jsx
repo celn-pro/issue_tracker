@@ -19,8 +19,8 @@ const Logout = (props) => {
 	//const userData = props.userData
 	
   return (
-	  <div className='h-[100vh] ml-[300px] max-[800px]:ml-0'>
-		  <div className=' bottom-[50px] rounded top-[50px] right-[50px] max-[800px]:left-[50px] left-[350px] absolute max-[800px]:border-none border-[1px] py-[20px] px-[20px]'>
+	  <div className='h-[100vh] ml-[300px] max-800:ml-0'>
+		  <div className=' bottom-[50px] rounded top-[50px] right-[50px] max-800:left-[50px] left-[350px] absolute max-800:border-none border-[1px] py-[20px] px-[20px]'>
 			<div className='flex justify-center items-center w-full h-full'>
 				<div className='border-[1px] w-[200px] px-[20px] py-[20px]'>
 					<div>⚠ Loging out</div>

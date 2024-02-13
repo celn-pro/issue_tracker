@@ -101,13 +101,13 @@ const Workboard = (props) => {
 	return (
 		<div>
 			{dataLength.length < 1 ? (
-				<div className=' text-black text-[12px] ml-[300px] max-[800px]:ml-0 px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
+				<div className=' text-black text-[12px] ml-[300px] max-800:ml-0 px-[30px] py-[20px] flex justify-center items-center h-[500px]'>
 					<div>No data yet</div>
 				</div>
 			) :
 				(
 					<div>
-						<div className=' ml-[300px] max-[800px]:ml-0 bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
+						<div className=' ml-[300px] max-800:ml-0 bg-black text-white text-[12px] px-[30px] py-[20px] rounded'>
 							<span className='font-bold'>Filter by:</span>
 							{/* <div className='w-full'> */}
 								<form onSubmit={handleSubmit}>
@@ -158,8 +158,8 @@ const Workboard = (props) => {
 								</form>
 							{/* </div> */}
 						</div>
-						<div className='h-[100vh] ml-[300px] max-[800px]:ml-0'>
-							<div className='absolute left-[350px] max-[800px]:left-[50px] top-[220px] right-[50px] bottom-[50px] max-[800px]:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
+						<div className='h-[100vh] ml-[300px] max-800:ml-0'>
+							<div className='absolute left-[350px] max-800:left-[50px] top-[220px] right-[50px] bottom-[50px] max-800:border-none border-[1px] border-black rounded px-[10px] py-[10px] flex justify-center items-center'>
 								<div className='w-[950px] h-[450px] rounded shadow-xl overflow-auto px-[20px] py-[20px]'>
 
 									<div className={``}>
@@ -217,7 +217,7 @@ const Workboard = (props) => {
 												</div>
 												{/*  */}
 
-												<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[30px] max-[800px]:right-0 right-[50px] max-[800px]:left-0 left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
+												<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[14px] top-[30px] max-800:right-0 right-[50px] max-800:left-0 left-[50px] bottom-[20px] px-[20px] py-[20px] bg-white`}>
 													<div className='flex justify-end items-center'>
 														<div className='font-bold border-[1px] px-[5px] py-[5px] w-[20px] h-[20px] rounded text-white flex justify-center items-center cursor-pointer bg-black'
 															onClick={() => {

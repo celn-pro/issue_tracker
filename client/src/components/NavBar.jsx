@@ -15,7 +15,7 @@ const NavBar = () => {
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
   return (
-    <div className={`${selectedNav=='Logged'?'hidden':''} ml-[300px] max-[800px]:ml-[50px] mt-[50px] mr-[50px] text-black`} >
+    <div className={`${selectedNav=='Logged'?'hidden':''} ml-[300px] max-800:ml-[50px] mt-[50px] mr-[50px] text-black`} >
 
       <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
 			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
@@ -27,7 +27,7 @@ const NavBar = () => {
         <div className='cursor-pointer font-medium text-white'><i>od22</i></div>
 
          {/* Mobile menu button */} 
-         <div className="max-[800px]:flex hidden max-[800px]:block">
+         <div className="max-800:flex hidden max-800:block">
             {ICONS_INFO.map(i => {
 				return <div
 					className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] bg-[#FFFFFF] hover:bg-white rounded-[50%] mr-[10px]'
@@ -89,10 +89,10 @@ const NavBar = () => {
 				></button>
 		
 		{/* destop navbar */}
-         <div className={` flex-1 justify-self-center pb-3 mt-8  block md:pb-0 md:mt-0 max-[800px]:hidden`}>
-          <ul className='items-center justify-end space-y-8 md:flex md:space-x-6 md:space-y-0 '>
+         <div className={` flex justify-self-center max-800:mt-8  block pb-0 mt-0 max-800:hidden`}>
+          <ul className='items-center justify-end max-800:space-y-8 flex space-y-0 '>
 				{ICONS_INFO.map(i => {
-					return <div
+					return <li
 						className='cursor-pointer h-[20px] flex justify-center items-center w-[20px] bg-[#FFFFFF] hover:bg-white rounded-[50%] mr-[10px]'
 						onClick={() => {
 							var holder = prevSelectedNav
@@ -102,7 +102,7 @@ const NavBar = () => {
 									toggleSelectedNav(holder)
 								}
 							}
-						}}><img src={i?.source} className='h-[10px] ' /></div>
+						}}><img src={i?.source} className='h-[10px] ' /></li>
 				})}
 				{SELECTED_PAGES.map(p=>{
 					if(p.name=='Home'){

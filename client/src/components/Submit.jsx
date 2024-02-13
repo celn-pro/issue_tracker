@@ -93,12 +93,12 @@ const Submit = () => {
 
   return (
 	  <div className=' h-[100vh]'>
-	  <div className='max-[1090px]:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-[800px]:left-[50px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+	  <div className='max-800:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
 		{/* <div className='px-[40px] py-[20px] md:flex justify-center items-center'> */}
 		<form action="" onSubmit={handleSubmit}>
 
-		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] h-[500px] overflow-auto'>
-			<div className={` ${warning?'block':'hidden'} absolute rounded-xl text-gray-200 text-[12px] top-[50px] right-[50px] bottom-[50px] left-[300px] max-[800px]:left-[50px] flex justify-center items-center z-10`}>
+		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] h-auto'>
+			<div className={` ${warning?'block':'hidden'} absolute rounded-xl text-gray-200 text-[12px] top-[50px] right-[50px] bottom-[50px] left-[300px] max-800:left-[50px] flex justify-center items-center z-10`}>
 				<div className='bg-black py-[20px] px-[20px] rounded'>
 					<div className='flex justify-center items-center'>
 						<div className='text-white w-[30px] h-[30px] rounded-[50%] border-[2px] border-white flex justify-center items-center'>
@@ -115,7 +115,7 @@ const Submit = () => {
 				</div>
 			</div>
 		</div>
-      <div className='lg:flex justify-center items-center md:gap-10 mt-[20px] overflow-auto'>
+      <div className='max-1200:flex justify-center items-center gap-10 mt-[20px] overflow-auto'>
         <div className='text-[12px] w-[300px]'>
           <div className=' text-black'>
            {inputText.map((s,i)=>{

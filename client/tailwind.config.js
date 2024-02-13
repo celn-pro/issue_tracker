@@ -11,6 +11,10 @@ export default {
         sans: ['Roboto', 'sans-serif'],
       },
 	},
+	screens: {
+      'max-800': {'max': '800px'},
+	  'max-1200':{'min': '1200px'}
+    }
   },
   plugins: [],
 }

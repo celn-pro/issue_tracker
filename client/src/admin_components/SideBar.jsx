@@ -11,7 +11,7 @@ const SideBar = () => {
 	
   return (
 	<>
-	<div className='bg-white w-[300px]  max-[800px]:hidden h-[100vh] absolute top-0 left-0 px-[50px] py-[50px] font-sans font-bold text-black text-[12px]'>
+	<div className='bg-white w-[300px]  max-800:hidden h-[100vh] absolute top-0 left-0 px-[50px] py-[50px] font-sans font-bold text-black text-[12px]'>
 		<div className='border-[1px] border-black px-[20px] py-[20px] rounded h-full'>
 			<div>
 				{ADMIN_SIDEBAR.map((s)=>{
@@ -27,7 +27,7 @@ const SideBar = () => {
 			</div>
 		</div>
 	</div>
-	<div className='bg-white border-[1px] hidden max-[800px]:block top-[47px] absolute left-[10px] z-30 rounded'>
+	<div className='bg-white border-[1px] hidden max-800:block top-[47px] absolute left-[10px] z-30 rounded'>
 		{open?<div className='w-[30px] h-[30px] flex justify-center items-center ml-[30px] mt-[10px] rounded w-[30px] h-[30px] flex justify-center items-center border-[1px] border-black' onClick={()=>setOpen(!open)}>
 			<div>x</div>
 		</div>:
