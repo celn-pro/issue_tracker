@@ -10,7 +10,7 @@ import {ICONS_INFO, SELECTED_PAGES} from '../constants';
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [changeMenu, setChangeMenu] = useState(false);
-  const [showNews, setShowNews] = useState(true);
+  const [showNews, setShowNews] = useState(false);
   const [selectedNav, toggleSelectedNav] = useSelectedNav();
   const [prevSelectedNav, togglePrevSelectedNav] = usePrevSelectedNav();
 
