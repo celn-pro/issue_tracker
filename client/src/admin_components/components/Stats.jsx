@@ -178,7 +178,7 @@ const Stats = (props) => {
 	}
 
 	const fetchStatsData = async()=>{
-		const response = await fetch('http://localhost:3000/stats', {
+		const response = await fetch('https://odd22.onrender.com/stats', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

@@ -40,7 +40,7 @@ const Aunthenticate = (props) => {
 	}
 
 	const fetchedKeys = async()=>{
-		const response = await fetch('http://localhost:3000/keys',{
+		const response = await fetch('https://odd22.onrender.com/keys',{
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Aunthenticate = (props) => {
 	}
 	
 	const popstdKeys = async () => {
-		const response = await fetch('http://localhost:3000/post_keys', {
+		const response = await fetch('https://odd22.onrender.com/post_keys', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ const Aunthenticate = (props) => {
 									</span>
 									<span className='inline-block h-[20px] ml-[10px] w-[20px] pt-[5px] bg-gray-200 cursor-pointer rounded-[50%]'
 										onClick={async() => {
-											const response = await fetch('http://localhost:3000/delete_key', {
+											const response = await fetch('https://odd22.onrender.com/delete_key', {
 												method: 'POST',
 												headers: {
 													'Content-Type': 'application/json',

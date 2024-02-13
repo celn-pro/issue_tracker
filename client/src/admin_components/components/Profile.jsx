@@ -12,7 +12,7 @@ const Profile = (props) => {
 
 	const updateUser = async()=>{
 
-		const response = await fetch('http://localhost:3000/update_hod', {
+		const response = await fetch('https://odd22.onrender.com/update_hod', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Profile = (props) => {
 			formData.append('profileImage', file)
 			formData.append('id', userData._id)
 
-			const response = await fetch('http://localhost:3000/profileImg', {
+			const response = await fetch('https://odd22.onrender.com/profileImg', {
 				method: 'POST',
 				body: formData,
 				
@@ -66,7 +66,7 @@ const Profile = (props) => {
 				<div className='flex justify-center items-center h-[300px] rounded'>
 					<div className='w-[220px] h-full flex justify-center items-center border-[1px] rounded'>
 					<div className='h-[200px] w-[200px] bg-gray-200 rounded-[50%] overflow-hidden'>
-						<img alt="profile" src={'http://localhost:3000/'+userData.profileImg?.replace(/\\/g, '/')} id='imagePreview' className='w-full h-full' />
+						<img alt="profile" src={'https://odd22.onrender.com/'+userData.profileImg?.replace(/\\/g, '/')} id='imagePreview' className='w-full h-full' />
 						<input type="file" name="" id="file" className='hidden' onChange={handleOnChange}/>
 						<div className='absolute bg-red-100 max-800:right-[40%] right-[490px] top-[360px] h-[30px] w-[30px] rounded-[50%] px-[7px] py-[5px] flex justify-center items-center cursor-pointer'
 							 onClick={handleClick}

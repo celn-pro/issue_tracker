@@ -43,7 +43,7 @@ const Delegate = (props) => {
 	}
 
 	const fetchIssues = async()=>{
-		const response = await fetch('http://localhost:3000/issues', {
+		const response = await fetch('https://odd22.onrender.com/issues', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -220,7 +220,7 @@ const Delegate = (props) => {
 														{staffs.map((s,i)=>{
 															return <div className='flex justify-start items-center gap-3 mb-[5px]'>
 																<div className='w-[30px] h-[30px] rounded-[50%] overflow-hidden flex justify-center items-center bg-white'>
-																	<img src={'http://localhost:3000/'+s.profileImg?.replace(/\\/g, '/')} className='w-[30px] h-[30px]' />
+																	<img src={'https://odd22.onrender.com/'+s.profileImg?.replace(/\\/g, '/')} className='w-[30px] h-[30px]' />
 																</div> 
 																<div className={`${selectedStaffIndex==i?'bg-yellow-300':''} cursor-pointer  px-[10px] rounded`} onClick={(e)=> {
 																	setSelectedStaffIndex(i)
@@ -231,7 +231,7 @@ const Delegate = (props) => {
 														})}
 													</div>
 													<button className='rounded bg-[#04314C] px-[10px] py-[5px] block text-white font-bold' onClick={async () => {
-														const response = await fetch('http://localhost:3000/delegate', {
+														const response = await fetch('https://odd22.onrender.com/delegate', {
 															method: 'POST',
 															headers: {
 																'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ const Faqs = () => {
   },[])
 
   const fetchFaqs = async()=>{
-	  const response = await fetch('http://localhost:3000/fetch_faqs', {
+	  const response = await fetch('https://odd22.onrender.com/fetch_faqs', {
 		  method: 'POST',
 		  headers: {
 			  'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const Faqs = () => {
 
   return (
 	  <div className=' h-[100vh]'>
-	  <div className='md:border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+	  <div className='min-800:border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] bottom-[50px] absolute rounded max-800:px-0 max-800:py-0 px-[20px] flex justify-center items-center'>
 	  <div className=' h-[90%] w-[600px] rounded border-[1px] shadow-xl px-[20px]'>
       <div className='flex justify-center items-center mt-[20px] mb-[20px]'>
         <h2 className='font-system font-bold'>Frequent asked questions| Q&A</h2>

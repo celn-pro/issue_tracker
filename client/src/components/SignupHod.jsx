@@ -33,7 +33,7 @@ const SignupHod = () => {
 			// console.log(data)
 			if (data[1] === data[2]) {
 				if (data[0] && data[1] && data[3] && data[4] && data[5]) {
-					const response = await fetch('http://localhost:3000/signup_hod', {
+					const response = await fetch('https://odd22.onrender.com/signup_hod', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',

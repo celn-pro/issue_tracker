@@ -57,7 +57,7 @@ const Submit = () => {
 		try{
 			if (data[0] && data[1] && data[2] && data[3] && data[4] && data[5] && data[6] && data[7]) {
 				// console.log("everything is ok")
-				const response = await fetch('http://localhost:3000/submit', {
+				const response = await fetch('https://odd22.onrender.com/submit', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -92,12 +92,12 @@ const Submit = () => {
 	}
 
   return (
-	  <div className=' h-[100vh]'>
-	  <div className='max-800:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] bottom-[50px] absolute rounded px-[20px] flex justify-center items-center'>
+	  <div className=''>
+	  <div className='max-800:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] max-800:bottom-0 bottom-[50px] absolute rounded max-800:px-0 px-[20px] min-1200:flex justify-center items-center'>
 		{/* <div className='px-[40px] py-[20px] md:flex justify-center items-center'> */}
 		<form action="" onSubmit={handleSubmit}>
 
-		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] h-auto'>
+		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] w-full'>
 			<div className={` ${warning?'block':'hidden'} absolute rounded-xl text-gray-200 text-[12px] top-[50px] right-[50px] bottom-[50px] left-[300px] max-800:left-[50px] flex justify-center items-center z-10`}>
 				<div className='bg-black py-[20px] px-[20px] rounded'>
 					<div className='flex justify-center items-center'>
@@ -108,15 +108,15 @@ const Submit = () => {
 					<div>{message}</div>
 				</div>
 			</div>
-		<div className='flex justify-center items-center '>
-			<div className='mt-[20px]'>
-				<div className='flex justify-center items-center'>
-					  <p className='relative font-bold font-system'>SUBMIT</p>
+			<div className='flex justify-center items-center '>
+				<div className='mt-[20px] '>
+					<div className='flex justify-center items-center'>
+						<p className='relative font-bold font-system'>SUBMIT</p>
+					</div>
 				</div>
 			</div>
-		</div>
-      <div className='max-1200:flex justify-center items-center gap-10 mt-[20px] overflow-auto'>
-        <div className='text-[12px] w-[300px]'>
+      <div className='min-1200:flex justify-center items-center gap-10 mt-[20px] overflow-auto'>
+        <div className='text-[12px] min-1200:w-[300px] w-full relative'>
           <div className=' text-black'>
            {inputText.map((s,i)=>{
 			return (i == 0||i==1||i==2)?(<>
@@ -193,7 +193,7 @@ const Submit = () => {
 		  </div>
         </div>
 		{/* text area */}
-		<div className=' mb-[20px] text-[12px] w-[300px]'>
+		<div className=' mb-[20px] text-[12px] min-1200:w-[300px] w-full'>
 			<textarea cols="30" rows="9" placeholder='Describe your problem here'
 				onChange={(e) => {
 						setData((prevData) => {

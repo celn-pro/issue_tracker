@@ -20,7 +20,7 @@ const Settings = (props) => {
 
 	const updateUser = async () => {
 
-		const response = await fetch('http://localhost:3000/update_staff', {
+		const response = await fetch('https://odd22.onrender.com/update_staff', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const Settings = (props) => {
 
 	const handleSubmit= async(e)=>{
 		e.preventDefault()
-		const response = await fetch('http://localhost:3000/settings', {
+		const response = await fetch('https://odd22.onrender.com/settings', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

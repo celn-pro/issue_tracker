@@ -29,7 +29,7 @@ export const LoginStaff = () => {
 	const handleLogin = async (e) => {
 		e.preventDefault()
 		if (data[1] && data[3]) {
-			const response = await fetch('http://localhost:3000/login_staff', {
+			const response = await fetch('https://odd22.onrender.com/login_staff', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

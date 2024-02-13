@@ -21,7 +21,7 @@ const SystemAdmin = () => {
 	const handleClick = async()=>{
 		if(data[0] && data[1]){
 
-			const response = await fetch('http://localhost:3000/submit_faqs', {
+			const response = await fetch('https://odd22.onrender.com/submit_faqs', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const SystemAdmin = () => {
 	}
 
 	const fetchFeedback = async() =>{
-		const response = await fetch('http://localhost:3000/get_feedback', {
+		const response = await fetch('https://odd22.onrender.com/get_feedback', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

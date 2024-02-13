@@ -20,7 +20,7 @@ const Feedback = () => {
 	const handleSend = async()=>{
 
 		if(data){
-			const response = await fetch('http://localhost:3000/submit_feedback', {
+			const response = await fetch('https://odd22.onrender.com/submit_feedback', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

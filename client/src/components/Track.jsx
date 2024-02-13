@@ -20,7 +20,7 @@ const Track = () => {
 	const handleTrack = async () => {
 		try {
 			if(trackId){
-				const response = await fetch('http://localhost:3000/track', {
+				const response = await fetch('https://odd22.onrender.com/track', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',

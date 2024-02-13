@@ -13,7 +13,8 @@ export default {
 	},
 	screens: {
       'max-800': {'max': '800px'},
-	  'max-1200':{'min': '1200px'}
+	  'min-800': {'min': '800px'},
+	  'min-1200':{'min': '1200px'},
     }
   },
   plugins: [],
