@@ -93,11 +93,11 @@ const Submit = () => {
 
   return (
 	  <div className=''>
-	  <div className='max-800:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] max-800:bottom-0 bottom-[50px] absolute rounded max-800:px-0 px-[20px] min-1200:flex justify-center items-center'>
+	  <div className='max-800:border-none border-[1px] border-black top-[130px] right-[50px] left-[300px] max-800:left-[50px] max-800:bottom-[10px] bottom-[50px] absolute rounded max-800:px-0 px-[20px] min-1200:flex justify-center items-center'>
 		{/* <div className='px-[40px] py-[20px] md:flex justify-center items-center'> */}
 		<form action="" onSubmit={handleSubmit}>
 
-		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] w-full'>
+		<div className='px-[20px] rounded border-[1px] shadow-xl lg:w-[700px] lg:h-[400px] max-800:h-[600px] max-800:overflow-auto w-full'>
 			<div className={` ${warning?'block':'hidden'} absolute rounded-xl text-gray-200 text-[12px] top-[50px] right-[50px] bottom-[50px] left-[300px] max-800:left-[50px] flex justify-center items-center z-10`}>
 				<div className='bg-black py-[20px] px-[20px] rounded'>
 					<div className='flex justify-center items-center'>

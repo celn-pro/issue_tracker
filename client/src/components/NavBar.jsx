@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <div className={`${selectedNav=='Logged'?'hidden':''} ml-[300px] max-800:ml-[50px] mt-[50px] mr-[50px] text-black`} >
 
-      <div className={` ${!showNews?'hidden':'block'} py-[5px] flex justify-start gap-[10px]`}>
+      <div className={` ${!showNews?'hidden':'hidden'} py-[5px] flex justify-start gap-[10px]`}>
 			  <div className='rounded cursor-pointer bg-black text-white relative w-[20px] flex justify-center items-center rounded'
           onClick={()=>setShowNews(!showNews)}
 			  > x</div><span className='text-[12px] italic font-bold'>Take care of Red eyes infections!</span> 
