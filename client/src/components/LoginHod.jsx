@@ -66,7 +66,7 @@ export const LoginHod = () => {
 					<div className={`${greenMsg ? 'text-green-600' : 'text-white'} font-bold py-[5px] mb-[10px]`}>Login to continue!</div>
 
 					<div className='flex justify-center items-center'>
-						<div className='max-[600px]:w-full w-[500px]'>
+						<div className='w-full min-800:w-[500px]'>
 							<form onSubmit={handleLogin}>
 								{inputSignup.map((s, i) => {
 									return (s.placeholder == 'Password' || s.placeholder == 'Email') ? <>

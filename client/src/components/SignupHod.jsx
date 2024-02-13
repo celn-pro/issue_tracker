@@ -79,7 +79,7 @@ const SignupHod = () => {
 					<div className={`${warning ? 'text-red-600' : 'text-white'} ${signed ? 'text-green-600' : ''} font-bold px-[] py-[5px]`}>{message}</div>
 
 					<div className='flex justify-center items-center'>
-						<div className='max-[600px]:w-full w-[500px]'>
+						<div className='w-full min-800:w-[500px]'>
 							<form action="" onSubmit={handleSubmit}>
 								{inputSignup.map((s, i) => {
 									return (i != 4) ? <>
