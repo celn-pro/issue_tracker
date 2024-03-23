@@ -53,6 +53,7 @@ const Delegate = (props) => {
 		})
 
 		const responseData = await response.json()
+        console.log(responseData)
 		if (responseData.transformedData) {
 			setStaffs(responseData.staffs)
 			setData(responseData.transformedData)

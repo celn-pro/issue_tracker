@@ -93,7 +93,7 @@ name.toLocaleUpperCase()
 							<div className='h-[20px] overflow-hidden'>
 								{s.description}
 							</div>
-							<div className='flex justify-between items-center'>
+							<div className='flex max-[700px]:flex-col justify-between items-center'>
 								<div>Date: {s.date?.substring(0, 10) + ' ' + s.date?.substring(11, 16)}</div>
 								<div>
 									<button className='bg-black text-white rounded px-[10px] ' onClick={()=>{
@@ -103,7 +103,7 @@ name.toLocaleUpperCase()
 								</div>
 							</div>
 							{/*  */}
-							<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[12px] bottom-[50px] top-[50px] left-[250px] right-[250px] px-[20px] py-[20px] bg-white`}>
+							<div className={`${selectedId == i && openDetails ? 'block' : 'hidden'} absolute text-[12px] bottom-[50px] top-[50px] px-[20px] left-0 right-0 bg-white`}>
 								<div className='flex justify-end items-center'>
 									<div className='font-bold border-[1px] px-[5px] py-[5px] w-[20px] h-[20px] flex justify-center items-center rounded text-white text-center cursor-pointer bg-black'
 										onClick={() => {
@@ -136,10 +136,10 @@ name.toLocaleUpperCase()
 										</tr>
 									</table>
 								</div>
-								<div className='px-[30px] mt-[20px] text-[15px]'>
+								<div className='px-[30px] mt-[20px] text-[15px] w-full'>
 									<h2>Title: {s.title?.substring(0,1).toLocaleUpperCase() + s.title?.substring(1, s.title.length)}</h2>
 								</div>
-								<div className='mt-[20px] px-[30px]'>
+								<div className='mt-[20px] px-[30px] w-full'>
 									<div className=''>Description</div>
 									<div className='border-[1px] rounded h-[200px] px-[20px] py-[20px] text-[12px] overflow-auto'>
 										{s.description}

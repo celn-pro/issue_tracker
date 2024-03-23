@@ -29,9 +29,8 @@ const issuesSchema = new mongoose.Schema({
 		default: 'never attended',
 	}, 
 	deligated_to: {
-		type: String,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'staffs',
-		default: 'none',
 	},
 	
 });
