@@ -16,7 +16,7 @@ const issuesSchema = new mongoose.Schema({
 	title: String,
 	contacts: String,
 	description: {
-		type: String,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'descriptions',
 	},
 	file: String,
