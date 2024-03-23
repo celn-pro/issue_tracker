@@ -319,8 +319,8 @@ router.post('/issues', async(req, res)=>{
 		const deligated_to = req.body.deligated_to
 
 		const fetchedIssues = await issuesModel.find({department: department})
-		.populate({path:'description', select: 'description'})
-		.populate({path: 'deligated_to', select: 'name'}).lean().exec()
+		.populate({path:'description', select: 'description'}).exec()
+		// .populate({path: 'deligated_to', select: 'name'}).lean().exec()
 
 		if(deligated_to){
 			const staffIssues = await issuesModel.find({deligated_to: deligated_to})
@@ -338,7 +338,7 @@ router.post('/issues', async(req, res)=>{
 				contacts: s.contacts,
 				description: s.description.description,
 				status: s.status,
-				deligated_to: s?.deligated_to?.name | 'none',
+				deligated_to: s?.deligated_to?.name,
 				date: s.date,
 			}))
 			
