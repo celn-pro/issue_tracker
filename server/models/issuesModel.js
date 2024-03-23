@@ -32,7 +32,7 @@ const issuesSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'staffs',
         default: function(){
-            return mongoose.Types.ObjectId()
+            return new mongoose.Types.ObjectId()
         },
 	},
 	

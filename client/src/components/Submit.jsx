@@ -70,6 +70,7 @@ const Submit = () => {
 				})
 
 				const responseData = await response.json()
+                console.log(responseData)
 
 				if(responseData.message == 'submitted'){
 					console.log('testing sub')
