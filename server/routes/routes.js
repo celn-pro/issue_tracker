@@ -338,7 +338,7 @@ router.post('/issues', async(req, res)=>{
 				contacts: s.contacts,
 				description: s.description.description,
 				status: s.status,
-				deligated_to: s.deligated_to.name,
+				deligated_to: s?.deligated_to?.name | 'none',
 				date: s.date,
 			}))
 			
