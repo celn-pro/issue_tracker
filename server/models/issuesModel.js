@@ -31,6 +31,7 @@ const issuesSchema = new mongoose.Schema({
 	deligated_to: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'staffs',
+        default: mongoose.Types.ObjectId(),
 	},
 	
 });

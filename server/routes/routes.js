@@ -47,7 +47,8 @@ router.post('/track', async(req, res)=>{
 
 			const userName = fetchedUser.name
 			const userId = fetchedUser.registrationId
-			const fetchedIssues = await issuesModel.find({registrationId: trackId}).populate({path:'description', select: '-_id description'}).lean().exec()
+			const fetchedIssues = await issuesModel.find({registrationId: trackId})
+            .populate({path:'description', select: 'description'}).lean().exec()
 			const transformedData = fetchedIssues.map(s=>({
 				name: s.name,
 				registrationId: s.registrationId,
