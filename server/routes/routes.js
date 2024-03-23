@@ -112,7 +112,7 @@ router.post('/submit', async (req, res)=>{
 	res.status(200).json({message: 'submitted'});
 
 	}catch(e){
-	res.status(200).json({message: 'There was a problem while submmiting, please try again later.'});
+	res.status(200).json({message: 'There was a problem while submmiting, please try again later.', e});
 	}
 })
 
